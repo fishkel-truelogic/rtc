@@ -1,0 +1,28 @@
+package ar.com.finit.core.model.dao.impl;
+
+import java.io.Serializable;
+
+import org.hibernate.Query;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import ar.com.finit.core.dao.impl.AbstractDao;
+import ar.com.finit.core.model.Stablishment;
+import ar.com.finit.core.model.dao.StablishmentDao;
+
+/**
+ * @author leo
+ */
+public class StablishmentDaoImpl extends AbstractDao<Serializable, Stablishment> implements StablishmentDao {
+
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public Stablishment findByUserId(String userId) {
+		String hql = String.format("select s from %s as s where 1 = 1 ", this.getPersistentType().getName());
+		hql += " and s.userId = :userId";
+		Query q = this.getSession().createQuery(hql);
+		q.setParameter("userId", userId);
+		return (Stablishment) q.uniqueResult();
+	}
+
+}

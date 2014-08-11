@@ -1,0 +1,11 @@
+package ar.com.finit.service.converter.violation.user;
+
+import ar.com.finit.core.model.Role;
+import ar.com.finit.service.converter.violation.AbstractViolationConverter;
+
+/**
+ * @author leo
+ */
+public class RoleViolationConverter extends AbstractViolationConverter<Role> {
+
+}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       					http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	
+	<bean name="prepaymentJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="ar.com.finit.service.quartz.PrepaymentJob" />
+		<property name="jobDataAsMap">
+			<map>
+		    	<entry key="eventDao" value-ref="eventDao" />
+		    </map>
+		</property>
+	</bean>
+	
+	<bean id="prepaymentCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="prepaymentJob" />
+		<property name="cronExpression" value="0 1/31 * * * ?" />
+	</bean>
+	
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="jobDetails">
+			<list>
+				<ref bean="prepaymentJob" />
+			</list>
+		</property>
+		<property name="triggers">
+			<list>
+				<ref bean="prepaymentCronTrigger" />
+			</list>
+		</property>
+	</bean>
+	
+</beans>

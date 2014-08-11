@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="ar.com.finit.core.model.impl.RateImpl" table="RATE">
+    
+        <id name="id" type="java.lang.String">
+			<column name="ID" />
+			<generator class="ar.com.finit.core.generator.UUIDGenerator" />
+		</id>
+		
+        <property name="average" type="java.lang.Double">
+            <column name="AVERAGE" />
+        </property>
+
+        <property name="votes" type="java.lang.Integer">
+            <column name="VOTES" />
+        </property>
+
+        <property name="entity" type="java.lang.String">
+            <column name="ENTITY" />
+        </property>
+
+    </class>
+</hibernate-mapping>

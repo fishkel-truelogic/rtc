@@ -1,0 +1,33 @@
+ 			
+			<?php
+				$service_url = 'http://127.0.0.1:8080/rtc-service/public/districts/states';
+				$curl = curl_init($service_url);
+				curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+				$curl_response = curl_exec($curl);
+				if ($curl_response === false) {
+					$info = curl_getinfo($curl);
+					curl_close($curl);
+					die('error occured during curl exec. Additioanl info: ' . var_export($info));
+				}
+				curl_close($curl);
+				$decoded = json_decode($curl_response);
+				if (isset($decoded->response->status) && $decoded->response->status == 'ERROR') {
+					die('error occured: ' . $decoded->response->errormessage);
+				}
+			echo '<script type="text/javascript">'
+				,'$.selectFirstState("';
+			echo $decoded[0];
+			echo '");'
+				, '</script>';
+				echo "<select name='stateMenu' id='stateMenu'  onchange='$.setState(this.value)' style='width:167px'>";
+				foreach ($decoded as $state) {
+					echo "<option value='";
+					echo $state;
+					echo "'>";
+					echo $state;
+					echo "</option>";	;
+				}
+				echo "</select>";
+				
+			?>
+ 

@@ -1,0 +1,68 @@
+package ar.com.finit.core.model.dao.impl;
+
+import java.io.Serializable;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+
+import org.hibernate.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import ar.com.finit.core.dao.impl.AbstractDao;
+import ar.com.finit.core.model.Image;
+import ar.com.finit.core.model.dao.FieldDao;
+import ar.com.finit.core.model.dao.ImageDao;
+import ar.com.finit.core.model.impl.ImageImpl;
+
+/**
+ * @author leo
+ */
+public class ImageDaoImpl extends AbstractDao<Serializable, Image> implements ImageDao {
+
+	@Autowired
+	private FieldDao fieldDao;
+	
+	@Override
+	@SuppressWarnings("unchecked")
+	@Transactional(propagation = Propagation.REQUIRED)
+	public List<Image> findBy(String fieldId, String stablishmentId, String userId, int first, int pageSize) {
+		ImageImpl image = new ImageImpl();
+		image.setUserId(userId);
+		image.setFieldId(fieldId);
+		image.setStablishmentId(stablishmentId);
+		String hql = String.format("select i from %s as i where 1 = 1 ", this.getPersistentType().getName().toString());
+		hql += this.addParameterFilter(image, "i.");
+		Collection<Object> objects = new HashSet<Object>();
+		objects.add(image);
+		Query q = this.createQuery(objects, hql);
+		if (pageSize != -1) {
+			q.setFirstResult(first);
+			q.setMaxResults(pageSize);
+		}
+		return q.list();
+	}
+
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public long countWithFilter(String fieldId, String stablishmentId, String userId) {
+		ImageImpl image = new ImageImpl();
+		image.setUserId(userId);
+		image.setFieldId(fieldId);
+		image.setStablishmentId(stablishmentId);
+		String hql = String.format("select count(*) from %s as i where 1 = 1 ", this.getPersistentType().getName().toString());
+		hql += this.addParameterFilter(image, "i.");
+		Collection<Object> objects = new HashSet<Object>();
+		objects.add(image);
+		Query q = this.createQuery(objects, hql);
+		return (Long) q.uniqueResult();
+	}
+
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public byte[] findMetadata(Image image) {
+		return this.findById(image.getId()).getImageMetadata().getData();
+	}
+
+}

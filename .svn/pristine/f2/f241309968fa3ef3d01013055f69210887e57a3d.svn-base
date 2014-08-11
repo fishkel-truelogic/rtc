@@ -1,0 +1,17 @@
+package ar.com.finit.core.model;
+
+import java.util.Set;
+
+/**
+ * @author leo
+ */
+public interface User {
+
+	public String getId();
+
+	public String getUsername();
+
+	public String getPassword();
+
+	public Set<Role> getRoles();
+}

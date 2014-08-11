@@ -1,0 +1,35 @@
+<html>
+	<head>
+		<title>Reserva tu cancha</title>
+	</head>
+	<body>
+	<?php
+	$url = 'http://127.0.0.1:8080/rtc-service/public/users?lazy=false';
+	$response = file_get_contents($url);
+	$dto = json_decode($response);
+	echo $dto->{'rowCount'};
+	echo "<br>";
+	echo $dto->{'pageSize'};
+	echo "<br>";
+	echo $dto->{'pageNumber'};
+	echo "<br>";
+	echo "Users";
+	echo "<br>";
+	foreach ($dto->{'pageElements'} as $user) {
+		echo $user->{'id'};
+		echo " "; 
+		echo $user->{'userName'};
+		$user->{'password'};
+		echo "<br>";
+		echo "Roles";
+		echo "<br>";
+		foreach ($user->{'roles'} as $role) {
+			echo $role->{'id'};
+			echo " "; 
+			echo $role->{'name'};
+			echo "<br>";
+		}
+	}
+	?>
+	</body>
+</html>

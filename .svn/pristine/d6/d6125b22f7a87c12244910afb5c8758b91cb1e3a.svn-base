@@ -1,0 +1,8 @@
+ar\com\finit\owner\web\rest\client\HttpProtocolHelperImpl.class
+ar\com\finit\owner\web\bean\template\TemplateBean.class
+ar\com\finit\owner\web\message\MessageManager.class
+ar\com\finit\owner\web\session\UserSessionBean.class
+ar\com\finit\owner\web\rest\client\HttpProtocolHelper.class
+ar\com\finit\owner\web\rest\client\HttpProtocolHelperGlobalImpl.class
+ar\com\finit\owner\web\rest\client\RestElement.class
+ar\com\finit\owner\web\rest\client\RestfulServiceInvoker.class

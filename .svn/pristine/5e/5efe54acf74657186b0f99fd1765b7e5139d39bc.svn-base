@@ -1,0 +1,46 @@
+package ar.com.finit.service.rest.priv.user;
+
+import javax.annotation.security.RolesAllowed;
+import javax.ws.rs.DefaultValue;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Configurable;
+
+import ar.com.finit.core.model.User;
+import ar.com.finit.core.model.dao.UserDao;
+import ar.com.finit.dto.model.UserDTO;
+import ar.com.finit.service.converter.user.UserConverter;
+import ar.com.finit.service.rest.utils.EntityPath;
+
+/**
+ * @author leo
+ */
+
+@Configurable
+@Path(EntityPath.PRIVATE + EntityPath.USERS)
+public class UserPrivateService {
+
+	@Autowired
+	private UserDao userDao;
+	@Autowired
+	private UserConverter userConverter;
+
+	@GET
+	@Path("/{id:(([0-9a-fA-F]){8}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){12}){1}}")
+	@RolesAllowed({"owner", "admin"})
+	@Produces(MediaType.APPLICATION_JSON)
+	public UserDTO read(@PathParam("id") String id, 
+						@QueryParam("lazy") 
+						@DefaultValue(value = "true") boolean lazy) {
+		
+		User user = this.userDao.findById(id);
+		return userConverter.toDTO(user, lazy);
+	}
+
+}

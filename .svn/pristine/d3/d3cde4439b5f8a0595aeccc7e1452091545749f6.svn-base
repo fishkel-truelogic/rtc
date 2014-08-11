@@ -1,0 +1,17 @@
+package ar.com.finit.dto.exception;
+
+import ar.com.finit.dto.helper.ImageHelper;
+
+/**
+ * @see ImageHelper
+ * @author leo
+ */
+public class ShrinkImageException extends RuntimeException {
+
+	private static final long serialVersionUID = 4135406708838924565L;
+
+	public ShrinkImageException(String message) {
+		super(message);
+	}
+
+}

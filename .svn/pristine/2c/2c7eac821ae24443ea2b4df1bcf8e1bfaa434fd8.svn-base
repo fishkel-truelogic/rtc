@@ -1,0 +1,36 @@
+package ar.com.finit.core.model;
+
+import java.util.Date;
+
+/**
+ * @author leo
+ */
+public interface Event {
+
+	
+	public Integer getId();
+	
+	public String getUserId();
+	
+	public String getEntity();
+	
+	public String getEntityName();
+	
+	public String getSubject();
+	
+	public Date getStartTime();
+	
+	public Date getEndTime();
+	
+	public int getAllDay();
+	
+	public int getMoreThanOneDay();
+	
+	public int getRecurring();
+	
+	public int getColor();
+	
+	public int getEditable();
+	
+	public String getPlayer(); 
+}

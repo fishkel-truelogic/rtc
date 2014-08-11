@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       					http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+<!-- violation converter	 -->
+	<bean id="albumViolationConverter" class="ar.com.finit.service.model.converter.violation.AlbumViolationConverter" />
+	<bean id="districtViolationConverter" class="ar.com.finit.service.model.converter.violation.DistrictViolationConverter" />
+	<bean id="eventViolationConverter" class="ar.com.finit.service.model.converter.violation.EventViolationConverter" />
+	<bean id="fieldViolationConverter" class="ar.com.finit.service.model.converter.violation.FieldViolationConverter" />
+	<bean id="groundViolationConverter" class="ar.com.finit.service.model.converter.violation.GroundViolationConverter" />
+	<bean id="imageViolationConverter" class="ar.com.finit.service.model.converter.violation.ImageViolationConverter" />
+	<bean id="mapMarkerViolationConverter" class="ar.com.finit.service.model.converter.violation.MapMarkerViolationConverter" />
+	<bean id="playerViolationConverter" class="ar.com.finit.service.model.converter.violation.PlayerViolationConverter" />
+	<bean id="rateViolationConverter" class="ar.com.finit.service.model.converter.violation.RateViolationConverter" />
+	<bean id="roleViolationConverter" class="ar.com.finit.service.model.converter.violation.RoleViolationConverter" />
+	<bean id="sportViolationConverter" class="ar.com.finit.service.model.converter.violation.SportViolationConverter" />
+	<bean id="stablishmentViolationConverter" class="ar.com.finit.service.model.converter.violation.StablishmentViolationConverter" />
+	<bean id="stateViolationConverter" class="ar.com.finit.service.model.converter.violation.StateViolationConverter" />
+	<bean id="tpServiceViolationConverter" class="ar.com.finit.service.model.converter.violation.TpServiceViolationConverter" />
+	<bean id="userViolationConverter" class="ar.com.finit.service.model.converter.violation.UserViolationConverter" />
+
+<!-- DTO / Entity converter -->
+	<bean id="albumConverter" class="ar.com.finit.service.model.converter.AlbumConverter"></bean>
+	<bean id="districtConverter" class="ar.com.finit.service.model.converter.DistrictConverter"></bean>
+	<bean id="eventConverter" class="ar.com.finit.service.model.converter.EventConverter"></bean>
+	<bean id="fieldConverter" class="ar.com.finit.service.model.converter.FieldConverter"></bean>
+	<bean id="groundConverter" class="ar.com.finit.service.model.converter.GroundConverter"></bean>
+	<bean id="imageConverter" class="ar.com.finit.service.model.converter.ImageConverter"></bean>
+	<bean id="mapMarkerConverter" class="ar.com.finit.service.model.converter.MapMarkerConverter"></bean>
+	<bean id="playerConverter" class="ar.com.finit.service.model.converter.PlayerConverter"></bean>
+	<bean id="rateConverter" class="ar.com.finit.service.model.converter.RateConverter"></bean>
+	<bean id="roleConverter" class="ar.com.finit.service.model.converter.RoleConverter"></bean>
+	<bean id="sportConverter" class="ar.com.finit.service.model.converter.SportConverter"></bean>
+	<bean id="stablishmentConverter" class="ar.com.finit.service.model.converter.StablishmentConverter"></bean>
+	<bean id="stateConverter" class="ar.com.finit.service.model.converter.StateConverter"></bean>
+	<bean id="tpServiceConverter" class="ar.com.finit.service.model.converter.TpServiceConverter"></bean>
+	<bean id="userConverter" class="ar.com.finit.service.model.converter.UserConverter"></bean>
+
+<!-- Quiero deportes DTO / Entity Converter -->
+	<bean id="LugarConverter" class="ar.com.finit.service.model.converter.qd.LugarConverter"></bean>
+</beans>

@@ -1,0 +1,29 @@
+(function($){
+
+	$.selectFirstState =  function(state) { if ($.getState() == undefined) { $.setState(state)}};
+
+	$.getStateDropDown = function() {
+			
+		function _processTemplate(response){
+			var data;
+			$.template("dropDownTemplate",response);
+			$("#header_state_combo_container").html(
+			$.tmpl("dropDownTemplate", data, {}));
+			
+			try {
+				$("#stateMenu").msDropDown();
+			} catch(e) {
+				alert(e.message);
+			}
+		}
+		
+		
+		$.ajax({
+			url : "html/header/header_state_combo.php",
+			dataType : 'html',
+			success : _processTemplate
+		});
+
+	};
+	
+})(jQuery);

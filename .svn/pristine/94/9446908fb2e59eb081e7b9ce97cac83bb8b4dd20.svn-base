@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+
+	<title>reservá tu cancha owner</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Refresh" content="2; URL=http://localhost:8081/rtc-admin?user_name=#{facesContext.externalContext.userPrincipal.name}"/> 
+	<h:outputStylesheet name="css/screen.css" />
+
+
+</h:head>
+<h:body>
+	<h:inputHidden value="#{templateBean.cookie}"></h:inputHidden>
+
+</h:body>
+</html>

@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="ar.com.finit.core.model.impl.FieldImpl" table="FIELD">
+    
+       <id name="id" type="java.lang.String">
+			<column name="ID" />
+			<generator class="ar.com.finit.core.generator.UUIDGenerator" />
+		</id>
+        
+        <property name="width" type="java.lang.String">
+            <column name="WIDTH" />
+        </property>
+		
+		<property name="height" type="java.lang.String">
+            <column name="HEIGHT" />
+        </property>
+ 
+        <set name="playersCapacity" table="FIELD_PLAYERS_CAPACITY" cascade="save-update" inverse="true" lazy="true" >
+			<key column="FIELD_ID" />
+			<many-to-many column="PLAYERS_CAPACITY_ID" class="ar.com.finit.core.model.impl.PlayerCapacityImpl" />
+		</set>
+		
+		<set name="images" table="FIELD_IMAGE" cascade="save-update" inverse="true" lazy="true" >
+			<key column="FIELD_ID" />
+			<many-to-many column="IMAGE_ID" class="ar.com.finit.core.model.impl.ImageImpl" />
+		</set>
+		
+		<set name="sports" table="FIELD_SPORT" cascade="save-update" inverse="true" lazy="true" >
+			<key column="FIELD_ID" />
+			<many-to-many column="SPORT_ID" class="ar.com.finit.core.model.impl.SportImpl" />
+		</set>
+		
+		<many-to-one name="tariff" column="TARIFF" class="ar.com.finit.core.model.impl.TariffImpl" cascade="save-update" lazy="false" />
+
+		<list name="irregulars" cascade="none" table="FIELD_IRREGULAR" lazy="true">
+			<key column="FIELD_ID"/>
+			<index column="SINCE_DATE"/>
+			<many-to-many column="IRREGUKLAR_ID" class="ar.com.finit.core.model.impl.IrregularImpl" />
+		</list>
+
+		<many-to-one name="ground" column="GROUND" class="ar.com.finit.core.model.impl.GroundImpl" cascade="none" lazy="false" />
+
+		<property name="ceiling" type="java.lang.Boolean">
+            <column name="CEILING" />
+        </property>
+        
+    </class>
+</hibernate-mapping>

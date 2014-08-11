@@ -1,0 +1,14 @@
+package ar.com.finit.core.model.dao.impl;
+
+import java.io.Serializable;
+
+import ar.com.finit.core.dao.impl.AbstractDao;
+import ar.com.finit.core.model.TpService;
+import ar.com.finit.core.model.dao.TpServiceDao;
+
+/**
+ * @author leo
+ */
+public class TpServiceDaoImpl extends AbstractDao<Serializable, TpService> implements TpServiceDao {
+
+}

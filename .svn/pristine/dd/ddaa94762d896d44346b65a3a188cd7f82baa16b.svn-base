@@ -1,0 +1,29 @@
+<?php
+
+class Player {
+	public $id; 
+	public $username; 
+	public $email; 
+	public $password; 
+	public $fbId;
+	 
+	public function input() {
+		$this->username = ($_REQUEST['username']);
+        $this->email = ($_REQUEST['email']);
+		$this->password =  ($_REQUEST['password']);
+    }
+	 
+	public function __get($property) {
+		if (property_exists($this, $property)) {
+			return $this->$property;
+		}
+	}
+
+	public function __set($property, $value) {
+		if (property_exists($this, $property)) {
+			$this->$property = $value;
+		}
+		return $this;
+	}
+}
+?>

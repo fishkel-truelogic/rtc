@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="ar.com.finit.core.model.impl.TpServiceImpl" table="TP_SERVICE">
+    
+       <id name="id" type="java.lang.String">
+			<column name="ID" />
+			<generator class="ar.com.finit.core.generator.UUIDGenerator" />
+		</id>
+		
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        
+        <property name="userId" type="java.lang.String">
+            <column name="USER_ID" />
+        </property>
+        
+        <many-to-one name="album" class="ar.com.finit.core.model.impl.AlbumImpl" cascade="all" unique="true" lazy="false"/>
+
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,49 @@
+<?php
+		include '../php/restRequest.php';
+		
+		$states = getRequest($urlServices . 'districts/states');
+		$sports = getRequest($urlServices . 'sports/');
+		
+		if (isset($_REQUEST['sport'])) {
+			$sport = empty($_REQUEST['sport']) ? $sports[0]->{"name"} : $_REQUEST['sport'];
+		} else {
+			$sport = $sports[0]->{"name"};
+		}
+		
+		if (isset($_REQUEST['state'])) {
+			$state = empty($_REQUEST['state']) ? $states[0] : $_REQUEST['state'];
+		} else {
+			$state = $states[0];
+		}
+?>
+<ul>
+	<li>
+		<?php
+			echo '<a href="" class="icon icon-bar-chart"><span>' . $state . '</span></a>';
+			echo '<ul>';
+				foreach ($states as $stateIT) {
+					echo '<li><a href="" onclick="$.loadHeader({state:\'' . $stateIT . '\', sport:\'' . $sport . '\'});';
+					echo '$.loadMainFilter({state:\''. $stateIT . '\', district:\'\', sport:\'\', ground:\'\', hour: \'\'})">'. $stateIT . '</a></li>';
+				}
+			echo '</ul>';
+		?>
+	</li>
+	<li>
+		<?php
+			echo '<a href="" class="icon icon-bar-chart"><span>' . $sport . '</span></a>';
+			echo '<ul>';
+				foreach ($sports as $sportIT) {
+					echo '<li><a href="" onclick="$.loadHeader({state:\'' . $state . '\', sport:\'' . $sportIT->{"name"} . '\'});';
+					echo '$.loadMainFilter({state:\''. $state . '\', district:\'\', sport:\'' . $sportIT->{"name"} . '\', ground:\'\'})">' . $sportIT->{"name"} . '</a></li>';
+				}
+			echo '</ul>';
+		?>
+	</li>
+	<!--<li><a class="icon icon-cog" href="left-sidebar.html"><span>Deportes</span></a></li>
+	<li><a class="icon icon-retweet" href="right-sidebar.html"><span>Right Sidebar</span></a></li>
+	<li><a class="icon icon-sitemap" href="no-sidebar.html"><span>No Sidebar</span></a></li>-->
+	<?php
+		echo '<script type="text/javascript">$.loadMainFilter({state:\'' . $state . '\', district:\'\', sport:\'' . $sport . '\', ground:\'\', hour: \'\'}); </script>';
+	?>
+	<li><a class="icon icon-facebook-sign" href="index.php"><span>ingresar</span></a></li>
+</ul>

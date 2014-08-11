@@ -1,0 +1,8 @@
+package ar.com.finit.owner.web.rest.client;
+
+/**
+ * @author leo
+ */
+public enum RestElement {
+	ADMIN, PRIV, PUB, ROLE, ROOT_URL, USER, IMAGE, LOGIN
+}

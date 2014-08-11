@@ -1,0 +1,52 @@
+package ar.com.finit.owner.web.session;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+
+import org.jboss.resteasy.client.ClientResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import ar.com.finit.dto.model.UserDTO;
+import ar.com.finit.dto.model.factory.UserDTOFactory;
+import ar.com.finit.owner.web.rest.client.HttpProtocolHelper;
+import ar.com.finit.owner.web.rest.client.RestElement;
+
+@Component
+public class UserSessionHelper {
+
+	@Autowired
+	private HttpProtocolHelper httpProtocolHelper;
+	@Autowired
+	private UserDTOFactory userDTOFactory;
+
+	public UserDTO getUser(HttpServletRequest request) {
+		if (this.httpProtocolHelper.getUser() != null) {
+			return this.httpProtocolHelper.getUser();
+		}
+		
+		if (this.httpProtocolHelper.getCookie() == null) {
+			if (request == null) throw new RuntimeException();
+			Cookie[] cookies = request.getCookies();
+			for (Cookie cookie : cookies) {
+				if (cookie.getName().equals("JSESSIONIDSSO")) {
+					this.httpProtocolHelper.setCookie(cookie);
+				}
+			}
+		}
+		UserDTO user;
+		
+		ClientResponse<String> response = httpProtocolHelper.getJsonRequest(httpProtocolHelper.getServiceUrl(RestElement.PRIV, RestElement.USER) + request.getUserPrincipal().getName());
+		
+		if (response.getStatus() != 200) {
+			user = null;
+		} else {
+			user = userDTOFactory.makeDTO(response.getEntity());
+		}
+		
+		this.httpProtocolHelper.setUser(user);
+		
+		return user;
+	}
+	
+}

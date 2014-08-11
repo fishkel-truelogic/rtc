@@ -1,0 +1,144 @@
+<?php
+	include 'restRequest.php';
+	include 'player.php';
+	session_start();
+	
+	if (isset($_REQUEST['action'])) {
+		if ($_REQUEST['action'] == 'login') {
+			echo "action = login;";
+			$user = getRequest($urlServices . 'players/?login=' . $_REQUEST['login'] . '&password=' . $_REQUEST['password']);
+			if (isset($user->{'id'})) {
+				$player = new Player;
+				$player->__set('username', $user->{'username'});
+				$player->__set('email', $user->{'email'});
+				$player->__set('id', $user->{'id'});
+				$player->__set('fbPlayer', $user->{'fbPlayer'});
+				$_SESSION['player'] = serialize($player);
+?>
+
+<script type="text/javascript">
+	location.reload();
+</script>
+
+<?php
+			} else {
+?>
+
+<script type="text/javascript">
+	$('#loginError').css({'display' : 'block'});
+</script>
+
+<?php				
+			}
+		} elseif ($_REQUEST['action'] == 'logout') {
+			unset($_SESSION['player']);
+?>
+
+<script type="text/javascript">
+	location.reload();
+</script>
+
+<?php	
+		
+		} elseif ($_REQUEST['action'] == 'register') {
+			$player = new Player;
+			$player->input();
+			$resp = postRequest($urlServices . 'players/', $player);
+			
+			if (is_null ($resp)) {
+			
+?>
+
+<script type="text/javascript">
+	location.reload();
+</script>
+
+<?php
+			
+			} elseif ($resp->{"status"} == 406) {
+
+?>
+<script type="text/javascript">
+	$.loadRegisterDialog('<?php echo $resp->{"message"}?>');
+</script>
+<?php		
+			
+			}
+		} elseif ($_REQUEST['action'] == 'update') {
+			$player = unserialize($_SESSION['player']);
+			$player->__set('email', $_REQUEST['email']);
+			$resp = postRequest($urlServices . 'players/' . $player->__get('id') , $player);
+			if (is_null ($resp)) {	
+				$_SESSION['player'] = serialize($player);
+?>
+				<script type="text/javascript">
+					$.loadPlayerProfile();
+				</script>
+<?php	
+			} elseif ($resp->{"status"} == 406) {
+?>
+				<script type="text/javascript">
+					$.loadPlayerProfile('<?php echo $resp->{"message"}?>');
+				</script>
+<?php		
+			}
+			
+		}
+	}
+	
+	
+	
+	if (isset($_REQUEST['fbJson']) && !isset($_SESSION['player'])) {
+		$user = json_decode($_REQUEST['fbJson']);
+		$resp = getRequest($urlServices . 'players/' . $user->{'id'});
+		if (isset($resp->{'id'})) {
+			$player = new Player;
+			$player->__set('username', $resp->{'username'});
+			$player->__set('email', $resp->{'email'});
+			$player->__set('id', $resp->{'id'});
+			$player->__set('fbId', $resp->{'fbId'});
+			$_SESSION['player'] = serialize($player);
+			
+?>
+
+<script type="text/javascript">
+	location.reload();
+</script>
+
+<?php
+
+		} else {
+			$player = new Player;
+			$player->__set('username', $user->{'name'});
+			$player->__set('email', $user->{'email'});
+			$player->__set('fbId', $user->{'id'});
+			
+			
+			
+			$resp = postRequest($urlServices . 'players/', $player);
+			
+			if (is_null ($resp)) {
+				
+		
+				$resp = getRequest($urlServices . 'players/' . $user->{'id'});
+				$player = new Player;
+				$player->__set('username', $resp->{'username'});
+				$player->__set('email', $resp->{'email'});
+				$player->__set('id', $resp->{'id'});
+				$player->__set('fbId', $resp->{'fbId'});
+				$_SESSION['player'] = serialize($player);
+
+?>
+<script type="text/javascript">
+	location.reload();
+</script>
+<?php
+
+			} else {
+					echo 'error';
+			}
+		}
+		
+	}
+
+?>

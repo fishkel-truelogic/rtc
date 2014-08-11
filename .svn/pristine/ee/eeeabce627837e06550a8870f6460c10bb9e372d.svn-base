@@ -1,0 +1,9 @@
+#template
+logOut=Desconectarse
+unexpectedError=Error inesperado
+
+#users
+users=Usuarios
+
+#roles
+roles=Permisos

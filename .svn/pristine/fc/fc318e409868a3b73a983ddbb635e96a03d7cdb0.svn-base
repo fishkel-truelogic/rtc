@@ -1,0 +1,74 @@
+package ar.com.finit.service.rest.utils;
+
+/**
+ * Para respetar HATEOAS, el mapServices permite la autodescripción y
+ * automatización de nuestro sistema
+ * 
+ * @author leo
+ */
+public class MapServices {
+	private String root;
+	private String admin;
+	private String priv;
+	private String pub;
+	private String roles;
+	private String users;
+	private String images;
+
+	public String getRoot() {
+		return this.root;
+	}
+
+	public void setRoot(String root) {
+		this.root = root;
+	}
+
+	public String getRoles() {
+		return roles;
+	}
+
+	public void setRoles(String roles) {
+		this.roles = roles;
+	}
+
+	public String getUsers() {
+		return users;
+	}
+
+	public void setUsers(String users) {
+		this.users = users;
+	}
+
+	public String getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(String admin) {
+		this.admin = admin;
+	}
+
+	public String getPriv() {
+		return priv;
+	}
+
+	public void setPriv(String priv) {
+		this.priv = priv;
+	}
+
+	public String getPub() {
+		return pub;
+	}
+
+	public void setPub(String pub) {
+		this.pub = pub;
+	}
+
+	public String getImages() {
+		return images;
+	}
+
+	public void setImages(String images) {
+		this.images = images;
+	}
+
+}

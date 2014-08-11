@@ -1,0 +1,23 @@
+package ar.com.finit.core.model;
+
+/**
+ * @author leo
+ */
+public interface Image {
+	
+	public String getId();
+
+	public byte[] getAvatar();
+
+	public String getName();
+
+	public String getExtension();
+
+	public ImageMetadata getImageMetadata();
+
+	public String getUserId();
+	
+	public String getFieldId();
+	
+	public String getStablishmentId();
+}

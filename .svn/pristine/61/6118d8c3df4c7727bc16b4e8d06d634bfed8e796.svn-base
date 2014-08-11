@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="ar.com.finit.core.model.impl.BookImpl" table="BOOK">
+
+		<id name="id" type="java.lang.String">
+			<column name="ID" />
+			<generator class="ar.com.finit.core.generator.UUIDGenerator" />
+		</id>
+		
+		<property name="start" type="java.util.Date">
+			<column name="START" />
+		</property>
+		
+		<property name="finish" type="java.util.Date">
+			<column name="FINISH" />
+		</property>
+		
+		<property name="signal" type="java.lang.Boolean">
+			<column name="SIGNAL" />
+		</property>
+		
+		<property name="expiration" type="java.util.Date">
+			<column name="EXPIRATION" />
+		</property>
+
+		<many-to-one name="player" column="PLAYER"
+			class="ar.com.finit.core.model.impl.PlayerImpl" cascade="none" lazy="false" />
+
+		<set name="waitingPlayers" table="BOOK_WAITING_PLAYERS" cascade="save-update"
+			inverse="true" lazy="true">
+			<key column="BOOK_ID" />
+			<many-to-many column="PLAYER_ID"
+				class="ar.com.finit.core.model.impl.PlayerImpl" />
+		</set>
+
+		<property name="userId" type="java.lang.String">
+			<column name="USER_ID" not-null="true" />
+		</property>
+		
+		<property name="fieldId" type="java.lang.String">
+			<column name="FIELD_ID" not-null="true" />
+		</property>
+		
+		<property name="stablishmentId" type="java.lang.String">
+			<column name="STABLISHMENT_ID" not-null="true" />
+		</property>
+
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,19 @@
+package ar.com.finit.service.rest.utils;
+
+/**
+ * Centralización y unificación de las entradas a las Entidades publicadas por REST
+ * 
+ * @author leo
+ */
+public abstract class EntityPath {
+	public static final String ADMIN = "admin/";
+	public static final String PRIVATE = "private/";
+	public static final String PUBLIC = "public/";
+	public static final String USERS = "users";
+	public static final String ROLES = "roles";
+	public static final String IMAGES = "images";
+	public static final String DISTRICTS = "districts";
+	public static final String SPORTS = "sports";
+	public static final String GROUNDS = "grounds";
+	
+}

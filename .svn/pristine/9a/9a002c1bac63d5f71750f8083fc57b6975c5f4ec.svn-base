@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+
+	<title>reservá tu cancha owner</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<h:outputStylesheet name="css/screen.css" />
+
+	<style type="text/css">
+.ui-layout-north {
+	z-index: 20 !important;
+	overflow: visible !important;
+}
+
+.ui-layout-north .ui-layout-unit-content {
+	overflow: visible !important;
+}
+</style>
+</h:head>
+<h:body>
+	<p:layout fullPage="true">
+		<p:layoutUnit id="top" position="north" size="55">
+			<h:form id="menuForm">
+				<p:menubar autoDisplay="true">
+					<p:menuitem value="#{i18n.images}" action="images" icon="ui-icon ui-icon-contact"
+							ajax="false" />	
+				</p:menubar>
+			</h:form>
+		</p:layoutUnit>
+	</p:layout>
+
+	<p:layoutUnit id="bottom" position="south" size="60">
+		<h:form>
+			<p:outputLabel value="#{templateBean.afterSignIn}"></p:outputLabel>
+			<p:commandButton actionListener="#{templateBean.logOut}"
+							ajax="false" style="margin-left:90%" value="#{i18n.logOut}" />
+		</h:form>
+	</p:layoutUnit>
+
+	<p:layoutUnit id="center" position="center">
+		<p:growl id="globalGrowl" autoUpdate="true" globalOnly="true"
+			showDetail="true" />
+		<ui:insert name="content">
+					[Template content will be inserted here]
+		</ui:insert>
+	</p:layoutUnit>
+
+</h:body>
+</html>

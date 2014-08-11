@@ -1,0 +1,78 @@
+package ar.com.finit.service.rest.pub;
+
+import java.util.Collection;
+
+import javax.validation.Validator;
+import javax.ws.rs.DefaultValue;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Configurable;
+
+import ar.com.finit.core.model.Image;
+import ar.com.finit.core.model.dao.ImageDao;
+import ar.com.finit.core.model.impl.ImageImpl;
+import ar.com.finit.dto.model.ImageDTO;
+import ar.com.finit.dto.model.factory.ImageDTOFactory;
+import ar.com.finit.dto.model.page.ImageCollectionPage;
+import ar.com.finit.service.model.converter.ImageConverter;
+import ar.com.finit.service.model.converter.violation.ImageViolationConverter;
+import ar.com.finit.service.rest.utils.EntityPath;
+
+/**
+ * @author leo
+ */
+@Configurable
+@Path(EntityPath.PUBLIC + EntityPath.IMAGES)
+public class ImagePublicService {
+
+	@Autowired
+	public ImageDao imageDao;
+	@Autowired
+	private Validator validator;
+	@Autowired
+	private ImageViolationConverter imageViolationConverter;
+	@Autowired
+	private ImageDTOFactory imageDTOFactory;
+	@Autowired
+	public ImageConverter imageConverter;
+
+	@GET
+	@Path(value = "/")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ImageCollectionPage list(
+			@QueryParam("page") @DefaultValue(value="1") int page,
+			@QueryParam("pageSize") @DefaultValue(value="1") int pageSize, 
+			@QueryParam("name") String name) {
+		
+		ImageImpl image = new ImageImpl();
+		image.setName(name);
+		long rowCount = this.imageDao.countWithFilter(name);
+		int first = (page - 1) * pageSize;
+		Collection<Image> images = this.imageDao.findBy(name, first, pageSize);
+		return new ImageCollectionPage(rowCount, pageSize, page, imageConverter.toDTO(images));
+	}
+	
+	@GET
+	@Path("/{id:(([0-9a-fA-F]){8}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){12}){1}}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ImageDTO read(@PathParam("id") String id, @QueryParam("lazyMetadata") @DefaultValue(value="true") boolean lazyMetadata) {
+		Image image = this.imageDao.findById(id);
+		return imageConverter.toDTO(image, lazyMetadata);
+	}
+	
+	@GET
+	@Path("/metadata")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ImageDTO metadata(@QueryParam("id") String id) {
+		Image image = this.imageDao.findById(id);
+		return imageConverter.toDTO(image, false);
+	}
+
+
+}

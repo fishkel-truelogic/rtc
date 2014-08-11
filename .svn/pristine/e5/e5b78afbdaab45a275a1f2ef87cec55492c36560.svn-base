@@ -1,0 +1,17 @@
+package ar.com.finit.core.model.dao;
+
+import java.io.Serializable;
+import java.util.List;
+
+import ar.com.finit.core.dao.Dao;
+import ar.com.finit.core.model.Image;
+
+/**
+ * @author leo
+ */
+public interface ImageDao extends Dao<Serializable, Image> {
+
+	public List<Image> findBy(String name, int startPosition, int maxResult);
+	public long countWithFilter(String name);
+	public byte[] findMetadata(Image image);
+}

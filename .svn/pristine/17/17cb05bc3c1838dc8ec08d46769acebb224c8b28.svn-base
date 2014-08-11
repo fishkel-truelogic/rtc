@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       					http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<bean id="gsonBuilder" class="com.google.gson.GsonBuilder" init-method="disableHtmlEscaping"/>
+	<bean id="gson" factory-bean="gsonBuilder" factory-method="create"/>
+
+	<bean id="abstractDTOFactory" abstract="true">
+		<property name="gson" ref="gson" />
+	</bean>
+
+<!-- DTOs Factories -->	
+	<bean id="imageDTOFactory" class="ar.com.finit.dto.model.factory.ImageDTOFactory" parent="abstractDTOFactory"/>
+	<bean id="userDTOFactory" class="ar.com.finit.dto.model.factory.UserDTOFactory" parent="abstractDTOFactory"/>
+	<bean id="roleDTOFactory" class="ar.com.finit.dto.model.factory.RoleDTOFactory" parent="abstractDTOFactory"/>
+
+	<bean id="violationDTOFactory" class="ar.com.finit.dto.factory.violation.ViolationDTOFactory" parent="abstractDTOFactory"/>
+
+<!-- Pages Factories -->
+	<bean id="imageCollectionPageFactory" class="ar.com.finit.dto.model.factory.ImageCollectionPageFactory" parent="abstractDTOFactory"/>
+	<bean id="userCollectionPageFactory" class="ar.com.finit.dto.model.factory.UserCollectionPageFactory" parent="abstractDTOFactory"/>
+	<bean id="roleCollectionPageFactory" class="ar.com.finit.dto.model.factory.RoleCollectionPageFactory" parent="abstractDTOFactory"/>
+</beans>

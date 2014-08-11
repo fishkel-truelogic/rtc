@@ -1,0 +1,149 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Strongly Typed by HTML5 UP</title>
+		<meta http-equiv="content-type" content="text/html; charset=ISO-8859-15" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<meta name="viewport" content="width=1040" />
+	
+		<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Arvo:700" rel="stylesheet" type="text/css" />
+		<link rel='stylesheet' href='/owner-web/css/style.css' />  
+		<link rel='stylesheet' href='/owner-web/css/slider_multiple.css' />  
+		<script type="text/javascript" src="/owner-web/js/jquery-1.9.1.js"></script>
+		<script type="text/javascript" src="/owner-web/js/jquery.form.js"></script>
+  		<script type="text/javascript" src="/owner-web/js/owner.js"></script>
+  		<script type="text/javascript" src="/owner-web/js/wpts_slider_multiple.js"></script>
+		
+		<script type="text/javascript">
+			$(document).ready(function() {
+				jQuery('#my_carousel_ct').tsSlider({
+					   thumbs:''
+					  , width:'100%'
+					  , showText: true 
+					  , autoplay:15000
+					  , imgAlignment: 'center'
+					  , imgMarginTop: 0
+					  , imgMarginLeft: 0
+					  , squared: true 
+					  , textSquarePosition: 4 
+					  , textPosition: 'top'
+					  , imgAlignment: 'Center'
+					  , textColor: 'F00'
+					  , skin: 'transparent'
+					  , arrows:'ts-arrow-1'
+					  , sliderHeight: 475 
+					  , effects:''
+								, titleBold: 'false'
+								, titleItalic: 'false'
+								, textBold: 'true' 
+								, textItalic: 'false' 
+								, textWidth: 90
+					  , background_sld:'#000'
+					  , background_caption:'#000'
+					 });
+				
+				$(".item").hover(function() {
+				    $(".opt").css({"visibility" : "visible"});
+				  }, function() {
+					$(".opt").css({"visibility" : "hidden"});
+				  }
+				);
+				
+				$(".upload_image").click(function() {
+					$("#upload").click();
+				});
+				$('#upload').change(function() { 
+					
+					var val = $(this).val();
+
+				    switch(val.substring(val.lastIndexOf('.') + 1).toLowerCase()) {
+				        case 'gif': case 'jpg': case 'png': case 'jpeg':
+				        	$.uploadImageForm($("#albumId").val());
+				            break;
+				        default:
+				            $(this).val('');
+				            break;
+				    }	
+					 
+				});
+				
+		  	});
+		</script>
+		<style type="text/css">
+			#cover{
+				width: ${album.cover.width}px !important;
+				margin-left:${(1100 - album.cover.width)/2}px !important;
+			}
+			
+		</style> 
+		<c:forEach var="image" items="${album.images}">
+			<style type="text/css">
+				#${image.id} {
+					width: ${image.width}px !important;
+					margin-left:${(1100 - image.width)/2}px !important;
+				}
+			</style>
+		</c:forEach>
+		
+	</head>
+	
+	<body>
+		<form id="upload_form" method="post" action="upload/${album.id}" style="height:0px" enctype="multipart/form-data">
+	  		<input type="file" name="upload" style="visibility:hidden" id="upload">
+		</form>
+  		<input type="hidden" id="albumId" value="${album.id}">
+		<div id='my_carousel_ct' class='carousel-container'>  
+			<div id="my_carousel_1" class="carousel slide">
+				<div id="my_carousel_2" class="carousel-inner rs-slider">
+				
+					<div class="item active">
+						<div class="ts_border">
+						  <img id="cover" src="${album.cover.dir}" />
+						  <div class="opt" style="visibility:hidden">
+							  	<a class="upload_image" style="color:#FFF; opacity:1;cursor:pointer;">
+							  		<h5>Agregar foto</h5>
+							  	</a>
+						  </div>
+						  <div class="carousel-caption">
+							<h4>${album.cover.name}</h4>
+							  <p class="ts_txt">
+								<p>${album.cover.description}</p>
+							  </p>
+						  </div>
+						</div>
+					</div>
+					<c:forEach var="image" items="${album.images}">
+					
+						<div class="item">
+							<div class="ts_border">
+							  <img id="${image.id}" src="${image.dir}" />
+							  <div class="opt" style="visibility:hidden">
+							  	<a class="upload_image" style="color:#FFF; opacity:1;cursor:pointer;">
+							  		<h5>Agregar foto</h5>
+							  	</a>
+							  </div>
+							  <div class="carousel-caption">
+								<h4>${image.name}</h4>
+								  <p class="ts_txt">
+									<p>${image.description}</p>
+								  </p>
+							  </div>
+							</div>
+						  </div>   
+					
+					</c:forEach>
+				
+				</div>
+				<a class="carousel-custom" href="#my_carousel_1" data-slide="prev">p</a>
+				<a class="carousel-custom" href="#my_carousel_1" data-slide="next">n</a>
+			</div>
+		</div>
+		
+	</body>
+	
+	
+	
+</html>

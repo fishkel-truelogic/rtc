@@ -1,0 +1,81 @@
+package ar.com.finit.owner.web.rest.client;
+
+import javax.faces.context.FacesContext;
+import javax.ws.rs.core.Cookie;
+
+import org.jboss.resteasy.client.ClientResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+
+/**
+ * @author leo
+ */
+public class HttpProtocolHelperImpl implements HttpProtocolHelper {
+
+	private Cookie cookie;
+
+	@Autowired
+	private HttpProtocolHelper httpProtocolHelperGlobal;
+
+	private Cookie getCookie() {
+		if (this.cookie == null) {
+			javax.servlet.http.Cookie cookie = (javax.servlet.http.Cookie) FacesContext.getCurrentInstance().getExternalContext().getRequestCookieMap().get("JSESSIONIDSSO");
+			this.cookie = new Cookie(cookie.getName(), cookie.getValue(), cookie.getPath(), cookie.getDomain(), cookie.getVersion());
+		}
+		return cookie;
+	}
+
+	@Override
+	public String getServiceUrl(RestElement path, RestElement restElement) {
+		return this.httpProtocolHelperGlobal.getServiceUrl(path, restElement);
+	}
+
+	@Override
+	public ClientResponse<String> getJsonRequest(String url, Cookie cookie) {
+		return this.httpProtocolHelperGlobal.getJsonRequest(url, cookie);
+	}
+
+	@Override
+	public String readHead(String key, ClientResponse<String> response) {
+		return this.httpProtocolHelperGlobal.readHead(key, response);
+	}
+
+	@Override
+	public String readEntity(ClientResponse<String> response) {
+		return this.httpProtocolHelperGlobal.readEntity(response);
+	}
+
+	@Override
+	public ClientResponse<String> putJsonRequest(String url, Object o, Cookie cookie) {
+		return this.httpProtocolHelperGlobal.putJsonRequest(url, o, cookie);
+	}
+
+	@Override
+	public ClientResponse<String> postJsonRequest(String url, Object o, Cookie cookie) {
+		return this.httpProtocolHelperGlobal.postJsonRequest(url, o, cookie);
+	}
+
+	@Override
+	public ClientResponse<String> deleteJsonRequest(String url, Cookie cookie) {
+		return this.httpProtocolHelperGlobal.deleteJsonRequest(url, cookie);
+	}
+
+	@Override
+	public ClientResponse<String> getJsonRequest(String url) {
+		return this.httpProtocolHelperGlobal.getJsonRequest(url, this.getCookie());
+	}
+
+	@Override
+	public ClientResponse<String> putJsonRequest(String url, Object o) {
+		return this.httpProtocolHelperGlobal.putJsonRequest(url, o, this.getCookie());
+	}
+
+	@Override
+	public ClientResponse<String> postJsonRequest(String url, Object o) {
+		return this.httpProtocolHelperGlobal.postJsonRequest(url, o, this.getCookie());
+	}
+
+	@Override
+	public ClientResponse<String> deleteJsonRequest(String url) {
+		return this.httpProtocolHelperGlobal.deleteJsonRequest(url, this.getCookie());
+	}
+}

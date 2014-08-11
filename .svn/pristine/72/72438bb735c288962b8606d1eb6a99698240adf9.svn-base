@@ -1,0 +1,21 @@
+package ar.com.finit.dto.model.page;
+
+import java.util.Collection;
+
+import ar.com.finit.dto.model.BookDTO;
+import ar.com.finit.dto.page.AbstractCollectionPage;
+
+/**
+ * @author leo
+ */
+public class BookCollectionPage extends AbstractCollectionPage<BookDTO> {
+
+	public BookCollectionPage(long rowCount, int pageSize, int pageCant, int pageNumber, Collection<BookDTO> book) {
+		super(rowCount, pageSize, pageCant, pageNumber, book);
+	}
+
+	@Override
+	protected boolean isSameInstant(Object obj) {
+		return obj instanceof BookCollectionPage;
+	}
+}

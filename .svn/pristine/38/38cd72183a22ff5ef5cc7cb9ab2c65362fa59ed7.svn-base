@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       					http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<bean id="gsonBuilder" class="com.google.gson.GsonBuilder" init-method="disableHtmlEscaping"/>
+	<bean id="gson" factory-bean="gsonBuilder" factory-method="create"/>
+
+	<bean id="abstractDTOFactory" abstract="true">
+		<property name="gson" ref="gson" />
+	</bean>
+
+<!-- DTOs Factories -->	
+	<bean id="albumDTOFactory" class="ar.com.finit.dto.model.factory.AlbumDTOFactory" parent="abstractDTOFactory"/>
+	<bean id="districtDTOFactory" class="ar.com.finit.dto.model.factory.DistrictDTOFactory" parent="abstractDTOFactory"/>
+	<bean id="fieldDTOFactory" class="ar.com.finit.dto.model.factory.FieldDTOFactory" parent="abstractDTOFactory"/>
+	<bean id="groundDTOFactory" class="ar.com.finit.dto.model.factory.GroundDTOFactory" parent="abstractDTOFactory"/>
+	<bean id="imageDTOFactory" class="ar.com.finit.dto.model.factory.ImageDTOFactory" parent="abstractDTOFactory"/>
+	<bean id="mapMarkerDTOFactory" class="ar.com.finit.dto.model.factory.MapMarkerDTOFactory" parent="abstractDTOFactory"/>
+	<bean id="playerDTOFactory" class="ar.com.finit.dto.model.factory.PlayerDTOFactory" parent="abstractDTOFactory"/>
+	<bean id="roleDTOFactory" class="ar.com.finit.dto.model.factory.RoleDTOFactory" parent="abstractDTOFactory"/>
+	<bean id="sportDTOFactory" class="ar.com.finit.dto.model.factory.SportDTOFactory" parent="abstractDTOFactory"/>
+	<bean id="stablishmentDTOFactory" class="ar.com.finit.dto.model.factory.StablishmentDTOFactory" parent="abstractDTOFactory"/>
+	<bean id="tpServiceDTOFactory" class="ar.com.finit.dto.model.factory.TpServiceDTOFactory" parent="abstractDTOFactory"/>
+	<bean id="userDTOFactory" class="ar.com.finit.dto.model.factory.UserDTOFactory" parent="abstractDTOFactory"/>
+
+	<bean id="violationDTOFactory" class="ar.com.finit.dto.factory.violation.ViolationDTOFactory" parent="abstractDTOFactory"/>
+
+<!-- Pages Factories -->
+	<bean id="roleCollectionPageFactory" class="ar.com.finit.dto.model.factory.RoleCollectionPageFactory" parent="abstractDTOFactory"/>
+	<bean id="stablishmentCollectionPageFactory" class="ar.com.finit.dto.model.factory.StablishmentCollectionPageFactory" parent="abstractDTOFactory"/>
+	<bean id="userCollectionPageFactory" class="ar.com.finit.dto.model.factory.UserCollectionPageFactory" parent="abstractDTOFactory"/>
+</beans>

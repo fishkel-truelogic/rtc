@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="ar.com.finit.core.model.impl.AlbumImpl" table="ALBUM">
+    
+        <id name="id" type="java.lang.String">
+			<column name="ID" />
+			<generator class="ar.com.finit.core.generator.UUIDGenerator" />
+		</id>
+		
+		<property name="entity" type="java.lang.String">
+            <column name="ENTITY" />
+        </property>
+        
+        <many-to-one name="cover" class="ar.com.finit.core.model.impl.ImageImpl" cascade="all" unique="true" lazy="false"/>
+        
+		<list name="images" table="ALBUM_IMAGE" cascade="all" lazy="false" >
+			<key column="ALBUM_ID" />
+			<index column="INDEX"/>
+			<one-to-many class="ar.com.finit.core.model.impl.ImageImpl" />
+		</list>
+	
+    </class>
+</hibernate-mapping>

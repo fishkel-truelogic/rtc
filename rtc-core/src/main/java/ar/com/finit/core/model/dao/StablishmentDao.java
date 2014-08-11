@@ -1,0 +1,27 @@
+package ar.com.finit.core.model.dao;
+
+import java.io.Serializable;
+import java.util.List;
+
+import ar.com.finit.core.dao.Dao;
+import ar.com.finit.core.model.Field;
+import ar.com.finit.core.model.Rate;
+import ar.com.finit.core.model.Stablishment;
+
+/**
+ * @author leo
+ */
+public interface StablishmentDao extends Dao<Serializable, Stablishment> {
+
+	public Stablishment findByUserId(String userId);
+
+	public long rowCountBy(String state, String district, String sport, String ground, String day, String hour);
+
+	public List<Stablishment> findBy(int first, int pageSize, String state, String district, String sport, String ground, String day, String hour);
+
+	public Rate findRateByEntity(String entity);
+
+
+	public List<Field> findFeaturedBy(String state, String sport);
+
+}

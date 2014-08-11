@@ -1,0 +1,161 @@
+package ar.com.finit.service.rest.pub;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+import javax.ws.rs.DefaultValue;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
+
+import org.springframework.beans.factory.annotation.Configurable;
+
+import ar.com.finit.dto.model.FieldDTO;
+import ar.com.finit.dto.model.GroundDTO;
+import ar.com.finit.dto.model.PlayerCapacityDTO;
+import ar.com.finit.dto.model.SportDTO;
+import ar.com.finit.dto.model.StablishmentDTO;
+import ar.com.finit.dto.model.page.StablishmentCollectionPage;
+import ar.com.finit.service.rest.utils.EntityPath;
+import ar.com.finit.service.rest.utils.MathUtil;
+
+/**
+ * @author leo
+ */
+
+@Configurable
+@Path(EntityPath.PUBLIC + EntityPath.STABLISHMENTS)
+public class StablishmentPublicService {
+	
+	@GET
+	@Path("/")
+	@Produces(MediaType.APPLICATION_JSON)
+	public StablishmentCollectionPage serch(@QueryParam("page") 
+										    @DefaultValue(value = "1") 
+										    int page,
+										    @QueryParam("pageSize") 
+										    @DefaultValue(value = "10") 
+										    int pageSize,  
+										    @QueryParam("state") 
+										    String state,
+										    @QueryParam("district") 
+										    String district,
+										    @QueryParam("sport") 
+										    String sport,
+										    @QueryParam("ground") 
+										    String ground,
+										    @QueryParam("day") 
+										    String day,
+										    @QueryParam("hour") 
+										    String hour) {
+		
+//		TODO llamar a un metodo qeu devuelva los resultados segun los parametros
+		
+		int first = (page - 1) * pageSize;
+		long rowCount = 51;
+		
+		SportDTO sportDTO = new SportDTO();
+		sportDTO.setName(sport);
+		List<StablishmentDTO> stablishments = new ArrayList<StablishmentDTO>();
+		for (int i = 0; i < rowCount; i++) {
+			StablishmentDTO stablishment = new StablishmentDTO();
+			stablishment.setId(UUID.randomUUID().toString());
+			stablishment.setName("Lugar " + i);
+			stablishment.addSport(sportDTO);
+			stablishment.setCloseDay("Viernes");
+			stablishment.setOpenDay("Lunes");
+			stablishment.setOpenHour("9:00");
+			stablishment.setCloseHour("23:00");
+			stablishment.setPrice("$$$");
+			stablishment.setAddress("Calle Falsa 123");
+			stablishment.setDescription("Phasellus  sed laoreet massa id justo mattis pharetra. Fusce suscipit ligula vel quam" + 
+			"viverra sit amet mollis tortor congue magna lorem ipsum dolor et quisque ut odio facilisis" +
+			"convallis. Etiam non nunc vel est suscipit convallis non id orci. Ut interdum tempus ");
+			if (i >= first && i< (first + pageSize)) {
+				stablishments.add(stablishment);
+			}
+		}
+			
+		int pageCant = MathUtil.roundUp(new Double(rowCount)/new Double(pageSize));
+		return new StablishmentCollectionPage(rowCount, pageSize, pageCant, page, stablishments);
+	}
+	
+	@GET
+	@Path("/count")
+	@Produces(MediaType.APPLICATION_JSON)
+	public StablishmentCollectionPage serchCount(@QueryParam("page") 
+						    @DefaultValue(value = "1") 
+						    int page,
+						    @QueryParam("pageSize") 
+						    @DefaultValue(value = "10") 
+						    int pageSize,  
+						    @QueryParam("state") 
+						    String state,
+						    @QueryParam("district") 
+						    String district,
+						    @QueryParam("sport") 
+						    String sport,
+						    @QueryParam("ground") 
+						    String ground,
+						    @QueryParam("day") 
+						    String day,
+						    @QueryParam("hour") 
+						    String hour) {
+		
+//	TODO	llamar a un metodo del dao que devuelva la cantidad de resultados segun los parametros
+		
+		long rowCount = 51;
+		int pageCant = MathUtil.roundUp(new Double(rowCount)/new Double(pageSize));
+		return new StablishmentCollectionPage(50, pageSize, pageCant, page, null);
+	}
+	
+	@GET
+	@Path("/{id:(([0-9a-fA-F]){8}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){12}){1}}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public StablishmentDTO read(@PathParam("id") String id, @QueryParam("day") String day) {
+		StablishmentDTO stablishment = new StablishmentDTO();
+		stablishment.setId(UUID.randomUUID().toString());
+		stablishment.setName("Lugar");
+		stablishment.setCloseDay("Viernes");
+		stablishment.setOpenDay("Lunes");
+		stablishment.setOpenHour("9:00");
+		stablishment.setCloseHour("23:00");
+		stablishment.setPrice("$$$");
+		stablishment.setAddress("Calle Falsa 123");
+		stablishment.setLat(-34.603);
+		stablishment.setLng(-58.381);
+		stablishment.setDescription("Phasellus  sed laoreet massa id justo mattis pharetra. Fusce suscipit ligula vel quam" + 
+		"viverra sit amet mollis tortor congue magna lorem ipsum dolor et quisque ut odio facilisis" +
+		"convallis. Etiam non nunc vel est suscipit convallis non id orci. Ut interdum tempus ");
+		
+		SportDTO sport = new SportDTO();
+		sport.setName("Fútbol");
+		PlayerCapacityDTO playerCapacity = new PlayerCapacityDTO();
+		playerCapacity.setSport(sport);
+		playerCapacity.setText("11 jugadores");
+		GroundDTO ground = new GroundDTO();
+		ground.setSport(sport);
+		ground.setText("Cemento");
+		List<String> hours = new ArrayList<String>();
+		if (day != null) {
+			hours.add("15:00");
+			hours.add("17:00");
+			hours.add("20:00");
+		}
+		for(int i = 0; i < 5; i++) {
+			FieldDTO field = new FieldDTO();
+			field.setId(UUID.randomUUID().toString());
+			field.setName("estadio " + i);
+			field.setCeiling(true);
+			field.setGround(ground);
+			field.setPlayerCapacity(playerCapacity);
+			field.setHours(hours);
+			stablishment.addField(field);
+		}
+		return stablishment;
+	}
+}

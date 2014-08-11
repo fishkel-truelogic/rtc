@@ -1,0 +1,50 @@
+package ar.com.finit.dto.model;
+
+import java.util.List;
+
+/**
+ * @author leo
+ */
+public class PlayerDTO {
+
+	private String id;
+
+	private String mail;
+
+	private String name;
+
+	private List<BookDTO> requestedBooks;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public List<BookDTO> getRequestedBooks() {
+		return requestedBooks;
+	}
+
+	public void setRequestedBooks(List<BookDTO> requestedBooks) {
+		this.requestedBooks = requestedBooks;
+	}
+
+}

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	template="/ar/com/finit/owner/web/template/template.xhtml">
+	<ui:define name="content">
+		<p:fieldset legend="#{i18n_image.images}">
+			<p:panel>
+				<h:form id="imageForm" enctype="multipart/form-data">
+					<p:messages id="images_msg" autoUpdate="true" showDetail="true" showSummary="false" closable="true"  />
+					<ui:include src="/ar/com/finit/owner/web/image/_upload_image.xhtml" />
+					<p:dataTable id="images" var="image"
+						value="#{imageBean.imageLazyModel}" paginator="true" rows="1"
+						lazy="true" paginatorPosition="top" rowsPerPageTemplate="1, 5, 10"
+						selectionMode="single" selection="#{imageBean.selectedImage}"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+
+						<p:ajax event="rowSelect" update=":imageForm:imageDialog"
+							oncomplete="imageDialog.show()" />
+						<p:column headerText="#{i18n_image.name}"
+							filterBy="#{image.name}">
+	    					#{image.name}
+	    				</p:column>
+						<p:column headerText="#{i18n_image.image}">
+							<p:graphicImage height="50" width="75"
+								value="#{imageBean.avatar(image.id, image.extension)}">
+								<f:param name="id" value="#{image.id}"/>
+								<f:param name="ext" value="#{image.extension}"/>
+							</p:graphicImage>
+						</p:column>
+					</p:dataTable>
+					<p:dialog header="#{imageBean.selectedImage.name}" id="imageDialog"
+						widgetVar="imageDialog" modal="true" draggable="false"
+						resizable="false" width="800" height="600" appendToBody="true">
+
+						<p:graphicImage height="550" width="750"
+							value="#{imageBean.obtainImage(imageBean.selectedImage.id, imageBean.selectedImage.extension)}">
+							<f:param name="id" value="#{imageBean.selectedImage.id}"></f:param>
+							<f:param name="ext" value="#{imageBean.selectedImage.extension}"/>
+						</p:graphicImage>
+					</p:dialog>
+				</h:form> 
+			</p:panel>
+		</p:fieldset>
+	</ui:define>
+</ui:composition>

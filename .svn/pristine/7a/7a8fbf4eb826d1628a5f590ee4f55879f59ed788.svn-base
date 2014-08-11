@@ -1,0 +1,25 @@
+package ar.com.finit.admin.web.rest.client;
+
+/**
+ * @author leo
+ */
+public enum RestElement {
+	ADMIN, 
+	PRIV, 
+	PUB, 
+	ROLE, 
+	ROOT_URL, 
+	IMAGE_ROOT, 
+	USER, 
+	IMAGE, 
+	LOGIN,
+	MAP_MARKER,
+	ALBUM,
+	SPORT,
+	DISTRICT,
+	GROUND,
+	STABLISHMENT,
+	FIELD,
+	PLAYER,
+	TP_SERVICE
+}

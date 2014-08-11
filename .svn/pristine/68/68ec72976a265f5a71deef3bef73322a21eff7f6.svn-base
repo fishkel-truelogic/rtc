@@ -1,0 +1,11 @@
+ar\com\finit\service\converter\user\RoleConverter.class
+ar\com\finit\service\converter\violation\user\RoleViolationConverter.class
+ar\com\finit\service\rest\JaxRsActivator.class
+ar\com\finit\service\rest\admin\user\RoleAdminService.class
+ar\com\finit\service\converter\user\UserConverter.class
+ar\com\finit\service\rest\utils\EntityPath.class
+ar\com\finit\service\rest\priv\user\UserPrivateService.class
+ar\com\finit\service\converter\violation\user\UserViolationConverter.class
+ar\com\finit\service\rest\admin\user\UserAdminService.class
+ar\com\finit\service\converter\violation\AbstractViolationConverter.class
+ar\com\finit\service\rest\utils\MapServices.class

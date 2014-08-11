@@ -1,0 +1,67 @@
+(function($) {
+
+	$.loadMainFilter = function(param) {
+	
+		var state = param.state;
+		var district = param.district;
+		var sport = param.sport;
+		var ground = param.ground;
+		var hour = param.hour;
+		
+		_processTemplate = function(response) {
+			var data;
+			$.template("mainFilterTemplate", response);
+			$("#mainFilter").html(
+			$.tmpl("mainFilterTemplate", data, {}));
+			
+			$('#mainFilter > ul').dropotron({ 
+				offsetX: -2,
+				offsetY: -8,
+				mode: 'fade',
+				noOpenerFade: true,
+				hoverDelay: 0,
+				hideDelay: 350,
+				detach: false
+			});
+			
+			$( "#datepicker" ).datepicker();
+		}
+		
+		$.ajax({
+		url: 'html/mainFilter.php?state=' + state + '&district=' + district + '&sport=' + sport + '&ground=' + ground + '&hour=' + hour,
+			type: 'html',
+			success: _processTemplate
+		});
+	}
+	
+	$.loadHeader = function(param) {
+		
+		var state = param.state;
+		var sport = param.sport;
+	
+		_processTemplate = function(response) {
+			var data;
+			$.template("headerTemplate", response);
+			$("#nav").html(
+			$.tmpl("headerTemplate", data, {}));
+			
+			$('#nav > ul').dropotron({ 
+				offsetX: -2,
+				offsetY: -8,
+				mode: 'fade',
+				noOpenerFade: true,
+				hoverDelay: 0,
+				hideDelay: 350,
+				detach: false
+			});
+		}
+	
+		$.ajax({
+			url: 'html/header.php?state=' + state.replace(' ', '%20') + '&sport=' + sport.replace(' ', '%20'),
+			type: 'html',
+			success: _processTemplate
+		});
+	}
+	
+
+})(jQuery);

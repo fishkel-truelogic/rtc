@@ -1,0 +1,31 @@
+package ar.com.finit.core.model;
+
+import java.util.List;
+import java.util.Set;
+
+/**
+ * @author leo
+ */
+public interface Field {
+
+	public String getId();
+
+	public String getWidth();
+
+	public String getHeight();
+
+	public Set<PlayerCapacity> getPlayersCapacity();
+
+	public Set<Image> getImages();
+
+	public Set<Sport> getSports();
+
+	public Tariff getTariff();
+
+	public List<Irregular> getIrregulars();
+
+	public Ground getGround();
+
+	public boolean isCeiling();
+
+}

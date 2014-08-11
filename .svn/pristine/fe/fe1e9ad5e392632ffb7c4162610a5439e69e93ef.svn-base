@@ -1,0 +1,14 @@
+package ar.com.finit.core.model.dao.impl;
+
+import java.io.Serializable;
+
+import ar.com.finit.core.dao.impl.AbstractDao;
+import ar.com.finit.core.model.Book;
+import ar.com.finit.core.model.dao.BookDao;
+
+/**
+ * @author leo
+ */
+public class BookDaoImpl extends AbstractDao<Serializable, Book> implements BookDao {
+
+}

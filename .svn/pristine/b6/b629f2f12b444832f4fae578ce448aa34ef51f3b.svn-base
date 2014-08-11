@@ -1,0 +1,172 @@
+package ar.com.finit.dto.model;
+
+import java.util.Date;
+import java.util.List;
+import java.util.Set;
+
+/**
+ * @author leo
+ */
+public class StablishmentDTO {
+
+	private String id;
+
+	private String userId;
+
+	private DistrictDTO district;
+
+	private Set<ImageDTO> images;
+
+	private Set<SportDTO> sports;
+
+	private Set<FieldDTO> fields;
+
+	private Double lat;
+
+	private Double lng;
+
+	private Set<TpServiceDTO> tpServices;
+
+	private Set<String> phones;
+
+	private String mail;
+
+	private String web;
+
+	private List<IrregularDTO> irregulars;
+
+	private Set<DayOfWeekDTO> daysOpen;
+
+	private Date openHour;
+
+	private Date closeHour;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public DistrictDTO getDistrict() {
+		return district;
+	}
+
+	public void setDistrict(DistrictDTO district) {
+		this.district = district;
+	}
+
+	public Set<ImageDTO> getImages() {
+		return images;
+	}
+
+	public void setImages(Set<ImageDTO> images) {
+		this.images = images;
+	}
+
+	public Set<SportDTO> getSports() {
+		return sports;
+	}
+
+	public void setSports(Set<SportDTO> sports) {
+		this.sports = sports;
+	}
+
+	public Set<FieldDTO> getFields() {
+		return fields;
+	}
+
+	public void setFields(Set<FieldDTO> fields) {
+		this.fields = fields;
+	}
+
+	public Double getLat() {
+		return lat;
+	}
+
+	public void setLat(Double lat) {
+		this.lat = lat;
+	}
+
+	public Double getLng() {
+		return lng;
+	}
+
+	public void setLng(Double lng) {
+		this.lng = lng;
+	}
+
+	public Set<TpServiceDTO> getTpServices() {
+		return tpServices;
+	}
+
+	public void setTpServices(Set<TpServiceDTO> tpServices) {
+		this.tpServices = tpServices;
+	}
+
+	public Set<String> getPhones() {
+		return phones;
+	}
+
+	public void setPhones(Set<String> phones) {
+		this.phones = phones;
+	}
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+	public String getWeb() {
+		return web;
+	}
+
+	public void setWeb(String web) {
+		this.web = web;
+	}
+
+	public List<IrregularDTO> getIrregulars() {
+		return irregulars;
+	}
+
+	public void setIrregulars(List<IrregularDTO> irregulars) {
+		this.irregulars = irregulars;
+	}
+
+	public Set<DayOfWeekDTO> getDaysOpen() {
+		return daysOpen;
+	}
+
+	public void setDaysOpen(Set<DayOfWeekDTO> daysOpen) {
+		this.daysOpen = daysOpen;
+	}
+
+	public Date getOpenHour() {
+		return openHour;
+	}
+
+	public void setOpenHour(Date openHour) {
+		this.openHour = openHour;
+	}
+
+	public Date getCloseHour() {
+		return closeHour;
+	}
+
+	public void setCloseHour(Date closeHour) {
+		this.closeHour = closeHour;
+	}
+
+}

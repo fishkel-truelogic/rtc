@@ -1,0 +1,12 @@
+#template
+logOut=Desconectarse
+unexpectedError=Error inesperado
+creationSuccess=Se ha creado con éxito
+
+#images
+notFound=Imagen no encontrada
+images=Imagenes
+
+#profiles
+profile=Perfil
+

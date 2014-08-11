@@ -1,0 +1,12 @@
+package ar.com.finit.core.model;
+
+/**
+ * @author leo
+ */
+public interface DayOfWeek {
+
+	public String getId();
+
+	public String getName();
+
+}

@@ -1,0 +1,9 @@
+package ar.com.finit.core.model;
+
+/**
+ * @author leo
+ */
+public interface ImageMetadata {
+	public String getId();
+	public byte[] getData();
+}

@@ -1,0 +1,29 @@
+#header {
+	width: auto;
+	height: 55px;
+	display: block;
+	padding: 2px 2px;
+}
+
+#header_logo_container {
+	height: 55px;
+	margin-right: 2px;
+	width: 225px;
+	float: left;
+
+}
+
+#header_state_combo_container {
+	height: 55px;
+	margin-right:2px;
+	width: 845px;
+	float: left;
+
+}
+
+#header_login_container {
+	height: 55px;
+	margin-right:2px;
+	width: 210px;
+	float: left;
+}

@@ -1,0 +1,77 @@
+package ar.com.finit.core.model.impl;
+
+import org.hibernate.validator.constraints.NotBlank;
+
+import ar.com.finit.core.model.Image;
+import ar.com.finit.core.model.ImageMetadata;
+
+/**
+ * @author leo
+ */
+public class ImageImpl implements Image {
+
+	private String id;
+	@NotBlank
+	private String name;
+	private byte[] avatar;
+	@NotBlank
+	private String extension;
+	@NotBlank
+	private String userId;
+	private ImageMetadata imageMetadata;
+
+	@Override
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	@Override
+	public byte[] getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(byte[] avatar) {
+		this.avatar = avatar;
+	}
+
+	@Override
+	public String getExtension() {
+		return extension;
+	}
+
+	public void setExtension(String extension) {
+		this.extension = extension;
+	}
+
+	@Override
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	@Override
+	public ImageMetadata getImageMetadata() {
+		return imageMetadata;
+	}
+
+	public void setImageMetadata(ImageMetadata imageMetadata) {
+		this.imageMetadata = imageMetadata;
+	}
+
+}

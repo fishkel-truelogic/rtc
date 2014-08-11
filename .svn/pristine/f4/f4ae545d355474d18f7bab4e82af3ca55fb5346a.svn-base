@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="ar.com.finit.core.model.impl.IrregularImpl" table="IRREGULAR">
+    
+       <id name="id" type="java.lang.String">
+			<column name="ID" />
+			<generator class="ar.com.finit.core.generator.UUIDGenerator" />
+		</id>
+       
+        <property name="allDay" type="java.lang.Boolean">
+            <column name="ALL_DAY" />
+        </property>
+       
+        <property name="SinceDate" type="java.util.Date">
+            <column name="SINCE_DATE" />
+        </property>
+         <property name="toDate" type="java.util.Date">
+            <column name="TO_DATE" />
+        </property>
+         <property name="openHour" type="java.util.Date">
+            <column name="OPEN_HOUR" />
+        </property>
+         <property name="closeHour" type="java.util.Date">
+            <column name="CLOSE_HOUR" />
+        </property> 
+		
+    </class>
+</hibernate-mapping>

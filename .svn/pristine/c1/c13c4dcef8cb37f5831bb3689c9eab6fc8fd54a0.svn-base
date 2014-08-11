@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="ar.com.finit.core.model.impl.StablishmentImpl" table="STABLISHMENT">
+    
+        <id name="id" type="java.lang.String">
+			<column name="ID" />
+			<generator class="ar.com.finit.core.generator.UUIDGenerator" />
+		</id>
+		
+		<property name="userId" type="java.lang.String">
+            <column name="USER_ID" />
+        </property>
+        
+        <many-to-one name="district" column="DISTRICT" class="ar.com.finit.core.model.impl.DistrictImpl" cascade="none" lazy="false" />
+        
+		<set name="images" table="STABLISHMENT_IMAGE" cascade="save-update" inverse="true" lazy="true" >
+			<key column="STABLISHMENT_ID" />
+			<many-to-many column="IMAGE_ID" class="ar.com.finit.core.model.impl.ImageImpl" />
+		</set>
+		
+		<set name="sports" table="STABLISHMENT_SPORT" cascade="save-update" inverse="true" lazy="true" >
+			<key column="STABLISHMENT_ID" />
+			<many-to-many column="SPORT_ID" class="ar.com.finit.core.model.impl.SportImpl" />
+		</set>
+	
+		<set name="fields" table="STABLISHMENT_FIELD" cascade="save-update" inverse="true" lazy="true" >
+			<key column="STABLISHMENT_ID" />
+			<many-to-many column="FIELD_ID" class="ar.com.finit.core.model.impl.FieldImpl" />
+		</set>
+	
+		<property name="lat" type="java.lang.Double">
+            <column name="LAT" />
+        </property>
+        
+        <property name="lng" type="java.lang.Double">
+            <column name="LNG" />
+        </property>
+
+		<set name="tpServices" table="STABLISHMENT_TP_SERVICE" cascade="save-update" inverse="true" lazy="true" >
+			<key column="STABLISHMENT_ID" />
+			<many-to-many column="TP_SERVICE_ID" class="ar.com.finit.core.model.impl.TpServiceImpl" />
+		</set>
+			
+		<set name="phones" table="STABLISHMENT_PHONES" inverse="false" lazy="false" cascade="all">
+			<key>
+				<column name="STABLISHMENT_ID" />
+			</key>
+			<element type="java.lang.String">
+				<column name="PHONE" />
+			</element>
+		</set>
+		
+		<property name="mail" type="java.lang.String">
+            <column name="MAIL" />
+        </property>
+        
+        <property name="web" type="java.lang.String">
+            <column name="WEB" />
+        </property>
+	
+		
+		<list name="irregulars" cascade="none" table="FIELD_IRREGULAR" lazy="true">
+			<key column="STABLISHMENT_ID"/>
+			<index column="SINCE_DATE"/>
+			<many-to-many column="IRREGUKLAR_ID" class="ar.com.finit.core.model.impl.IrregularImpl" />
+		</list>
+		
+		<set name="daysOpen" table="STABLISHMENT_DAYS_OPEN" cascade="none" inverse="true" lazy="true" >
+			<key column="STABLISHMENT_ID" />
+			<many-to-many column="DAY_OF_WEEK_ID" class="ar.com.finit.core.model.impl.DayOfWeekImpl" />
+		</set>
+		
+		<property name="openHour" type="java.util.Date">
+            <column name="OPEN_HOUR" />
+        </property>
+       
+        <property name="closeHour" type="java.util.Date">
+            <column name="CLOSE_HOUR" />
+        </property> 
+
+	
+    </class>
+</hibernate-mapping>

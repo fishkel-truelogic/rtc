@@ -1,0 +1,31 @@
+<?php
+
+	$urlServices = 'http://127.0.0.1:8080/rtc-service/public/';
+	
+	function getRequest($url) { 	
+		$curl = curl_init($url);
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		$curl_response = curl_exec($curl);
+		if ($curl_response === false) {
+			$info = curl_getinfo($curl);
+			curl_close($curl);
+			die('error occured during curl exec. Additioanl info: ' . var_export($info));
+		}
+		curl_close($curl);
+		$decoded = json_decode($curl_response);
+		if (isset($decoded->response->status) && $decoded->response->status == 'ERROR') {
+			die('error occured: ' . $decoded->response->errormessage);
+		}
+		return $decoded;
+	}
+	
+	function replace($word) {
+		$search  = array('á', 'é', 'í', 'ó', 'ú', ' ');
+		$replace = array('%C3%A1', '%C3%A9', '%C3%AD', '%C3%B3', '%C3%BA', '%20');
+		return str_replace($search, $replace, $word);
+	
+	}
+	
+	
+
+?>

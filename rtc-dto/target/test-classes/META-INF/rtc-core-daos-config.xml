@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	
+	<bean id="abstractDao" abstract="true">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="userDao" class="ar.com.finit.core.impl.dao.user.UserDaoImpl" parent="abstractDao" />
+	<bean id="roleDao" class="ar.com.finit.core.impl.dao.user.RoleDaoImpl" parent="abstractDao" />
+
+</beans>

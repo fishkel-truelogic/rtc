@@ -1,0 +1,110 @@
+package ar.com.finit.dto.model;
+
+import java.util.List;
+
+/**
+ * @author leo
+ */
+public class FieldDTO {
+
+	private String id;
+
+	private String name;
+
+	private String userId;
+
+	private String description;
+
+	private String price;
+
+	private boolean ceiling;
+
+	private boolean lights;
+
+	private GroundDTO ground;
+
+	private AlbumDTO album;
+
+	private List<SportDTO> sports;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getPrice() {
+		return price;
+	}
+
+	public void setPrice(String price) {
+		this.price = price;
+	}
+
+	public boolean isCeiling() {
+		return ceiling;
+	}
+
+	public void setCeiling(boolean ceiling) {
+		this.ceiling = ceiling;
+	}
+
+	public boolean isLights() {
+		return lights;
+	}
+
+	public void setLights(boolean lights) {
+		this.lights = lights;
+	}
+
+	public GroundDTO getGround() {
+		return ground;
+	}
+
+	public void setGround(GroundDTO ground) {
+		this.ground = ground;
+	}
+
+	public AlbumDTO getAlbum() {
+		return album;
+	}
+
+	public void setAlbum(AlbumDTO album) {
+		this.album = album;
+	}
+
+	public List<SportDTO> getSports() {
+		return sports;
+	}
+
+	public void setSports(List<SportDTO> sports) {
+		this.sports = sports;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+	
+}

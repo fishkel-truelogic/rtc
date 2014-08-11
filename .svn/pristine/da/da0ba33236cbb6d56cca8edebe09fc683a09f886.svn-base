@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="ar.com.finit.core.model.impl.StablishmentImpl" table="STABLISHMENT">
+    
+        <id name="id" type="java.lang.String">
+			<column name="ID" />
+			<generator class="ar.com.finit.core.generator.UUIDGenerator" />
+		</id>
+		
+		<property name="userId" type="java.lang.String">
+            <column name="USER_ID" />
+        </property>
+        
+        <property name="email" type="java.lang.String">
+            <column name="EMAIL" />
+        </property>
+        
+        <property name="web" type="java.lang.String">
+            <column name="WEB" />
+        </property>
+        
+        <property name="openHour" type="java.lang.String">
+            <column name="OPEN_HOUR" />
+        </property>
+       
+        <property name="closeHour" type="java.lang.String">
+            <column name="CLOSE_HOUR" />
+        </property> 
+
+		<property name="openDay" type="java.lang.String">
+            <column name="OPEN_DAY" />
+        </property>
+       
+        <property name="closeDay" type="java.lang.String">
+            <column name="CLOSE_DAY" />
+        </property>
+
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        
+        <property name="description" type="java.lang.String">
+            <column name="DESCRIPTION" />
+        </property>
+        
+        <property name="address" type="java.lang.String">
+            <column name="ADDRESS" />
+        </property>
+        
+        <many-to-one name="district" column="DISTRICT" class="ar.com.finit.core.model.impl.DistrictImpl" cascade="none" lazy="false" />
+        
+        <many-to-one name="album" class="ar.com.finit.core.model.impl.AlbumImpl" cascade="all" unique="true" lazy="false"/>
+       
+        <many-to-one name="mapMarker" class="ar.com.finit.core.model.impl.MapMarkerImpl" cascade="all" unique="true" lazy="false"/>
+        
+		<many-to-one name="rate" class="ar.com.finit.core.model.impl.RateImpl" cascade="all" unique="true" lazy="false"/>
+		
+		<list name="sports" table="STABLISHMENT_SPORT" cascade="none" lazy="false" >
+			<key column="STABLISHMENT_ID" />
+			<index column="INDEX"/>
+			<many-to-many column="SPORT_ID" class="ar.com.finit.core.model.impl.SportImpl" />
+		</list>
+	
+		<list name="fields" table="STABLISHMENT_FIELD" cascade="all" lazy="true" >
+			<key column="STABLISHMENT_ID" />
+			<index column="INDEX"/>
+			<one-to-many class="ar.com.finit.core.model.impl.FieldImpl" />
+		</list>
+	
+		<list name="tpServices" table="STABLISHMENT_TP_SERVICE" cascade="all" lazy="true" >
+			<key column="STABLISHMENT_ID" />
+			<index column="INDEX"/>
+			<one-to-many class="ar.com.finit.core.model.impl.TpServiceImpl" />
+		</list>
+		
+    </class>
+</hibernate-mapping>

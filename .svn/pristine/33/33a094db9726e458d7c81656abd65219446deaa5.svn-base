@@ -1,0 +1,247 @@
+package ar.com.finit.dto.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * @author leo
+ */
+public class StablishmentDTO {
+
+	private String id;
+	
+	private String name;
+
+	private String userId;
+
+	private DistrictDTO district;
+
+	private List<ImageDTO> images;
+
+	private List<SportDTO> sports;
+
+	private List<FieldDTO> fields;
+
+	private Double lat;
+
+	private Double lng;
+
+	private List<TpServiceDTO> tpServices;
+
+	private List<String> phones;
+
+	private String mail;
+
+	private String web;
+
+	private List<IrregularDTO> irregulars;
+
+	private String openDay;
+	
+	private String closeDay;
+
+	private String openHour;
+
+	private String closeHour;
+	
+	private String price;
+	
+	private String address;
+	
+	private String description;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public DistrictDTO getDistrict() {
+		return district;
+	}
+
+	public void setDistrict(DistrictDTO district) {
+		this.district = district;
+	}
+
+	public List<ImageDTO> getImages() {
+		return images;
+	}
+
+	public void setImages(List<ImageDTO> images) {
+		this.images = images;
+	}
+
+	public List<SportDTO> getSports() {
+		if (sports == null) {
+			sports = new ArrayList<SportDTO>();
+		}
+		return sports;
+	}
+
+	public void setSports(List<SportDTO> sports) {
+		this.sports = sports;
+	}
+
+	public List<FieldDTO> getFields() {
+		if (fields == null) {
+			fields = new ArrayList<FieldDTO>();
+		}
+		return fields;
+	}
+
+	public void setFields(List<FieldDTO> fields) {
+		this.fields = fields;
+	}
+
+	public Double getLat() {
+		return lat;
+	}
+
+	public void setLat(Double lat) {
+		this.lat = lat;
+	}
+
+	public Double getLng() {
+		return lng;
+	}
+
+	public void setLng(Double lng) {
+		this.lng = lng;
+	}
+
+	public List<TpServiceDTO> getTpServices() {
+		return tpServices;
+	}
+
+	public void setTpServices(List<TpServiceDTO> tpServices) {
+		this.tpServices = tpServices;
+	}
+
+	public List<String> getPhones() {
+		return phones;
+	}
+
+	public void setPhones(List<String> phones) {
+		this.phones = phones;
+	}
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+	public String getWeb() {
+		return web;
+	}
+
+	public void setWeb(String web) {
+		this.web = web;
+	}
+
+	public List<IrregularDTO> getIrregulars() {
+		return irregulars;
+	}
+
+	public void setIrregulars(List<IrregularDTO> irregulars) {
+		this.irregulars = irregulars;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void addSport(SportDTO sportDTO) {
+		this.getSports().add(sportDTO);
+		
+	}
+
+	public String getOpenDay() {
+		return openDay;
+	}
+
+	public void setOpenDay(String openDay) {
+		this.openDay = openDay;
+	}
+
+	public String getCloseDay() {
+		return closeDay;
+	}
+
+	public void setCloseDay(String closeDay) {
+		this.closeDay = closeDay;
+	}
+
+	public String getOpenHour() {
+		return openHour;
+	}
+
+	public void setOpenHour(String openHour) {
+		this.openHour = openHour;
+	}
+
+	public String getCloseHour() {
+		return closeHour;
+	}
+
+	public void setCloseHour(String closeHour) {
+		this.closeHour = closeHour;
+	}
+
+	public String getPrice() {
+		return price;
+	}
+
+	public void setPrice(String price) {
+		this.price = price;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public void addField(FieldDTO field) {
+		this.getFields().add(field);
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+}

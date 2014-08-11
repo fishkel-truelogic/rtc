@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="ar.com.finit.core.model.impl.EventImpl" table="EVENT">
+		
+		<id name="id" type="java.lang.Integer">
+			<column name="ID" />
+			<generator class="native" />
+		</id>
+		
+		<property name="userId" type="java.lang.String" >
+			<column name="USER_ID" />
+		</property>
+		
+		<property name="entity" type="java.lang.String">
+			<column name="ENTITY" />
+		</property>
+
+		<property name="entityName" type="java.lang.String">
+			<column name="ENTITY_NAME" />
+		</property>
+		
+		<property name="subject" type="java.lang.String">
+			<column name="SUBJECT" />
+		</property>
+		
+		<property name="startTime" type="java.util.Date">
+			<column name="START_TIME" />
+		</property>
+		
+		<property name="endTime" type="java.util.Date">
+			<column name="END_TIME" />
+		</property>
+		
+		<property name="allDay" type="java.lang.Integer">
+			<column name="ALL_DAY" />
+		</property>
+		
+		<property name="moreThanOneDay" type="java.lang.Integer">
+			<column name="MORE_T_ONE" />
+		</property>
+		
+		<property name="recurring" type="java.lang.Integer">
+			<column name="RECURRING" />
+		</property>
+		
+		<property name="color" type="java.lang.Integer">
+			<column name="COLOR" />
+		</property>
+		
+		<property name="editable" type="java.lang.Integer">
+			<column name="EDITABLE" />
+		</property>
+		
+		<property name="player" type="java.lang.String">
+			<column name="PLAYER" />
+		</property>
+		
+	</class>
+</hibernate-mapping>

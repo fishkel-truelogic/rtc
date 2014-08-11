@@ -1,0 +1,30 @@
+#page {
+	width: auto;
+	display: inline-table;
+	padding: 2px 2px;
+}
+
+#page_column_left {
+	float: left;
+	margin-right: 2px;
+	height: 100px;
+	width: 260px;
+
+}
+
+#page_column_center {
+	float: left;
+	margin-right: 2px;
+	height: 100px;
+	width: 797px;
+
+}
+
+#page_column_right {
+	float: left;
+	margin-right: 2px;
+	height: 100px;
+	width: 225px;
+
+}
+

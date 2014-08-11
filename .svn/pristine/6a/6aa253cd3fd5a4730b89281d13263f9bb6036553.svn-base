@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       					http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+       					http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+	<import resource="classpath:/META-INF/rtc-dto-config.xml" />
+	
+	
+	<context:component-scan base-package="ar.com.finit"/>
+	<context:annotation-config />
+	<context:spring-configured />
+	<context:load-time-weaver />
+	
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="file:${RTC_CONFIG}" />
+	</bean>
+	
+	<bean id="httpProtocolHelperGlobal" class="ar.com.finit.owner.web.rest.client.HttpProtocolHelperGlobalImpl">
+		<property name="services">
+			<map>
+				<entry key="ROOT_URL" value="${rtc.rest.root.url}"/>
+				<entry key="ADMIN" value="${rtc.rest.admin}"/>
+				<entry key="PUB" value="${rtc.rest.public}"/>
+				<entry key="PRIV" value="${rtc.rest.private}"/>
+				<entry key="ROLE" value="${rtc.rest.roles}"/>
+				<entry key="USER" value="${rtc.rest.users}"/>
+				<entry key="IMAGE" value="${rtc.rest.images}"/>
+				<entry key="MAP_MARKER" value="${rtc.rest.mapMarkers}"/>
+				<entry key="ALBUM" value="${rtc.rest.albums}"/>
+				<entry key="SPORT" value="${rtc.rest.sports}"/>
+				<entry key="DISTRICT" value="${rtc.rest.districts}"/>
+				<entry key="GROUND" value="${rtc.rest.grounds}"/>
+				<entry key="STABLISHMENT" value="${rtc.rest.stablishments}"/>
+				<entry key="PLAYER" value="${rtc.rest.players}"/>
+				<entry key="TP_SERVICE" value="${rtc.rest.tpServices}"/>
+				<entry key="IMAGE_ROOT" value="${rtc.rest.imageRoot}"/>
+				<entry key="LOGIN" value="${rtc.rest.login}"/>
+				<entry key="FIELD" value="${rtc.rest.fields}"/>
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="httpProtocolHelper" class="ar.com.finit.owner.web.rest.client.HttpProtocolHelperImpl" scope="session">
+		<aop:scoped-proxy/>
+	</bean>
+	
+</beans>

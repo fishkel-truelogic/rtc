@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="ar.com.finit.core.model.impl.PlayerImpl" table="PLAYER">
+    
+        <id name="id" type="java.lang.String">
+			<column name="ID" />
+			<generator class="ar.com.finit.core.generator.UUIDGenerator" />
+		</id>
+		
+		<property name="fbId" type="java.lang.String">
+            <column name="FBID" />
+        </property>
+        
+        <property name="email" type="java.lang.String">
+            <column name="EMAIL" />
+        </property>
+         
+        <property name="username" type="java.lang.String">
+            <column name="USERNAME" />
+        </property>
+        
+        <property name="password" type="java.lang.String">
+            <column name="PASSWORD" />
+        </property>
+        
+        <property name="enabled" type="java.lang.Boolean">
+            <column name="ENABLED" />
+        </property>
+        
+        <property name="emailConfirmed" type="java.lang.Boolean">
+            <column name="EMAIL_CONFIRMED" />
+        </property>
+        
+        
+
+
+    </class>
+</hibernate-mapping>

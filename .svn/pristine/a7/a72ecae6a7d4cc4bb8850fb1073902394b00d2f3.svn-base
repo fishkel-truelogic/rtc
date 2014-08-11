@@ -1,0 +1,143 @@
+package ar.com.finit.dto.model;
+
+import java.util.List;
+
+/**
+ * @author leo
+ */
+public class FieldDTO {
+
+	private String id;
+
+	private String width;
+
+	private String height;
+
+	private List<PlayerCapacityDTO> playersCapacity;
+
+	private List<ImageDTO> images;
+
+	private List<SportDTO> sports;
+
+	private TariffDTO tariff;
+
+	private List<IrregularDTO> irregulars;
+
+	private GroundDTO ground;
+
+	private boolean ceiling;
+	
+	private PlayerCapacityDTO playerCapacity;
+	
+	private List<String> hours;
+	
+	private String name;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getWidth() {
+		return width;
+	}
+
+	public void setWidth(String width) {
+		this.width = width;
+	}
+
+	public String getHeight() {
+		return height;
+	}
+
+	public void setHeight(String height) {
+		this.height = height;
+	}
+
+	public List<PlayerCapacityDTO> getPlayersCapacity() {
+		return playersCapacity;
+	}
+
+	public void setPlayersCapacity(List<PlayerCapacityDTO> list) {
+		this.playersCapacity = list;
+	}
+
+	public List<ImageDTO> getImages() {
+		return images;
+	}
+
+	public void setImages(List<ImageDTO> images) {
+		this.images = images;
+	}
+
+	public List<SportDTO> getSports() {
+		return sports;
+	}
+
+	public void setSports(List<SportDTO> sports) {
+		this.sports = sports;
+	}
+
+	public TariffDTO getTariff() {
+		return tariff;
+	}
+
+	public void setTariff(TariffDTO tariff) {
+		this.tariff = tariff;
+	}
+
+	public List<IrregularDTO> getIrregulars() {
+		return irregulars;
+	}
+
+	public void setIrregulars(List<IrregularDTO> irregulars) {
+		this.irregulars = irregulars;
+	}
+
+	public GroundDTO getGround() {
+		return ground;
+	}
+
+	public void setGround(GroundDTO ground) {
+		this.ground = ground;
+	}
+
+	public boolean isCeiling() {
+		return ceiling;
+	}
+
+	public void setCeiling(boolean ceiling) {
+		this.ceiling = ceiling;
+	}
+
+	public PlayerCapacityDTO getPlayerCapacity() {
+		return playerCapacity;
+	}
+
+	public void setPlayerCapacity(PlayerCapacityDTO playerCapacity) {
+		this.playerCapacity = playerCapacity;
+	}
+
+	public List<String> getHours() {
+		return hours;
+	}
+
+	public void setHours(List<String> hours) {
+		this.hours = hours;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
+	
+
+}

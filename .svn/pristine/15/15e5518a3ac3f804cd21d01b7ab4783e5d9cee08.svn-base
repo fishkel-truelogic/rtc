@@ -1,0 +1,1 @@
+No se pudo enviar el mail de confimracion vuelva a intentar mas tarde

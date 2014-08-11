@@ -1,0 +1,38 @@
+package ar.com.finit.service.model.converter;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import ar.com.finit.core.model.PlayerCapacity;
+import ar.com.finit.dto.model.PlayerCapacityDTO;
+
+/**
+ * @author leo
+ */
+public class PlayerCapacityConverter {
+
+	@Autowired
+	SportConverter sportConverter;
+	
+	public List<PlayerCapacityDTO> toDTO(Collection<PlayerCapacity> playersCapacitys) {
+		List<PlayerCapacityDTO> playersCapacitysDTO = new ArrayList<PlayerCapacityDTO>();
+		for (PlayerCapacity field : playersCapacitys) {
+			playersCapacitysDTO.add(this.toDTO(field));
+		}
+		return playersCapacitysDTO;
+	}
+
+	private PlayerCapacityDTO toDTO(PlayerCapacity playerCapacity) {
+		if (playerCapacity == null) {
+			return null;
+		}
+		PlayerCapacityDTO dto = new PlayerCapacityDTO();
+		dto.setId(playerCapacity.getId());
+		dto.setText(playerCapacity.getText());
+		dto.setSport(sportConverter.toDTO(playerCapacity.getSport()));
+		return dto;
+	}
+}

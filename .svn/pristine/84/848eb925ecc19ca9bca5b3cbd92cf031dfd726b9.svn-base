@@ -1,0 +1,103 @@
+<?php 
+	include '../php/restRequest.php';
+	
+	$serchParameter = '?';
+	
+	$state = '';
+	if (isset($_REQUEST['state'])) {
+		$state = $_REQUEST['state'];
+	} 
+	
+	$sport = '';
+	if (isset($_REQUEST['sport'])) {
+		$sport = $_REQUEST['sport'];
+		if ($serchParameter != '?') {
+			$serchParameter = $serchParameter.'&sport='.$sport;
+		} else {
+			$serchParameter = $serchParameter.'sport='.$sport;
+		}
+	} 
+	
+	$district = '';
+	if (isset($_REQUEST['district'])) {
+		$district = $_REQUEST['district'];
+		if ($serchParameter != '?') {
+			$serchParameter = $serchParameter.'&district='.$district;
+		} else {
+			$serchParameter = $serchParameter.'district='.$district;
+		}
+	}
+	
+	$ground = '';
+	if (isset($_REQUEST['ground'])) {	
+		$ground = $_REQUEST['ground'];
+		if ($serchParameter != '?') {
+			$serchParameter = $serchParameter.'&ground='.$ground;
+		} else {
+			$serchParameter = $serchParameter.'ground='.$ground;
+		}
+	}
+	
+	$hour = '';
+	if (isset($_REQUEST['hour'])) {
+		$hour = $_REQUEST['hour'];
+		if ($serchParameter != '?') {
+			$serchParameter = $serchParameter.'&hour='.$hour;
+		} else {
+			$serchParameter = $serchParameter.'hour='.$hour;
+		}
+	}
+	
+	$day = '';
+	if (isset($_REQUEST['day'])) {
+		$day = $_REQUEST['day'];
+		if ($serchParameter != '?') {
+			$serchParameter = $serchParameter.'&day='.$day;
+		} else {
+			$serchParameter = $serchParameter.'day='.$day;
+		}
+	}
+	
+	if (isset($_REQUEST['page'])) {
+		if ($serchParameter != '?') {
+			$serchParameter = $serchParameter.'&page='. $_REQUEST['page'];
+		} else {
+			$serchParameter = $serchParameter.'page='. $_REQUEST['page'];
+		}
+	} 
+	
+		
+	if ($serchParameter == '?') {
+		$serchParameter = '';
+	}
+
+	$stablishmentsPage = getRequest($urlServices.'stablishments'.replace($serchParameter));
+	
+	
+	if ($stablishmentsPage->{"pageCant"} >= $stablishmentsPage->{"pageNumber"}) {
+	
+		foreach ($stablishmentsPage->{"pageElements"} as $stablishment) { 
+?>
+<li id="<?php echo 'page'.$stablishmentsPage->{"pageNumber"} ?>" style="width:800px">
+
+	<!-- Highlight -->
+		<article class="is-highlight">
+			<header>
+				<h3><a  onclick="$('#serchResultForm').submit();"><?php echo $stablishment->{"name"}?><a></h3>
+			</header>
+			<a href="<?php echo '#'?>" class="image image-left"><img src="images/pic06.jpg" alt="" /></a>
+			<p style="height:111px; overflow-y:hidden"><?php echo $stablishment->{"description"}?></p>
+			<p><?php echo $stablishment->{"address"}?> | <?php echo $stablishment->{"openDay"}?> a <?php echo $stablishment->{"closeDay"}?> de <?php echo $stablishment->{"openHour"}?> a <?php echo $stablishment->{"closeHour"}?> | <?php echo $stablishment->{"price"}?></p>
+			<ul class="actions">
+				<li><a href="<?php echo '#'?>" class="button button-icon icon icon-file">Reservar</a></li>
+			</ul>
+			<form id="serchResultForm" action="stablishment.php" method="get">
+				<input type="hidden" name="id" value="<?php echo $stablishment->{"id"} ?>"></input>
+				<input type="hidden" name="day" value="<?php echo $day ?>"></input>
+			</form>
+		</article>
+
+</li>
+<?php }
+	} ?>
+	

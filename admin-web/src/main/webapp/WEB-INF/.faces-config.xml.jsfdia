@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:*" PATH="*" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:0" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="suppliers::#ar#com#avanzit#supplier#suppliers.xhtml"
+    NAME="output" PATH="/ar/com/avanzit/supplier/suppliers.xhtml"
+    TARGET="rules:#ar#com#avanzit#supplier#suppliers.xhtml"
+    TITLE="suppliers" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:1" PATH="*" SHAPE="32,129,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:1" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="editSupplier::#ar#com#avanzit#supplier#editSupplier.xhtml"
+    NAME="output" PATH="/ar/com/avanzit/supplier/editSupplier.xhtml"
+    TARGET="rules:#ar#com#avanzit#supplier#editSupplier.xhtml"
+    TITLE="editSupplier" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:2" PATH="*" SHAPE="32,241,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:2" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="newSupplier::#ar#com#avanzit#supplier#newSupplier.xhtml"
+    NAME="output" PATH="/ar/com/avanzit/supplier/newSupplier.xhtml"
+    TARGET="rules:#ar#com#avanzit#supplier#newSupplier.xhtml"
+    TITLE="newSupplier" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#ar#com#avanzit#supplier#suppliers.xhtml"
+  PATH="/ar/com/avanzit/supplier/suppliers.xhtml" SHAPE="240,257,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#ar#com#avanzit#supplier#editSupplier.xhtml"
+  PATH="/ar/com/avanzit/supplier/editSupplier.xhtml" SHAPE="240,369,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#ar#com#avanzit#supplier#newSupplier.xhtml"
+  PATH="/ar/com/avanzit/supplier/newSupplier.xhtml" SHAPE="240,481,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:*:3" PATH="*" SHAPE="32,577,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:3" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="zones::#ar#com#avanzit#zone#zones.xhtml"
+    NAME="output" PATH="/ar/com/avanzit/zone/zones.xhtml"
+    TARGET="rules:#ar#com#avanzit#zone#zones.xhtml" TITLE="zones" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#ar#com#avanzit#zone#zones.xhtml"
+  PATH="/ar/com/avanzit/zone/zones.xhtml" SHAPE="240,593,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:*:4" PATH="*" SHAPE="32,689,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:4" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="editZone::#ar#com#avanzit#zone#editZone.xhtml" NAME="output"
+    PATH="/ar/com/avanzit/zone/editZone.xhtml"
+    TARGET="rules:#ar#com#avanzit#zone#editZone.xhtml" TITLE="editZone" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:5" PATH="*" SHAPE="32,801,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:5" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="newZone::#ar#com#avanzit#zone#newZone.xhtml"
+    NAME="output" PATH="/ar/com/avanzit/zone/newZone.xhtml"
+    TARGET="rules:#ar#com#avanzit#zone#newZone.xhtml" TITLE="newZone" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#ar#com#avanzit#zone#editZone.xhtml"
+  PATH="/ar/com/avanzit/zone/editZone.xhtml" SHAPE="240,705,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#ar#com#avanzit#zone#newZone.xhtml"
+  PATH="/ar/com/avanzit/zone/newZone.xhtml" SHAPE="240,817,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:*:6" PATH="*" SHAPE="32,913,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:6" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="serviceTypes::#ar#com#avanzit#serviceType#serviceTypes.xhtml"
+    NAME="output" PATH="/ar/com/avanzit/serviceType/serviceTypes.xhtml"
+    TARGET="rules:#ar#com#avanzit#serviceType#serviceTypes.xhtml"
+    TITLE="serviceTypes" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:7" PATH="*" SHAPE="32,1025,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:7" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="editServiceType::#ar#com#avanzit#serviceType#editServiceType.xhtml"
+    NAME="output"
+    PATH="/ar/com/avanzit/serviceType/editServiceType.xhtml"
+    TARGET="rules:#ar#com#avanzit#serviceType#editServiceType.xhtml"
+    TITLE="editServiceType" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:8" PATH="*" SHAPE="32,1137,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:8" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="newServiceType::#ar#com#avanzit#serviceType#newServiceType.xhtml"
+    NAME="output"
+    PATH="/ar/com/avanzit/serviceType/newServiceType.xhtml"
+    TARGET="rules:#ar#com#avanzit#serviceType#newServiceType.xhtml"
+    TITLE="newServiceType" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#ar#com#avanzit#serviceType#editServiceType.xhtml"
+  PATH="/ar/com/avanzit/serviceType/editServiceType.xhtml"
+  SHAPE="240,1041,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#ar#com#avanzit#serviceType#serviceTypes.xhtml"
+  PATH="/ar/com/avanzit/serviceType/serviceTypes.xhtml"
+  SHAPE="240,929,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#ar#com#avanzit#serviceType#newServiceType.xhtml"
+  PATH="/ar/com/avanzit/serviceType/newServiceType.xhtml"
+  SHAPE="240,1153,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:*:9" PATH="*" SHAPE="32,1249,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:9" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="destinations::#ar#com#avanzit#destination#destinations.xhtml"
+    NAME="output" PATH="/ar/com/avanzit/destination/destinations.xhtml"
+    TARGET="rules:#ar#com#avanzit#destination#destinations.xhtml"
+    TITLE="destinations" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:10" PATH="*" SHAPE="32,1361,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:10" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="editDestination::#ar#com#avanzit#destination#editDestination.xhtml"
+    NAME="output"
+    PATH="/ar/com/avanzit/destination/editDestination.xhtml"
+    TARGET="rules:#ar#com#avanzit#destination#editDestination.xhtml"
+    TITLE="editDestination" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:11" PATH="*" SHAPE="32,1473,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:11" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="newDestination::#ar#com#avanzit#destination#newDestination.xhtml"
+    NAME="output"
+    PATH="/ar/com/avanzit/destination/newDestination.xhtml"
+    TARGET="rules:#ar#com#avanzit#destination#newDestination.xhtml"
+    TITLE="newDestination" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#ar#com#avanzit#destination#editDestination.xhtml"
+  PATH="/ar/com/avanzit/destination/editDestination.xhtml"
+  SHAPE="240,1377,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#ar#com#avanzit#destination#newDestination.xhtml"
+  PATH="/ar/com/avanzit/destination/newDestination.xhtml"
+  SHAPE="240,1489,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#ar#com#avanzit#destination#destinations.xhtml"
+  PATH="/ar/com/avanzit/destination/destinations.xhtml"
+  SHAPE="240,1265,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:*:12" PATH="*" SHAPE="32,1585,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:12" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="lenders::#ar#com#avanzit#lender#lenders.xhtml" NAME="output"
+    PATH="/ar/com/avanzit/lender/lenders.xhtml"
+    TARGET="rules:#ar#com#avanzit#lender#lenders.xhtml" TITLE="lenders" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:13" PATH="*" SHAPE="32,1697,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:13" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="editLender::#ar#com#avanzit#lender#editLender.xhtml"
+    NAME="output" PATH="/ar/com/avanzit/lender/editLender.xhtml"
+    TARGET="rules:#ar#com#avanzit#lender#editLender.xhtml"
+    TITLE="editLender" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:14" PATH="*" SHAPE="32,1809,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:14" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="newLender::#ar#com#avanzit#lender#newLender.xhtml" NAME="output"
+    PATH="/ar/com/avanzit/lender/newLender.xhtml"
+    TARGET="rules:#ar#com#avanzit#lender#newLender.xhtml"
+    TITLE="newLender" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#ar#com#avanzit#lender#newLender.xhtml"
+  PATH="/ar/com/avanzit/lender/newLender.xhtml" SHAPE="240,1825,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#ar#com#avanzit#lender#editLender.xhtml"
+  PATH="/ar/com/avanzit/lender/editLender.xhtml" SHAPE="240,1713,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#ar#com#avanzit#lender#lenders.xhtml"
+  PATH="/ar/com/avanzit/lender/lenders.xhtml" SHAPE="240,1601,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:*:15" PATH="*" SHAPE="32,1921,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:15" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="images::#ar#com#avanzit#image#images.xhtml"
+    NAME="output" PATH="/ar/com/avanzit/image/images.xhtml"
+    TARGET="rules:#ar#com#avanzit#image#images.xhtml" TITLE="images" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:16" PATH="*" SHAPE="32,2033,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:16" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="services::#ar#com#avanzit#service#services.xhtml" NAME="output"
+    PATH="/ar/com/avanzit/service/services.xhtml"
+    TARGET="rules:#ar#com#avanzit#service#services.xhtml"
+    TITLE="services" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#ar#com#avanzit#image#images.xhtml"
+  PATH="/ar/com/avanzit/image/images.xhtml" SHAPE="240,2049,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:*:17" PATH="*" SHAPE="32,2145,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:17" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="editService::#ar#com#avanzit#service#editService.xhtml"
+    NAME="output" PATH="/ar/com/avanzit/service/editService.xhtml"
+    TARGET="rules:#ar#com#avanzit#service#editService.xhtml"
+    TITLE="editService" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:18" PATH="*" SHAPE="32,2257,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:18" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="newService::#ar#com#avanzit#service#newService.xhtml"
+    NAME="output" PATH="/ar/com/avanzit/service/newService.xhtml"
+    TARGET="rules:#ar#com#avanzit#service#newService.xhtml"
+    TITLE="newService" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:19" PATH="*" SHAPE="32,2369,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:19" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="accommodations::#ar#com#avanzit#accommodation#accommodations.xhtml"
+    NAME="output"
+    PATH="/ar/com/avanzit/accommodation/accommodations.xhtml"
+    TARGET="rules:#ar#com#avanzit#accommodation#accommodations.xhtml"
+    TITLE="accommodations" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:20" PATH="*" SHAPE="32,2481,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:20" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="editAccommodation::#ar#com#avanzit#accommodation#editAccommodation.xhtml"
+    NAME="output"
+    PATH="/ar/com/avanzit/accommodation/editAccommodation.xhtml"
+    TARGET="rules:#ar#com#avanzit#accommodation#editAccommodation.xhtml"
+    TITLE="editAccommodation" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#ar#com#avanzit#service#editService.xhtml"
+  PATH="/ar/com/avanzit/service/editService.xhtml" SHAPE="240,2385,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#ar#com#avanzit#service#newService.xhtml"
+  PATH="/ar/com/avanzit/service/newService.xhtml" SHAPE="240,2497,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#ar#com#avanzit#service#services.xhtml"
+  PATH="/ar/com/avanzit/service/services.xhtml" SHAPE="240,2273,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:*:21" PATH="*" SHAPE="32,2593,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:21" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="newAccommodation::#ar#com#avanzit#accommodation#newAccommodation.xhtml"
+    NAME="output"
+    PATH="/ar/com/avanzit/accommodation/newAccommodation.xhtml"
+    TARGET="rules:#ar#com#avanzit#accommodation#newAccommodation.xhtml"
+    TITLE="newAccommodation" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:22" PATH="*" SHAPE="32,2593,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:22" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="accommodationTypes::#ar#com#avanzit#accommodationType#accommodationTypes.xhtml"
+    NAME="output"
+    PATH="/ar/com/avanzit/accommodationType/accommodationTypes.xhtml"
+    TARGET="rules:#ar#com#avanzit#accommodationType#accommodationTypes.xhtml"
+    TITLE="accommodationTypes" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:23" PATH="*" SHAPE="32,2705,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:23" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="editAccommodationType::#ar#com#avanzit#accommodationType#editAccommodationType.xhtml"
+    NAME="output"
+    PATH="/ar/com/avanzit/accommodationType/editAccommodationType.xhtml"
+    TARGET="rules:#ar#com#avanzit#accommodationType#editAccommodationType.xhtml"
+    TITLE="editAccommodationType" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#ar#com#avanzit#accommodation#editAccommodation.xhtml"
+  PATH="/ar/com/avanzit/accommodation/editAccommodation.xhtml"
+  SHAPE="240,2721,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#ar#com#avanzit#accommodation#newAccommodation.xhtml"
+  PATH="/ar/com/avanzit/accommodation/newAccommodation.xhtml"
+  SHAPE="240,2833,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#ar#com#avanzit#accommodation#accommodations.xhtml"
+  PATH="/ar/com/avanzit/accommodation/accommodations.xhtml"
+  SHAPE="240,2609,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:*:24" PATH="*" SHAPE="32,2817,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:24" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="newAccommodationType::#ar#com#avanzit#accommodationType#newAccommodationType.xhtml"
+    NAME="output"
+    PATH="/ar/com/avanzit/accommodationType/newAccommodationType.xhtml"
+    TARGET="rules:#ar#com#avanzit#accommodationType#newAccommodationType.xhtml"
+    TITLE="newAccommodationType" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:25" PATH="*" SHAPE="32,2929,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:25" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="roomTypes::#ar#com#avanzit#roomType#roomTypes.xhtml"
+    NAME="output" PATH="/ar/com/avanzit/roomType/roomTypes.xhtml"
+    TARGET="rules:#ar#com#avanzit#roomType#roomTypes.xhtml"
+    TITLE="roomTypes" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:26" PATH="*" SHAPE="32,3041,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:26" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="editRoomType::#ar#com#avanzit#roomType#editRoomType.xhtml"
+    NAME="output" PATH="/ar/com/avanzit/roomType/editRoomType.xhtml"
+    TARGET="rules:#ar#com#avanzit#roomType#editRoomType.xhtml"
+    TITLE="editRoomType" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#ar#com#avanzit#accommodationType#editAccommodationType.xhtml"
+  PATH="/ar/com/avanzit/accommodationType/editAccommodationType.xhtml"
+  SHAPE="240,2945,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#ar#com#avanzit#accommodationType#newAccommodationType.xhtml"
+  PATH="/ar/com/avanzit/accommodationType/newAccommodationType.xhtml"
+  SHAPE="240,3057,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#ar#com#avanzit#accommodationType#accommodationTypes.xhtml"
+  PATH="/ar/com/avanzit/accommodationType/accommodationTypes.xhtml"
+  SHAPE="240,3169,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:*:27" PATH="*" SHAPE="32,3153,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:27" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="newRoomType::#ar#com#avanzit#roomType#newRoomType.xhtml"
+    NAME="output" PATH="/ar/com/avanzit/roomType/newRoomType.xhtml"
+    TARGET="rules:#ar#com#avanzit#roomType#newRoomType.xhtml"
+    TITLE="newRoomType" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:28" PATH="*" SHAPE="32,3377,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:28" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="mealPlans::#ar#com#avanzit#mealPlan#mealPlans.xhtml"
+    NAME="output" PATH="/ar/com/avanzit/mealPlan/mealPlans.xhtml"
+    TARGET="rules:#ar#com#avanzit#mealPlan#mealPlans.xhtml"
+    TITLE="mealPlans" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:29" PATH="*" SHAPE="32,3489,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:29" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="editMealPlan::#ar#com#avanzit#mealPlan#editMealPlan.xhtml"
+    NAME="output" PATH="/ar/com/avanzit/mealPlan/editMealPlan.xhtml"
+    TARGET="rules:#ar#com#avanzit#mealPlan#editMealPlan.xhtml"
+    TITLE="editMealPlan" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#ar#com#avanzit#roomType#roomTypes.xhtml"
+  PATH="/ar/com/avanzit/roomType/roomTypes.xhtml" SHAPE="240,3281,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#ar#com#avanzit#roomType#newRoomType.xhtml"
+  PATH="/ar/com/avanzit/roomType/newRoomType.xhtml" SHAPE="240,3505,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#ar#com#avanzit#roomType#editRoomType.xhtml"
+  PATH="/ar/com/avanzit/roomType/editRoomType.xhtml"
+  SHAPE="240,3393,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:*:30" PATH="*" SHAPE="32,3601,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:30" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="newMealPlan::#ar#com#avanzit#mealPlan#newMealPlan.xhtml"
+    NAME="output" PATH="/ar/com/avanzit/mealPlan/newMealPlan.xhtml"
+    TARGET="rules:#ar#com#avanzit#mealPlan#newMealPlan.xhtml"
+    TITLE="newMealPlan" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#ar#com#avanzit#entity#entities.xhtml"
+  PATH="/ar/com/avanzit/entity/entities.xhtml" SHAPE="240,3617,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#ar#com#avanzit#entity#editEntity.xhtml"
+  PATH="/ar/com/avanzit/entity/editEntity.xhtml" SHAPE="240,3729,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#ar#com#avanzit#entity#newEntity.xhtml"
+  PATH="/ar/com/avanzit/entity/newEntity.xhtml" SHAPE="240,3841,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:*:31" PATH="*" SHAPE="32,3937,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:31" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="entities::#ar#com#avanzit#entity#entities.xhtml" NAME="output"
+    PATH="/ar/com/avanzit/entity/entities.xhtml"
+    TARGET="rules:#ar#com#avanzit#entity#entities.xhtml"
+    TITLE="entities" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:32" PATH="*" SHAPE="32,4049,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:32" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="editEntity::#ar#com#avanzit#entity#editEntity.xhtml"
+    NAME="output" PATH="/ar/com/avanzit/entity/editEntity.xhtml"
+    TARGET="rules:#ar#com#avanzit#entity#editEntity.xhtml"
+    TITLE="editEntity" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:33" PATH="*" SHAPE="32,801,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:33" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="newEntity::#ar#com#avanzit#entity#newEntity.xhtml" NAME="output"
+    PATH="/ar/com/avanzit/entity/newEntity.xhtml"
+    TARGET="rules:#ar#com#avanzit#entity#newEntity.xhtml"
+    TITLE="newEntity" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#ar#com#avanzit#user#editUser.xhtml"
+  PATH="/ar/com/avanzit/user/editUser.xhtml" SHAPE="240,4065,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#ar#com#avanzit#user#users.xhtml"
+  PATH="/ar/com/avanzit/user/users.xhtml" SHAPE="240,3953,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#ar#com#avanzit#user#newUser.xhtml"
+  PATH="/ar/com/avanzit/user/newUser.xhtml" SHAPE="240,817,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:*:34" PATH="*" SHAPE="32,913,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:34" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="users::#ar#com#avanzit#user#users.xhtml"
+    NAME="output" PATH="/ar/com/avanzit/user/users.xhtml"
+    TARGET="rules:#ar#com#avanzit#user#users.xhtml" TITLE="users" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#ar#com#avanzit#video#videos.xhtml"
+  PATH="/ar/com/avanzit/video/videos.xhtml" SHAPE="240,1937,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:*:35" PATH="*" SHAPE="32,2033,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:35" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="editUser::#ar#com#avanzit#user#editUser.xhtml" NAME="output"
+    PATH="/ar/com/avanzit/user/editUser.xhtml"
+    TARGET="rules:#ar#com#avanzit#user#editUser.xhtml" TITLE="editUser" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:36" PATH="*" SHAPE="32,801,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:36" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="newUser::#ar#com#avanzit#user#newUser.xhtml"
+    NAME="output" PATH="/ar/com/avanzit/user/newUser.xhtml"
+    TARGET="rules:#ar#com#avanzit#user#newUser.xhtml" TITLE="newUser" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:37" PATH="*" SHAPE="32,3265,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:37" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="videos::#ar#com#avanzit#video#videos.xhtml"
+    NAME="output" PATH="/ar/com/avanzit/video/videos.xhtml"
+    TARGET="rules:#ar#com#avanzit#video#videos.xhtml" TITLE="videos" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#ar#com#avanzit#mealPlan#editMealPlan.xhtml"
+  PATH="/ar/com/avanzit/mealPlan/editMealPlan.xhtml"
+  SHAPE="240,4289,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#ar#com#avanzit#mealPlan#newMealPlan.xhtml"
+  PATH="/ar/com/avanzit/mealPlan/newMealPlan.xhtml" SHAPE="240,4401,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#ar#com#avanzit#mealPlan#mealPlans.xhtml"
+  PATH="/ar/com/avanzit/mealPlan/mealPlans.xhtml" SHAPE="240,4177,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:*:38" PATH="*" SHAPE="32,3377,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:38" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="pointsOfInterest::#ar#com#avanzit#pointOfInterest#pointsOfInterest.xhtml"
+    NAME="output"
+    PATH="/ar/com/avanzit/pointOfInterest/pointsOfInterest.xhtml"
+    TARGET="rules:#ar#com#avanzit#pointOfInterest#pointsOfInterest.xhtml"
+    TITLE="pointsOfInterest" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#ar#com#avanzit#pointOfInterest#pointsOfInterest.xhtml"
+  PATH="/ar/com/avanzit/pointOfInterest/pointsOfInterest.xhtml"
+  SHAPE="240,4513,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:*:39" PATH="*" SHAPE="32,4497,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:39" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="editPointOfInterest::#ar#com#avanzit#pointOfInterest#editPointOfInterest.xhtml"
+    NAME="output"
+    PATH="/ar/com/avanzit/pointOfInterest/editPointOfInterest.xhtml"
+    TARGET="rules:#ar#com#avanzit#pointOfInterest#editPointOfInterest.xhtml"
+    TITLE="editPointOfInterest" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:*:40" PATH="*" SHAPE="32,4609,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:40" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="newPointOfInterest::#ar#com#avanzit#pointOfInterest#newPointOfInterest.xhtml"
+    NAME="output"
+    PATH="/ar/com/avanzit/pointOfInterest/newPointOfInterest.xhtml"
+    TARGET="rules:#ar#com#avanzit#pointOfInterest#newPointOfInterest.xhtml"
+    TITLE="newPointOfInterest" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#ar#com#avanzit#pointOfInterest#newPointOfInterest.xhtml"
+  PATH="/ar/com/avanzit/pointOfInterest/newPointOfInterest.xhtml"
+  SHAPE="240,4737,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#ar#com#avanzit#pointOfInterest#editPointOfInterest.xhtml"
+  PATH="/ar/com/avanzit/pointOfInterest/editPointOfInterest.xhtml"
+  SHAPE="240,4625,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:*:41" PATH="*" SHAPE="32,4833,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:41" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="airports::#ar#com#avanzit#airport#airports.xhtml" NAME="output"
+    PATH="/ar/com/avanzit/airport/airports.xhtml"
+    TARGET="rules:#ar#com#avanzit#airport#airports.xhtml"
+    TITLE="airports" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#ar#com#avanzit#airport#airports.xhtml"
+  PATH="/ar/com/avanzit/airport/airports.xhtml" SHAPE="240,4849,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:*:42" PATH="*" SHAPE="32,4945,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:42" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="editAirport::#ar#com#avanzit#airport#editAirport.xhtml"
+    NAME="output" PATH="/ar/com/avanzit/airport/editAirport.xhtml"
+    TARGET="rules:#ar#com#avanzit#airport#editAirport.xhtml"
+    TITLE="editAirport" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#ar#com#avanzit#airport#editAirport.xhtml"
+  PATH="/ar/com/avanzit/airport/editAirport.xhtml" SHAPE="240,4961,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>

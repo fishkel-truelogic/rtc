@@ -1,0 +1,76 @@
+package ar.com.finit.service.model.converter;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import ar.com.finit.core.model.Event;
+import ar.com.finit.core.model.impl.EventImpl;
+import ar.com.finit.dto.model.EventDTO;
+
+/**
+ * @author leo
+ */
+public class EventConverter {
+
+	public List<EventDTO> toDTO(Collection<Event> events) {
+		List<EventDTO> eventsDTO = new ArrayList<EventDTO>();
+		for (Event event : events) {
+			eventsDTO.add(this.toDTO(event));
+		}
+		return eventsDTO;
+	}
+
+	public List<Event> toEntity(Collection<EventDTO> eventsDTO) throws ParseException {
+		List<Event> events = new ArrayList<Event>();
+		for (EventDTO event : eventsDTO) {
+			events.add(this.toEntity(event));
+		}
+		return events;
+	}
+
+	public EventDTO toDTO(Event event) {
+		if (event == null) return null;
+		EventDTO dto = new EventDTO();
+		dto.setId(event.getId().toString());
+		dto.setUserId(event.getUserId());
+		dto.setEntity(event.getEntity());
+		dto.setEntityName(event.getEntityName());
+		String pattern = "MM/dd/yyyy HH:mm";
+		SimpleDateFormat format = new SimpleDateFormat(pattern);
+		dto.setStartTime(format.format(event.getStartTime()));
+		dto.setEndTime(format.format(event.getEndTime()));
+		dto.setAllDay(event.getAllDay());
+		dto.setMoreThanOneDay(event.getMoreThanOneDay());
+		dto.setRecurring(event.getRecurring());
+		dto.setColor(event.getColor());
+		dto.setEditable(event.getEditable());
+		dto.setPlayer(event.getPlayer());
+		dto.setSubject(event.getSubject());
+		return dto;
+	}
+
+	public Event toEntity(EventDTO dto) throws ParseException {
+		if (dto == null) return null;
+		EventImpl event = new EventImpl();
+		if (dto.getId() != null) event.setId(Integer.parseInt(dto.getId()));
+		event.setUserId(dto.getUserId());
+		event.setEntity(dto.getEntity());
+		event.setEntityName(dto.getEntityName());
+		String pattern = "MM/dd/yyyy HH:mm";
+		SimpleDateFormat format = new SimpleDateFormat(pattern);
+		event.setStartTime(format.parse(dto.getStartTime()));
+		event.setEndTime(format.parse(dto.getEndTime()));
+		event.setAllDay(dto.getAllDay());
+		event.setMoreThanOneDay(dto.getMoreThanOneDay());
+		event.setRecurring(dto.getRecurring());
+		event.setColor(dto.getColor());
+		event.setEditable(dto.getEditable());
+		event.setPlayer(dto.getPlayer());
+		event.setSubject(dto.getSubject());
+		return event;
+	}
+
+}

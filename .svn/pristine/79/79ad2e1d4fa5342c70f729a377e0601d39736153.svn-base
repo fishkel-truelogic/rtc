@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<link href="css/main.css" rel="stylesheet" type="text/css">
+		<script type="text/javascript" src="js/jQuery/jquery-1.8.3.js"></script>
+		<script type="text/javascript" src="js/jQuery/jquery.tmpl.js"></script>
+		<script type="text/javascript" src="js/jQuery/jquery.dd.min.js"></script>
+
+		<script type="text/javascript" src="js/header.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$.getInitialStructure();
+			});
+		</script>
+	</head>
+
+	<body>
+		<div id="container">
+			<div id="header"></div>
+			<div id="mainFilter"></div>
+			<div id="page"></div>
+			<div class="spacer"></div>
+			<div id="footer"></div>
+		</div>
+	</body>
+
+
+</html>

@@ -1,0 +1,78 @@
+package ar.com.finit.core.model.impl;
+
+import java.util.Date;
+
+import ar.com.finit.core.model.Irregular;
+
+/**
+ * @author leo
+ */
+public class IrregularImpl implements Irregular {
+
+	private String id;
+
+	private boolean allDay;
+
+	private Date SinceDate;
+
+	private Date toDate;
+
+	private Date openHour;
+
+	private Date closeHour;
+
+	@Override
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	@Override
+	public boolean isAllDay() {
+		return allDay;
+	}
+
+	public void setAllDay(boolean allDay) {
+		this.allDay = allDay;
+	}
+
+	@Override
+	public Date getSinceDate() {
+		return SinceDate;
+	}
+
+	public void setSinceDate(Date sinceDate) {
+		SinceDate = sinceDate;
+	}
+
+	@Override
+	public Date getToDate() {
+		return toDate;
+	}
+
+	public void setToDate(Date toDate) {
+		this.toDate = toDate;
+	}
+
+	@Override
+	public Date getOpenHour() {
+		return openHour;
+	}
+
+	public void setOpenHour(Date openHour) {
+		this.openHour = openHour;
+	}
+
+	@Override
+	public Date getCloseHour() {
+		return closeHour;
+	}
+
+	public void setCloseHour(Date closeHour) {
+		this.closeHour = closeHour;
+	}
+
+}

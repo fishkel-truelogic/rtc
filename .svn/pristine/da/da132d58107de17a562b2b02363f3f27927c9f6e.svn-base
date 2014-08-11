@@ -1,0 +1,14 @@
+<html>
+	<head>
+		<meta http-equiv="refresh" content="0; url=admin/users">
+		<style type="text/css">
+			body { 
+			  font: normal .85em arial, sans-serif;
+			  background: #000 url(../images/back.jpg) no-repeat top;
+			  color: #EEE;
+			}
+		</style>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,127 @@
+package ar.com.finit.admin.web.message;
+
+import java.io.IOException;
+import java.util.Collection;
+import java.util.ResourceBundle;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.application.FacesMessage.Severity;
+import javax.faces.context.FacesContext;
+
+import org.apache.log4j.Logger;
+import org.jboss.resteasy.client.ClientResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+import ar.com.finit.admin.web.rest.client.RestfulServiceInvoker;
+import ar.com.finit.dto.factory.violation.ViolationDTOFactory;
+import ar.com.finit.dto.violation.ViolationDTO;
+
+/**
+ * @author leo
+ */
+@Component
+@Scope(value = "application")
+public class MessageManager {
+
+	@Autowired
+	private ViolationDTOFactory violationDTOFactory;
+
+	public final String I18N = "messages.messages";
+
+	private static Logger logger = Logger.getLogger(MessageManager.class);
+
+	public void sendViewMessage(String i18n, String property) {
+		Severity severity = FacesMessage.SEVERITY_INFO;
+		logger.info(sendMessage(severity, null, i18n, property, null));
+	}
+
+	public void sendInfoMessage(String i18n, String summary, String property) {
+		Severity severity = FacesMessage.SEVERITY_INFO;
+		logger.info(sendMessage(severity, summary, i18n, property, null));
+	}
+
+	public void sendErrorMessage(String i18n, String summary, String property) {
+		Severity severity = FacesMessage.SEVERITY_ERROR;
+		logger.error(sendMessage(severity, summary, i18n, property, null));
+	}
+
+	public void sendFatalMessage(String i18n, String summary, String property) {
+		Severity severity = FacesMessage.SEVERITY_FATAL;
+		logger.fatal(sendMessage(severity, summary, i18n, property, null));
+	}
+
+	public void sendWarnMessage(String i18n, String summary, String property) {
+		Severity severity = FacesMessage.SEVERITY_WARN;
+		logger.warn(sendMessage(severity, summary, i18n, property, null));
+	}
+
+	public void sendComponentMessage(String id, String message, Severity severity) {
+		String log = sendMessage(severity, message, null, null, id);
+		if (severity.compareTo(FacesMessage.SEVERITY_ERROR) == 0) {
+			logger.error(log);
+		}
+		if (severity.compareTo(FacesMessage.SEVERITY_INFO) == 0) {
+			logger.info(log);
+		}
+		if (severity.compareTo(FacesMessage.SEVERITY_FATAL) == 0) {
+			logger.fatal(log);
+		}
+		if (severity.compareTo(FacesMessage.SEVERITY_WARN) == 0) {
+			logger.warn(log);
+		}
+	}
+
+	public void sendComponentMessage(String id, String i18n, String property, Severity severity) {
+		String log = sendMessage(severity, null, i18n, property, id);
+		if (severity.compareTo(FacesMessage.SEVERITY_ERROR) == 0) {
+			logger.error(log);
+		}
+		if (severity.compareTo(FacesMessage.SEVERITY_INFO) == 0) {
+			logger.info(log);
+		}
+		if (severity.compareTo(FacesMessage.SEVERITY_FATAL) == 0) {
+			logger.fatal(log);
+		}
+		if (severity.compareTo(FacesMessage.SEVERITY_WARN) == 0) {
+			logger.warn(log);
+		}
+	}
+
+	private String sendMessage(Severity severity, String summary, String i18n, String property, String target) {
+		String detail = null;
+		if (i18n != null) {
+			detail = ResourceBundle.getBundle(i18n).getString(property);
+		}
+		if (summary == null) {
+			summary = severity.toString();
+			String[] summaryArr = summary.split(" ");
+			summary = summaryArr[0];
+		}
+		FacesMessage message = new FacesMessage(severity, summary, detail);
+		FacesContext context = FacesContext.getCurrentInstance();
+		context.addMessage(target, message);
+		context.getExternalContext().getFlash().setKeepMessages(true);
+		return "***" + summary + " , " + detail + "***";
+	}
+
+	public void handleErrorMessages(ClientResponse<String> response) {
+		String jsonResponse;
+		try {
+			jsonResponse = RestfulServiceInvoker.parseResponseMediaType(response);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+		Collection<ViolationDTO> violations = violationDTOFactory.makeDTOs(jsonResponse);
+		this.handleErrorMessageViolation(violations);
+	}
+
+	public void handleErrorMessageViolation(Collection<ViolationDTO> violations) {
+		for (ViolationDTO violation : violations) {
+			String property = violation.getProperty().replace('.', '_');
+			this.sendComponentMessage(property, violation.getMessage(), FacesMessage.SEVERITY_ERROR);
+		}
+	}
+
+}

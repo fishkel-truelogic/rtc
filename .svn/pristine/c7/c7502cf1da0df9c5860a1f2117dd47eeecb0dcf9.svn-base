@@ -1,0 +1,8 @@
+ar\com\finit\admin\web\session\UserSessionBean.class
+ar\com\finit\admin\web\message\MessageManager.class
+ar\com\finit\admin\web\bean\template\TemplateBean.class
+ar\com\finit\admin\web\rest\client\HttpProtocolHelperGlobalImpl.class
+ar\com\finit\admin\web\rest\client\RestElement.class
+ar\com\finit\admin\web\rest\client\HttpProtocolHelperImpl.class
+ar\com\finit\admin\web\rest\client\HttpProtocolHelper.class
+ar\com\finit\admin\web\rest\client\RestfulServiceInvoker.class

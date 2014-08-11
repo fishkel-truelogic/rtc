@@ -1,0 +1,22 @@
+#mainFilter {
+	height: 250px;
+	padding: 2px 2px;
+
+}
+
+#mainFilter_header {
+	height: 50px;
+}
+
+#mainFilter_filter_container{
+	margin-top: 2px;
+	height: 150px;
+	margin-left: 150px;
+	margin-right: 150px;
+}
+
+#mainFilter_footer {
+	height: 46px;
+	margin-top: 2px;
+
+}

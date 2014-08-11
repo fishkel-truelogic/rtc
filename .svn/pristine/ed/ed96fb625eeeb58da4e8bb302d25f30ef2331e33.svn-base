@@ -1,0 +1,214 @@
+package ar.com.finit.owner.web.controller;
+
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.core.Response.Status;
+
+import org.jboss.resteasy.client.ClientResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import ar.com.finit.dto.model.EventDTO;
+import ar.com.finit.dto.model.FieldDTO;
+import ar.com.finit.dto.model.UserDTO;
+import ar.com.finit.dto.model.factory.EventDTOFactory;
+import ar.com.finit.dto.model.factory.FieldDTOFactory;
+import ar.com.finit.owner.web.model.CalendarModel;
+import ar.com.finit.owner.web.rest.client.HttpProtocolHelper;
+import ar.com.finit.owner.web.rest.client.RestElement;
+import ar.com.finit.owner.web.session.UserSessionHelper;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+/**
+ * @author leo
+ */
+
+@Controller
+@RequestMapping("/calendar")
+public class CalendarController {
+
+	@Autowired
+	private UserSessionHelper userSessionHelper;
+	@Autowired
+	private HttpProtocolHelper httpProtocolHelper;
+	@Autowired
+	private EventDTOFactory eventDTOFactory;
+	@Autowired
+	private FieldDTOFactory fieldDTOFactory;
+
+	@RequestMapping({ "/", "" })
+	public ModelAndView calendarPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Map<String, Object> params = new HashMap<String, Object>();
+		ClientResponse<String> clientResponse;
+		String url;
+
+		UserDTO user = userSessionHelper.getUser(request, response);
+
+		url = httpProtocolHelper.getServiceUrl(RestElement.PRIV, RestElement.FIELD) + user.getId();
+		clientResponse = httpProtocolHelper.getJsonRequest(url);
+
+		if (clientResponse.getStatus() == Status.OK.getStatusCode()) {
+			List<FieldDTO> fields = (List<FieldDTO>) fieldDTOFactory.makeDTOs(clientResponse.getEntity());
+			params.put("fields", fields);
+		}
+
+		params.put("entity", 0);
+
+		return new ModelAndView("calendar", params);
+	}
+
+	@RequestMapping("/{entity}")
+	public ModelAndView calendarPage(@PathVariable String entity) {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("entity", entity);
+		return new ModelAndView("calendarEmbed", params);
+	}
+
+	@RequestMapping("/edit")
+	public ModelAndView calendarEdit(@RequestParam(value = "id", required = false) String id) throws ServletException, IOException, ParseException {
+		Map<String, Object> params = new HashMap<String, Object>();
+		ClientResponse<String> response;
+		String url;
+
+		if (id != null) {
+			url = httpProtocolHelper.getServiceUrl(RestElement.PRIV, RestElement.EVENT) + id;
+			response = httpProtocolHelper.getJsonRequest(url);
+
+			if (response.getStatus() == Status.OK.getStatusCode()) {
+				EventDTO event = eventDTOFactory.makeDTO(response.getEntity());
+				String pattern1 = "MM/dd/yyyy HH:mm";
+				SimpleDateFormat format1 = new SimpleDateFormat(pattern1);
+				String pattern2 = "dd/MM/yyyy HH:mm";
+				SimpleDateFormat format2 = new SimpleDateFormat(pattern2);
+				event.setStartTime(format2.format(format1.parse(event.getStartTime())));
+				event.setEndTime(format2.format(format1.parse(event.getEndTime())));
+				params.put("event", event);
+			}
+		}
+		
+		UserDTO user = userSessionHelper.getUser(null, null);
+
+		url = httpProtocolHelper.getServiceUrl(RestElement.PRIV, RestElement.FIELD) + user.getId();
+		response = httpProtocolHelper.getJsonRequest(url);
+
+		if (response.getStatus() == Status.OK.getStatusCode()) {
+			List<FieldDTO> fields = (List<FieldDTO>) fieldDTOFactory.makeDTOs(response.getEntity());
+			params.put("fields", fields);
+		}
+
+		return new ModelAndView("edit/event", params);
+	}
+
+	@RequestMapping(value = "/datafeed/adddetails", method = RequestMethod.POST)
+	public @ResponseBody
+	String addDetails(@RequestParam(value = "Subject", required = true) String subject,
+			@RequestParam(value = "id", required = false) String id,
+			@RequestParam(value = "stpartdate", required = true) String startDate,
+			@RequestParam(value = "stparttime", required = true) String startTime, @RequestParam(value = "etparttime", required = true) String endTime, 
+			@RequestParam(value = "entity", required = true) String entity,
+			@RequestParam(value = "entityName", required = true) String entityName) throws ServletException, IOException, ParseException {
+
+		ClientResponse<String> response;
+		String url;
+		boolean isSuccess = false;
+		String msg = null;
+		String data = null;
+		
+		UserDTO user = userSessionHelper.getUser(null, null);
+
+		String pattern1 = "MM/dd/yyyy HH:mm";
+		SimpleDateFormat format1 = new SimpleDateFormat(pattern1);
+		String pattern2 = "dd/MM/yyyy HH:mm";
+		SimpleDateFormat format2 = new SimpleDateFormat(pattern2);
+		
+		EventDTO event = new EventDTO();
+		event.setId(id);
+		event.setColor(-1);
+		event.setSubject(subject);
+		event.setEditable(1);
+		event.setStartTime(format1.format(format2.parse(startDate + " " + startTime)));
+		event.setEndTime(format1.format(format2.parse(startDate + " " + endTime)));
+		event.setRecurring(0);
+		event.setMoreThanOneDay(0);
+		event.setEntity(entity);
+		event.setEntityName(entityName);
+		event.setAllDay(0);
+		event.setUserId(user.getId());
+		url = httpProtocolHelper.getServiceUrl(RestElement.PRIV, RestElement.EVENT) + "addDetails";
+		if (id != null) url += "/" + id; 
+		response = httpProtocolHelper.postJsonRequest(url, event);
+
+		if (response.getStatus() == Status.OK.getStatusCode()) {
+			isSuccess = true;
+			msg = "Creado con exito";
+			if (id != null) msg = "Modificado con exito";
+			data = response.getEntity();
+		}
+		return "{\"IsSuccess\":" + isSuccess + ", \"Msg\":\"" + msg + "\", \"Data\":" + data + "}";
+	}
+
+	@RequestMapping(value = "/datafeed/list/{entity}", method = RequestMethod.POST)
+	public @ResponseBody
+	String datafeed(@PathVariable String entity, @RequestParam("showdate") String showdate, @RequestParam("viewtype") String viewtype) throws ServletException, IOException {
+		CalendarModel calendar = new CalendarModel(showdate, viewtype);
+
+		ClientResponse<String> response;
+		String url;
+
+		UserDTO user = userSessionHelper.getUser(null, null);
+
+		String pathArgs = "?start=" + calendar.getStart() + "&end=" + calendar.getEnd();
+		if (!"0".equals(entity))
+			pathArgs += "&entity=" + entity;
+
+		url = httpProtocolHelper.getServiceUrl(RestElement.PRIV, RestElement.EVENT) + user.getId() + pathArgs;
+		response = httpProtocolHelper.getJsonRequest(url);
+
+		if (response.getStatus() == Status.OK.getStatusCode()) {
+			List<EventDTO> events = (List<EventDTO>) eventDTOFactory.makeDTOs(response.getEntity());
+			calendar.addEvents(events);
+		}
+
+		Gson gson = new Gson();
+		return gson.toJson(calendar, new TypeToken<CalendarModel>() {
+		}.getType());
+	}
+
+	
+	@RequestMapping(value = "/datafeed/remove", method = RequestMethod.POST)
+	public @ResponseBody String remove(@RequestParam("calendarId") String id) throws ServletException, IOException {
+		
+		ClientResponse<String> response;
+		String url;
+		
+		boolean isSuccess = false;
+		String msg = "No se pudo eliminar";
+		
+		url = httpProtocolHelper.getServiceUrl(RestElement.PRIV, RestElement.EVENT) + id;
+		response = httpProtocolHelper.deleteJsonRequest(url);
+		
+		if (response.getStatus() == Status.OK.getStatusCode()) {
+			isSuccess = true;
+			msg = "Eliminado con exito";
+		}
+		return "{\"IsSuccess\":" + isSuccess + ", \"Msg\":\"" + msg + "\"}";
+		
+	}
+
+}

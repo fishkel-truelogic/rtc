@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="ar.com.finit.core.model.qd.impl.LugarImpl" table="Lugares">
+    
+       <id name="id" type="java.lang.Integer">
+			<column name="Id_Lugar" />
+			<generator class="native" />
+		</id>
+        <property name="idDeporte" type="java.lang.Integer">
+            <column name="Id_Deporte" />
+        </property>
+        <property name="idProvincia" type="java.lang.Integer">
+            <column name="Id_Provincia" />
+        </property>
+        <property name="idBarrio" type="java.lang.Integer">
+            <column name="Id_Barrio" />
+        </property>
+        <property name="tamano" type="java.lang.Integer">
+            <column name="Tamano" />
+        </property>
+        <property name="mostrar" type="java.lang.Integer">
+            <column name="Mostrar" />
+        </property>
+        <property name="destacada" type="java.lang.Integer">
+            <column name="Destacada" />
+        </property>
+        <property name="descripcion" type="java.lang.String">
+            <column name="Descripcion" />
+        </property>
+        <property name="domicilio" type="java.lang.String">
+            <column name="Domicilio" />
+        </property>
+        <property name="telefono" type="java.lang.String">
+            <column name="Telefono" />
+        </property>
+        <property name="comentario" type="java.lang.String">
+            <column name="Comentario" />
+        </property>
+        
+        
+    </class>
+</hibernate-mapping>

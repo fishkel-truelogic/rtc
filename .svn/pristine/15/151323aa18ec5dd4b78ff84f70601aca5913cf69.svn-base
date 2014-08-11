@@ -1,0 +1,88 @@
+package ar.com.finit.dto.model;
+
+import ar.com.finit.dto.helper.EqualsHelper;
+
+/**
+ * @author leo
+ */
+public class ImageDTO {
+
+	private String id;
+	private String name;
+	private String extension;
+	private String data;
+	private String avatar;
+	private String userId;
+	private String urlMetadata;
+
+	private static final String IMAGES = "/images/metadata?id=";
+	public static final int AVATAR_WIDTH = 75;
+	public static final int AVATAR_HEIGHT = 50;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.urlMetadata = IMAGES + id;
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getData() {
+		return data;
+	}
+
+	public void setData(String data) {
+		this.data = data;
+	}
+
+	public String getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
+	}
+
+	public String getUrlMetadata() {
+		return urlMetadata;
+	}
+
+	public String getExtension() {
+		return extension;
+	}
+
+	public void setExtension(String extension) {
+		this.extension = extension;
+	}
+	
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof ImageDTO)) {
+			return false;
+		}
+		ImageDTO other = (ImageDTO) obj;
+		return (EqualsHelper.equals(other.getId(), this.getId()) && EqualsHelper.equals(other.getName(), this.getName()) && EqualsHelper.equals(other.getData(), this.getData()))
+				&& EqualsHelper.equals(other.getAvatar(), this.getAvatar()) && EqualsHelper.equals(other.getExtension(), this.getExtension());
+	}
+}

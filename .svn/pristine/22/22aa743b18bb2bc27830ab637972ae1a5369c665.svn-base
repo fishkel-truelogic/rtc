@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="ar.com.finit.core.model.impl.ImageImpl" table="IMAGE">
+    
+        <id name="id" type="java.lang.String">
+            <column name="ID" />
+            <generator class="ar.com.finit.core.generator.UUIDGenerator" />
+        </id>
+        
+        <property name="name" type="java.lang.String">
+            <column name="NAME"/>
+        </property>
+        
+        <property name="description" type="java.lang.String">
+            <column name="DESCRIPTION"/>
+        </property>
+        
+        <property name="extension" type="java.lang.String">
+            <column name="EXTENSION" />
+        </property>
+        
+        <property name="entity" type="java.lang.String">
+            <column name="ENTITY"/>
+        </property>
+        
+        <property name="width" type="java.lang.Integer">
+            <column name="WIDTH" />
+        </property>
+        
+        <property name="height" type="java.lang.Integer">
+            <column name="HEIGHT" />
+        </property>
+
+        <property name="cover" type="java.lang.Boolean">
+            <column name="COVER" />
+        </property>
+        
+    </class>
+</hibernate-mapping>

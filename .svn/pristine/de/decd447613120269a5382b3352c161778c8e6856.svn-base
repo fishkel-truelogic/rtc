@@ -1,0 +1,39 @@
+package ar.com.finit.core.model.dao.impl;
+
+import java.io.Serializable;
+import java.util.List;
+
+import org.hibernate.Query;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import ar.com.finit.core.dao.impl.AbstractDao;
+import ar.com.finit.core.model.Ground;
+import ar.com.finit.core.model.dao.GroundDao;
+
+/**
+ * @author leo
+ */
+public class GroundDaoImpl extends AbstractDao<Serializable, Ground> implements GroundDao {
+
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public List<Ground> findBySport(String sport) {
+		String hql = String.format("select gr from %s as gr ", this.getPersistentType().getName());
+		hql += " left join gr.sport as s where 1 = 1 and s.name = :sport";
+		Query q = this.getSession().createQuery(hql);
+		q.setParameter("sport", sport);
+		return q.list();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public List<String> findAllDistinct() {
+		String hql = String.format("select distinct gr.text from %s as gr ", this.getPersistentType().getName());
+		Query q = this.getSession().createQuery(hql);
+		return q.list();
+	}
+
+}

@@ -1,0 +1,14 @@
+package ar.com.finit.core.model;
+
+/**
+ * @author leo
+ */
+public interface PlayerCapacity {
+
+	public String getId();
+
+	public String getText();
+
+	public Sport getSport();
+
+}

@@ -1,0 +1,7 @@
+<jboss-web>
+  <security-domain>sso</security-domain>
+  <context-root>owner-web</context-root>
+  <valve>
+     <class-name>org.apache.catalina.authenticator.SingleSignOn</class-name>
+   </valve>
+</jboss-web>

@@ -1,0 +1,15 @@
+ar\com\finit\core\generator\UUIDGenerator.class
+ar\com\finit\core\model\ImageMetadata.class
+ar\com\finit\core\model\impl\ImageMetadataImpl.class
+ar\com\finit\core\model\dao\RoleDao.class
+ar\com\finit\core\model\dao\impl\UserDaoImpl.class
+ar\com\finit\core\model\Image.class
+ar\com\finit\core\model\User.class
+ar\com\finit\core\model\dao\UserDao.class
+ar\com\finit\core\dao\impl\AbstractDao.class
+ar\com\finit\core\model\impl\ImageImpl.class
+ar\com\finit\core\model\impl\RoleImpl.class
+ar\com\finit\core\model\Role.class
+ar\com\finit\core\model\impl\UserImpl.class
+ar\com\finit\core\model\dao\impl\RoleDaoImpl.class
+ar\com\finit\core\dao\Dao.class

@@ -1,0 +1,31 @@
+package ar.com.finit.core.model.impl;
+
+import ar.com.finit.core.model.ImageMetadata;
+
+/**
+ * @author leo
+ */
+public class ImageMetadataImpl implements ImageMetadata {
+
+	private String id;
+	private byte[] data;
+
+	@Override
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	@Override
+	public byte[] getData() {
+		return data;
+	}
+
+	public void setData(byte[] data) {
+		this.data = data;
+	}
+
+}

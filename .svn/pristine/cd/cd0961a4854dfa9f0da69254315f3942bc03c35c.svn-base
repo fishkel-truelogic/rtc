@@ -1,0 +1,100 @@
+package ar.com.finit.owner.web.image;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import javax.faces.application.FacesMessage;
+
+import org.jboss.resteasy.client.ClientResponse;
+import org.primefaces.model.LazyDataModel;
+import org.primefaces.model.SortOrder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+import ar.com.finit.dto.model.ImageDTO;
+import ar.com.finit.dto.model.factory.ImageCollectionPageFactory;
+import ar.com.finit.dto.model.factory.ImageDTOFactory;
+import ar.com.finit.dto.model.page.ImageCollectionPage;
+import ar.com.finit.owner.web.message.MessageManager;
+import ar.com.finit.owner.web.rest.client.HttpProtocolHelper;
+import ar.com.finit.owner.web.rest.client.RestElement;
+import ar.com.finit.owner.web.session.UserSessionBean;
+
+/**
+ * @author leo
+ */
+@Component
+@Scope(value = "request")
+public class ImageLazyModel extends LazyDataModel<ImageDTO> {
+	private static final long serialVersionUID = 8160180080183604109L;
+
+	@Autowired
+	private MessageManager messageManager;
+	@Autowired
+	private HttpProtocolHelper httpProtocolHelper;
+	@Autowired
+	private ImageCollectionPageFactory imageCollectionPageFactory;
+	@Autowired
+	private ImageDTOFactory imageDTOFactory;
+	@Autowired
+	private UserSessionBean userSessionBean;
+
+	@Override
+	public List<ImageDTO> load(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String, String> filters) {
+		String param = "?";
+		param += "userId=" + userSessionBean.getUser().getId();
+		
+		if (!param.endsWith("?")) {
+			param += "&";
+		}
+		param += "pageSize=" + pageSize;
+
+		int page = (pageSize + first) / pageSize;
+		if (!param.endsWith("?")) {
+			param += "&";
+		}
+		param += "page=" + page;
+
+		String url = httpProtocolHelper.getServiceUrl(RestElement.PUB, RestElement.IMAGE);
+		if (!param.equals("?")) {
+			url += param;
+		}
+		ClientResponse<String> response = httpProtocolHelper.getJsonRequest(url);
+		if (response.getStatus() != 200) {
+			messageManager.sendComponentMessage("images_msg", messageManager.I18N, "unexpectedError", FacesMessage.SEVERITY_FATAL);
+			return new ArrayList<ImageDTO>();
+		}
+		ImageCollectionPage imageCollectionPage = imageCollectionPageFactory.makeDTO(response.getEntity());
+		this.setRowCount((int) imageCollectionPage.getRowCount());
+
+		return new ArrayList<ImageDTO>(imageCollectionPage.getPageElements());
+	}
+
+	@Override
+	public ImageDTO getRowData(String rowKey) {
+		String url = httpProtocolHelper.getServiceUrl(RestElement.PUB, RestElement.IMAGE) + rowKey;
+
+		ClientResponse<String> response = httpProtocolHelper.getJsonRequest(url);
+		if (response.getStatus() != 200) {
+			messageManager.sendComponentMessage("images_msg", messageManager.I18N, "unexpectedError", FacesMessage.SEVERITY_FATAL);
+			return new ImageDTO();
+		}
+		return imageDTOFactory.makeDTO(response.getEntity());
+	}
+
+	@Override
+	public Object getRowKey(ImageDTO image) {
+		return image.getId();
+	}
+
+	@Override
+	public void setRowIndex(int rowIndex) {
+		if (rowIndex == -1 || getPageSize() == 0) {
+			super.setRowIndex(-1);
+		} else {
+			super.setRowIndex(rowIndex % getPageSize());
+		}
+	}
+}

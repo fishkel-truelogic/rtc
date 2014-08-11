@@ -1,0 +1,22 @@
+package ar.com.finit.core.model;
+
+import java.util.Date;
+
+/**
+ * @author leo
+ */
+public interface Irregular {
+
+	public String getId();
+
+	public boolean isAllDay();
+
+	public Date getSinceDate();
+
+	public Date getToDate();
+
+	public Date getOpenHour();
+
+	public Date getCloseHour();
+
+}

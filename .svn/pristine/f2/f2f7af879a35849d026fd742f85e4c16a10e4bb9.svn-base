@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="ar.com.finit.core.model.impl.EventImpl" table="EVENT">
+		
+		<id name="id" type="java.lang.Integer">
+			<column name="ID" />
+			<generator class="native" />
+		</id>
+
+		
+		<property name="start_date" type="java.util.Date">
+			<column name="START_TIME" />
+		</property>
+		
+		<property name="end_date" type="java.util.Date">
+			<column name="END_TIME" />
+		</property>
+		
+		<property name="prepayment" type="java.util.Date">
+			<column name="PREPAYMENT" />
+		</property>
+		
+		<property name="status" type="java.lang.Integer">
+			<column name="STATUS" />
+		</property>
+
+		<property name="notPlayer" type="java.lang.String">
+			<column name="NOT_PLAYER" />
+		</property>
+
+		<property name="rtc" type="java.lang.Boolean">
+			<column name="RTC" />
+		</property>
+		
+		<many-to-one name="player" column="PLAYER" class="ar.com.finit.core.model.impl.PlayerImpl" cascade="none" lazy="false" />
+
+		<many-to-one name="user" column="RTC_USER" class="ar.com.finit.core.model.impl.UserImpl" cascade="none" lazy="false" />
+
+		<many-to-one name="field" column="FIELD" class="ar.com.finit.core.model.impl.FieldImpl" cascade="none" lazy="false" />
+
+	</class>
+</hibernate-mapping>

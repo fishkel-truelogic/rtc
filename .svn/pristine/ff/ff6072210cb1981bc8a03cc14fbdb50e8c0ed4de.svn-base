@@ -1,0 +1,14 @@
+package ar.com.finit.core.model.dao.impl;
+
+import java.io.Serializable;
+
+import ar.com.finit.core.dao.impl.AbstractDao;
+import ar.com.finit.core.model.Irregular;
+import ar.com.finit.core.model.dao.IrregularDao;
+
+/**
+ * @author leo
+ */
+public class IrregularDaoImpl extends AbstractDao<Serializable, Irregular> implements IrregularDao {
+
+}

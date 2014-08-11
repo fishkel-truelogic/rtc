@@ -1,0 +1,165 @@
+package ar.com.finit.owner.web.image;
+
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.imageio.ImageIO;
+
+import org.jboss.resteasy.client.ClientResponse;
+import org.jboss.resteasy.util.Base64;
+import org.primefaces.event.FileUploadEvent;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+import ar.com.finit.dto.model.ImageDTO;
+import ar.com.finit.dto.model.factory.ImageCollectionPageFactory;
+import ar.com.finit.dto.model.factory.ImageDTOFactory;
+import ar.com.finit.owner.web.message.MessageManager;
+import ar.com.finit.owner.web.rest.client.HttpProtocolHelper;
+import ar.com.finit.owner.web.rest.client.RestElement;
+import ar.com.finit.owner.web.session.UserSessionBean;
+
+/**
+ * @author leo
+ */
+
+@Component
+@Scope(value = "request")
+public class ImageBean {
+
+	@Autowired
+	private MessageManager messageManager;
+	@Autowired
+	private ImageDTOFactory imageDTOFactory;
+	@Autowired
+	private HttpProtocolHelper httpProtocolHelper;
+	@Autowired
+	private ImageCollectionPageFactory imageCollectionPageFactory;
+	@Autowired
+	private ImageLazyModel imageLazyModel;
+	@Autowired
+	private UserSessionBean userSessionBean;
+	@Autowired
+	private String imagesRoot;
+	private String hiddenImage;
+	private ImageDTO selectedImage;
+	private ImageDTO image = new ImageDTO();
+
+	public String avatar(String id, String ext) throws IOException {
+		FacesContext context = FacesContext.getCurrentInstance();
+		String id2 = context.getExternalContext().getRequestParameterMap().get("id");
+		String ext2 = context.getExternalContext().getRequestParameterMap().get("ext");
+		String idFile = id2 != null ? id2 : id;
+		String extension = ext2 != null ? ext2 : ext;
+		if (idFile == null || idFile.isEmpty()) {
+			return null;
+		}
+		File file = new File(this.imagesRoot + "avatar/" + idFile + "." + extension.split("/")[1]);
+		FileInputStream fis;
+		try {
+			fis = new FileInputStream(file);
+			fis.close();
+		} catch (FileNotFoundException e) {
+			String url = httpProtocolHelper.getServiceUrl(RestElement.PUB, RestElement.IMAGE) + idFile;
+			ClientResponse<String> response = httpProtocolHelper.getJsonRequest(url);
+			ImageDTO dto = imageDTOFactory.makeDTO(response.getEntity());
+			this.externFile(dto.getAvatar(), this.imagesRoot + "avatar/" + idFile + "." + extension.split("/")[1], extension);
+		}
+		return "/../images/avatar/" + idFile + "." + extension.split("/")[1];
+	}
+
+	public String obtainImage(String id, String ext) throws IOException {
+		FacesContext context = FacesContext.getCurrentInstance();
+		String id2 = context.getExternalContext().getRequestParameterMap().get("id");
+		String ext2 = context.getExternalContext().getRequestParameterMap().get("ext");
+		String idFile = id2 != null ? id2 : id;
+		String extension = ext2 != null ? ext2 : ext;
+		if (idFile == null || idFile.isEmpty()) {
+			return null;
+		}
+		File file = new File(this.imagesRoot + idFile + "." + extension.split("/")[1]);
+		FileInputStream fis;
+		try {
+			fis = new FileInputStream(file);
+			fis.close();
+		} catch (FileNotFoundException e) {
+			String url = httpProtocolHelper.getServiceUrl(RestElement.PUB, RestElement.IMAGE) + idFile + "?lazyMetadata=false";
+			ClientResponse<String> response = httpProtocolHelper.getJsonRequest(url);
+			ImageDTO dto = imageDTOFactory.makeDTO(response.getEntity());
+			this.externFile(dto.getData(), this.imagesRoot + idFile + "." + extension.split("/")[1], extension);
+		}
+		return "/../images/" + idFile + "." + extension.split("/")[1];
+	}
+
+	public void handleImageUpload(FileUploadEvent event) throws IOException {
+		byte[] source = event.getFile().getContents();
+		String name = event.getFile().getFileName();
+		String extension = event.getFile().getContentType();
+		String base64 = Base64.encodeBytes(source);
+		this.image.setData(base64);
+		this.image.setName(name);
+		this.image.setExtension(extension);
+		this.image.setUserId(this.userSessionBean.getUser().getId());
+		this.save();
+	}
+
+	private void externFile(String source, String name, String extension) {
+		try {
+			InputStream in = new ByteArrayInputStream(Base64.decode(source));
+			BufferedImage bImageFromConvert = ImageIO.read(in);
+			File outputfile = new File(name);
+			ImageIO.write(bImageFromConvert, extension.split("/")[1], outputfile);
+		} catch (IOException e) {
+			messageManager.sendComponentMessage("images_msg", messageManager.I18N, "notFound", FacesMessage.SEVERITY_ERROR);
+		}
+	}
+
+	public String save() {
+		ClientResponse<String> response = httpProtocolHelper.postJsonRequest(httpProtocolHelper.getServiceUrl(RestElement.PRIV, RestElement.IMAGE), this.image);
+		if (response.getStatus() == 406) {
+			messageManager.handleErrorMessages(response);
+			return null;
+		}
+
+		if (response.getStatus() != 201) {
+			messageManager.sendComponentMessage("images_msg", messageManager.I18N, "unexpectedError", FacesMessage.SEVERITY_FATAL);
+			messageManager.sendFatalMessage(messageManager.I18N, String.valueOf(response.getStatus()), "unexpectedError");
+			return null;
+		}
+		messageManager.sendComponentMessage("images_msg", messageManager.I18N, "creationSuccess", FacesMessage.SEVERITY_INFO);
+		return null;
+	}
+
+	public ImageLazyModel getImageLazyModel() {
+		return imageLazyModel;
+	}
+
+	public void setImageLazyModel(ImageLazyModel imageLazyModel) {
+		this.imageLazyModel = imageLazyModel;
+	}
+
+	public String getHiddenImage() {
+		return hiddenImage;
+	}
+
+	public void setHiddenImage(String hiddenImage) {
+		this.hiddenImage = hiddenImage;
+	}
+
+	public ImageDTO getSelectedImage() {
+		return selectedImage;
+	}
+
+	public void setSelectedImage(ImageDTO selectedImage) {
+		this.selectedImage = selectedImage;
+	}
+
+}

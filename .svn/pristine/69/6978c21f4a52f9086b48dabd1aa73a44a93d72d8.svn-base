@@ -1,0 +1,14 @@
+package ar.com.finit.core.model.dao.impl;
+
+import java.io.Serializable;
+
+import ar.com.finit.core.dao.impl.AbstractDao;
+import ar.com.finit.core.model.MapMarker;
+import ar.com.finit.core.model.dao.MapMarkerDao;
+
+/**
+ * @author leo
+ */
+public class MapMarkerDaoImpl extends AbstractDao<Serializable, MapMarker> implements MapMarkerDao {
+
+}

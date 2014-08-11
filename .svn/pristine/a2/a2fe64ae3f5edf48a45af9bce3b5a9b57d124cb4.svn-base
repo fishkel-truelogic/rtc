@@ -1,0 +1,99 @@
+package ar.com.finit.service.model.converter;
+
+import java.io.IOException;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
+
+import org.hibernate.LazyInitializationException;
+import org.jboss.resteasy.util.Base64;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import ar.com.finit.core.model.Image;
+import ar.com.finit.core.model.dao.ImageDao;
+import ar.com.finit.core.model.impl.ImageImpl;
+import ar.com.finit.core.model.impl.ImageMetadataImpl;
+import ar.com.finit.dto.helper.ImageHelper;
+import ar.com.finit.dto.model.ImageDTO;
+
+/**
+ * @author leo
+ */
+public class ImageConverter {
+
+	@Autowired
+	private ImageDao imageDao;
+
+	public Set<ImageDTO> toDTO(Collection<Image> images) {
+		Set<ImageDTO> dtos = new HashSet<ImageDTO>();
+		for (Image image : images) {
+			dtos.add(toDTO(image));
+		}
+		return dtos;
+	}
+
+	public ImageDTO toDTO(Image image) {
+		return this.toDTO(image, true);
+	}
+
+	public ImageDTO toDTO(Image image, boolean lazyMetadata) {
+		if (image == null) {
+			return null;
+		}
+		ImageDTO dto = new ImageDTO();
+		dto.setId(image.getId());
+		dto.setName(image.getName());
+		dto.setExtension(image.getExtension());
+		dto.setAvatar(Base64.encodeBytes(image.getAvatar()));
+		dto.setUserId(image.getUserId());
+
+		try {
+			dto.setData(Base64.encodeBytes(image.getImageMetadata().getData()));
+		} catch (LazyInitializationException e) {
+			if (!lazyMetadata) {
+				dto.setData(Base64.encodeBytes(imageDao.findMetadata(image)));
+			}
+		}
+		return dto;
+	}
+
+	public Set<Image> toEntity(Set<ImageDTO> images) {
+		Set<Image> entities = new HashSet<Image>();
+		for (ImageDTO imageDTO : images) {
+			entities.add(toEntity(imageDTO));
+		}
+		return entities;
+	}
+
+	public Image toEntity(ImageDTO imageDTO) {
+		ImageImpl image = new ImageImpl();
+		image.setName(imageDTO.getName());
+		image.setExtension(imageDTO.getExtension());
+		image.setUserId(imageDTO.getUserId());
+		try {
+			ImageMetadataImpl metadata = new ImageMetadataImpl();
+			
+			if (imageDTO.getData() == null && imageDTO.getUrlMetadata() != null) {
+				Image img = this.imageDao.findById(imageDTO.getId());
+				metadata.setData(Base64.decode(this.toDTO(img, false).getData()));
+			} else {
+				metadata.setData(Base64.decode(imageDTO.getData()));
+			}
+			
+			image.setImageMetadata(metadata);
+			if (imageDTO.getAvatar() == null) {
+				if (imageDTO.getData() != null) {
+					image.setAvatar(ImageHelper.scale(Base64.decode(imageDTO.getData()), ImageDTO.AVATAR_WIDTH, ImageDTO.AVATAR_HEIGHT, imageDTO.getExtension()));
+				} else {
+					image.setAvatar(null);
+				}
+			} else {
+				image.setAvatar(Base64.decode(imageDTO.getAvatar()));
+			}
+		} catch (IOException e) {
+			throw new RuntimeException();
+		}
+		image.setId(imageDTO.getId());
+		return image;
+	}
+}

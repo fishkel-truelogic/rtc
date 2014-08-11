@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       					http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+
+	<bean id="mapServices" class="ar.com.finit.service.rest.utils.MapServices">
+		<property name="root" value="${rtc.rest.root.url}" />
+		<property name="pub" value="${rtc.rest.public}" />
+		<property name="priv" value="${rtc.rest.private}" />
+		<property name="admin" value="${rtc.rest.admin}" />
+		<property name="users" value="${rtc.rest.users}" />
+		<property name="roles" value="${rtc.rest.roles}" />
+		<property name="images" value="${rtc.rest.images}" />
+		<property name="lugares" value="${rtc.rest.lugares}" />
+		<property name="mapMarkers" value="${rtc.rest.mapMarkers}" />
+		<property name="albums" value="${rtc.rest.albums}" />
+		<property name="sports" value="${rtc.rest.sports}" />
+		<property name="districts" value="${rtc.rest.districts}" />
+		<property name="grounds" value="${rtc.rest.grounds}" />
+		<property name="stablishments" value="${rtc.rest.stablishments}" />
+		<property name="states" value="${rtc.rest.states}" />
+		<property name="fields" value="${rtc.rest.fields}" />
+		<property name="players" value="${rtc.rest.players}" />
+		<property name="tpServices" value="${rtc.rest.tpServices}" />
+	</bean>
+	
+</beans>

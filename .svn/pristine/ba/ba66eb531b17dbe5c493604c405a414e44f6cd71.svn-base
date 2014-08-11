@@ -1,0 +1,25 @@
+package ar.com.finit.owner.web.rest.client;
+
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+import org.jboss.resteasy.client.ClientResponse;
+
+/**
+ * @author leo
+ */
+public class RestfulServiceInvoker {
+
+	public static String parseResponseMediaType(ClientResponse<String> response) throws IOException {
+		StringBuilder result = new StringBuilder();
+		BufferedReader br = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(response.getEntity().getBytes())));
+		String output = null;
+
+		while ((output = br.readLine()) != null) {
+			result.append(output);
+		}
+		return result.toString();
+	}
+}

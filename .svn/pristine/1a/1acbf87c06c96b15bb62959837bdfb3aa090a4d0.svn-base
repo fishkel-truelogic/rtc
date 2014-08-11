@@ -1,0 +1,45 @@
+(function($){
+	
+	var state;
+	
+	$.setState = function(stateP) {
+		state = stateP;
+	};
+	
+	$.getState = function() {
+		return state;
+	};
+
+	$.getInitialStructure = function(){
+		$.getAjaxHtml('header', 'html/header.html');
+		$.getAjaxHtml('mainFilter', 'html/mainFilter.html');
+		$.getAjaxHtml('page', 'html/page.html');
+		$.getStateDropDown();
+		/*$.getAjaxHtml('footer', 'html/footer.html');*/
+
+	};
+	
+	$.getAjaxHtml = function(divId, htmlFile){
+		
+		
+		function _processTemplate(response){
+			var data;
+			$.template("DOMtemplate", response);
+			$("#" + divId).html(
+			$.tmpl("DOMtemplate", data, {
+			}));
+		}
+		
+		$.ajax({
+			url : htmlFile,
+			dataType : 'html',
+			success : _processTemplate
+		});
+
+	};
+	
+	$.getRtcServiceUrl = function() {
+		return "http://127.0.0.1:8080/rtc-service/public";
+	}
+	
+})(jQuery);

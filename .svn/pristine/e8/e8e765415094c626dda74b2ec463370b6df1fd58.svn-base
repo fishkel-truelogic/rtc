@@ -1,0 +1,14 @@
+package ar.com.finit.core.model.dao.impl;
+
+import java.io.Serializable;
+
+import ar.com.finit.core.dao.impl.AbstractDao;
+import ar.com.finit.core.model.Player;
+import ar.com.finit.core.model.dao.PlayerDao;
+
+/**
+ * @author leo
+ */
+public class PlayerDaoImpl extends AbstractDao<Serializable, Player> implements PlayerDao {
+
+}

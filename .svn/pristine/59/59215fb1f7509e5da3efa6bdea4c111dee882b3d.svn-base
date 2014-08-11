@@ -1,0 +1,13 @@
+package ar.com.finit.core.model.dao;
+
+import java.io.Serializable;
+
+import ar.com.finit.core.dao.Dao;
+import ar.com.finit.core.model.DayOfWeek;
+
+/**
+ * @author leo
+ */
+public interface DayOfWeekDao extends Dao<Serializable, DayOfWeek> {
+
+}

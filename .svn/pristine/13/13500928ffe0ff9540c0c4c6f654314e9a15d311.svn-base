@@ -1,0 +1,25 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+  <div style="background-color:#000; margin-top:-50px; height:100%">
+    <div id="main">
+      <div id="site_content" style="height:100%"> 
+        
+        <div id="content">
+	        <form action="/owner-web/owner/fields/" id="field" onsubmit="return $.validateField();" method="post">
+	            <div class="form_settings" style="color:#FFF">
+	              <p><span>Nombre de la cancha</span><input type="text" id="name" name="name" value="" /></p>
+	              <p><span>Descripcion</span><textarea id="description" rows="4" cols="50" name="description"></textarea></p>
+	              <p><span>Techo</span><input class="checkbox" type="checkbox" name="ceiling" value="" /></p>
+	              <p><span>Luces</span><input class="checkbox" type="checkbox" name="lights" value="" /></p>
+	              <p><span>Suelo</span><select id="id" name="name"><option value="1">Example 1</option><option value="2">Example 2</option></select></p>
+	              <h4>Deportes</h4>
+	              <p><span>Futbol</span><input class="checkbox" type="checkbox" name="sport1" value="" /></p>
+	              <p><span>Tenis</span><input class="checkbox" type="checkbox" name="sport2" value="" /></p>
+	              <p><span>Basket</span><input class="checkbox" type="checkbox" name="sport3" value="" /></p>
+	              <p style="padding-top: 15px"><span>&nbsp;</span><input class="submit" type="submit" name="submit" value="crear" /></p>
+	            </div>
+	        </form>
+         
+      	</div>
+      </div>
+      </div>
+    </div>

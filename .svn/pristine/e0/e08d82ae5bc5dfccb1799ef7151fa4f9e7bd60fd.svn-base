@@ -1,0 +1,40 @@
+package ar.com.finit.core.model.dao.impl;
+
+import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.List;
+
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import ar.com.finit.core.dao.impl.AbstractDao;
+import ar.com.finit.core.model.Event;
+import ar.com.finit.core.model.dao.EventDao;
+import ar.com.finit.core.model.impl.EventImpl;
+
+/**
+ * @author leo
+ */
+public class EventDaoImpl extends AbstractDao<Serializable, Event> implements EventDao {
+
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public List<Event> findBy(String userId, String entity, String start, String end) throws ParseException {
+		Criteria criteria = getSession().createCriteria(EventImpl.class);
+		if (entity != null && !entity.isEmpty()) {
+			criteria.add(Restrictions.eq("entity", entity));
+		}
+		String pattern  = "MM/dd/yyyy hh:mm";
+		SimpleDateFormat format = new SimpleDateFormat(pattern);
+		criteria.add(Restrictions.between("startTime", format.parse(start), format.parse(end)));
+		criteria.addOrder(Order.desc("startTime"));
+		criteria.setMaxResults(3);
+		return criteria.list();
+	}
+
+}

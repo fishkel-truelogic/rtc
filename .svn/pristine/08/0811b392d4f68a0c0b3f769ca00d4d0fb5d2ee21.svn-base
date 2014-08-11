@@ -1,0 +1,128 @@
+package ar.com.finit.dto.model;
+
+/**
+ * @author leo
+ */
+public class EventDTO {
+
+	private String id;
+	private String userId;
+	private String entity;
+	private String entityName;
+	private String subject;
+	private String startTime;
+	private String endTime;
+	private int allDay;
+	private int moreThanOneDay;
+	private int recurring;
+	private int color;
+	private int editable;
+	private String player;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public String getEntity() {
+		return entity;
+	}
+
+	public void setEntity(String entity) {
+		this.entity = entity;
+	}
+	
+	
+
+	public String getEntityName() {
+		return entityName;
+	}
+
+	public void setEntityName(String entityName) {
+		this.entityName = entityName;
+	}
+
+	public String getSubject() {
+		return subject;
+	}
+
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+
+	public String getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
+	}
+
+	public String getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(String endTime) {
+		this.endTime = endTime;
+	}
+
+	public int getAllDay() {
+		return allDay;
+	}
+
+	public void setAllDay(int allDay) {
+		this.allDay = allDay;
+	}
+
+	public int getMoreThanOneDay() {
+		return moreThanOneDay;
+	}
+
+	public void setMoreThanOneDay(int moreThanOneDay) {
+		this.moreThanOneDay = moreThanOneDay;
+	}
+
+	public int getRecurring() {
+		return recurring;
+	}
+
+	public void setRecurring(int recurring) {
+		this.recurring = recurring;
+	}
+
+	public int getColor() {
+		return color;
+	}
+
+	public void setColor(int color) {
+		this.color = color;
+	}
+
+	public int getEditable() {
+		return editable;
+	}
+
+	public void setEditable(int editable) {
+		this.editable = editable;
+	}
+
+	public String getPlayer() {
+		return player;
+	}
+
+	public void setPlayer(String player) {
+		this.player = player;
+	}
+
+}

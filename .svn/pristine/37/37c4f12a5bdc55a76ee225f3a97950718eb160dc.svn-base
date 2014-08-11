@@ -1,0 +1,21 @@
+package ar.com.finit.dto.model.page;
+
+import java.util.Collection;
+
+import ar.com.finit.dto.model.IrregularDTO;
+import ar.com.finit.dto.page.AbstractCollectionPage;
+
+/**
+ * @author leo
+ */
+public class IrregularCollectionPage extends AbstractCollectionPage<IrregularDTO> {
+
+	public IrregularCollectionPage(long rowCount, int pageSize, int pageCant, int pageNumber, Collection<IrregularDTO> irregular) {
+		super(rowCount, pageSize, pageCant, pageNumber, irregular);
+	}
+
+	@Override
+	protected boolean isSameInstant(Object obj) {
+		return obj instanceof IrregularCollectionPage;
+	}
+}

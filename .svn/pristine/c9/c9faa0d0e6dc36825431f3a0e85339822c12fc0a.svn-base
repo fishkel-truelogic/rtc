@@ -1,0 +1,31 @@
+package ar.com.finit.core.model;
+
+import java.util.Date;
+import java.util.Set;
+
+/**
+ * @author leo
+ */
+public interface Book {
+
+	public String getId();
+
+	public Date getStart();
+
+	public Date getFinish();
+
+	public boolean isSignal();
+
+	public Date getExpiration();
+
+	public Player getPlayer();
+
+	public Set<Player> getWaitingPlayers();
+
+	public String getFieldId();
+
+	public String getUserId();
+
+	public String getStablishmentId();
+
+}

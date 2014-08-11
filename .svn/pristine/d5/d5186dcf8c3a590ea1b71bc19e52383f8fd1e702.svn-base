@@ -1,0 +1,50 @@
+package ar.com.finit.core.test.model;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import ar.com.finit.core.model.dao.EventDao;
+import ar.com.finit.core.model.impl.EventImpl;
+
+/**
+ * @author leo
+ */
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = { "classpath:rtc-core-config-test.xml" })
+public class EventTest {
+
+	@Autowired
+	private EventDao eventDao;
+	
+	@Test
+	public void persistence() throws ParseException {
+		
+		EventImpl event = new EventImpl();
+		event.setSubject("estadio 1");
+		String pattern  = "MM/dd/yyyy hh:mm";
+		SimpleDateFormat format = new SimpleDateFormat(pattern);
+		event.setStartTime(format.parse("12/01/2013 00:00"));
+		event.setEndTime(format.parse("12/01/2013 00:00"));
+		event.setUserId("userId");
+		event.setEntity("entity");
+		event.setAllDay(0);
+		event.setMoreThanOneDay(0);
+		event.setRecurring(0);
+		event.setColor(2);
+		event.setEditable(0);
+		event.setPlayer("");
+		
+		eventDao.save(event);
+		
+//		eventDao.findBy("userId", "entity", "11/01/2013 00:00", "12/01/2013 00:00");
+		
+		
+	}
+}

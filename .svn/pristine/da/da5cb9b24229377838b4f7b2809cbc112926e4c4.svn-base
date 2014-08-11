@@ -1,0 +1,44 @@
+package ar.com.finit.dto.violation;
+
+/**
+ * @author leo
+ */
+public class ViolationDTO {
+	private String message;
+	private String messageTemplate;
+	private String property;
+	private String invalidValue;
+
+	public String getInvalidValue() {
+		return this.invalidValue;
+	}
+
+	public void setInvalidValue(String invalidValue) {
+		this.invalidValue = invalidValue;
+	}
+
+	public String getMessage() {
+		return this.message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public String getMessageTemplate() {
+		return this.messageTemplate;
+	}
+
+	public void setMessageTemplate(String messageTemplate) {
+		this.messageTemplate = messageTemplate;
+	}
+
+	public String getProperty() {
+		return this.property;
+	}
+
+	public void setProperty(String property) {
+		this.property = property;
+	}
+
+}

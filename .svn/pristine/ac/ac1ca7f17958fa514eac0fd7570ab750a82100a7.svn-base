@@ -1,0 +1,44 @@
+package ar.com.finit.core.model;
+
+import java.util.Date;
+import java.util.List;
+import java.util.Set;
+
+/**
+ * @author leo
+ */
+public interface Stablishment {
+
+	public String getId();
+
+	public String getUserId();
+
+	public District getDistrict();
+
+	public Set<Image> getImages();
+
+	public Set<Sport> getSports();
+
+	public Set<Field> getFields();
+
+	public Double getLat();
+
+	public Double getLng();
+
+	public Set<TpService> getTpServices();
+
+	public Set<String> getPhones();
+
+	public String getMail();
+
+	public String getWeb();
+
+	public List<Irregular> getIrregulars();
+
+	public Set<DayOfWeek> getDaysOpen();
+
+	public Date getOpenHour();
+
+	public Date getCloseHour();
+
+}

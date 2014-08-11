@@ -1,0 +1,14 @@
+package ar.com.finit.core.model.dao.impl;
+
+import java.io.Serializable;
+
+import ar.com.finit.core.dao.impl.AbstractDao;
+import ar.com.finit.core.model.Field;
+import ar.com.finit.core.model.dao.FieldDao;
+
+/**
+ * @author leo
+ */
+public class FieldDaoImpl extends AbstractDao<Serializable, Field> implements FieldDao {
+
+}

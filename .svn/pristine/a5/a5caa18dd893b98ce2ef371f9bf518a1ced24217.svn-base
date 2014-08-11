@@ -1,0 +1,45 @@
+(function () {
+	var input = document.getElementById("input_image"), 
+		formdata = false;
+
+	function showUploadedItem (source) {
+  		var img = document.getElementById("image");
+	  	img.src = source;
+	}   
+
+	if (window.FormData) {
+  		formdata = new FormData();
+	}
+	
+ 	input.addEventListener("change", function (evt) {
+ 		
+ 		var i = 0, len = this.files.length, img, reader, file;
+	
+		for ( ; i < len; i++ ) {
+			file = this.files[i];
+	
+			if (!!file.type.match(/image.jpg/)) {
+				if ( window.FileReader ) {
+					reader = new FileReader();
+					reader.onloadend = function (e) { 
+						showUploadedItem(e.target.result, file.fileName);
+					};
+					reader.readAsDataURL(file);
+				}
+				if (formdata) {
+					formdata.append("images[]", file);
+				}
+			}	
+		}
+	
+		if (formdata) {
+			$.ajax({
+				url: "php/upload.php",
+				type: "POST",
+				data: formdata,
+				processData: false,
+				contentType: false
+			});
+		}
+	}, false);
+}());

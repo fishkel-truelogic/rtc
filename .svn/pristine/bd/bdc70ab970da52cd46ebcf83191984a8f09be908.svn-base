@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="ar.com.finit.core.model.impl.ImageImpl" table="IMAGE">
+        <id name="id" type="java.lang.String">
+            <column name="ID" />
+            <generator class="ar.com.finit.core.generator.UUIDGenerator" />
+        </id>
+        <property name="avatar" type="binary">
+            <column name="AVATAR" />
+        </property>
+        
+        <many-to-one name="imageMetadata" column="IMAGE_METADATA" class="ar.com.finit.core.model.impl.ImageMetadataImpl" cascade="save-update" unique="true" lazy="no-proxy"/>
+       
+        <property name="name" type="java.lang.String">
+            <column name="NAME"/>
+        </property>
+        <property name="extension" type="java.lang.String">
+            <column name="EXTENSION" />
+        </property>
+        <property name="userId" type="java.lang.String">
+            <column name="USER_ID"/>
+        </property>
+        <property name="fieldId" type="java.lang.String">
+            <column name="FIELD_ID" />
+        </property>
+        <property name="stablishmentId" type="java.lang.String">
+            <column name="STABLISHMENT_ID" />
+        </property>
+    </class>
+</hibernate-mapping>

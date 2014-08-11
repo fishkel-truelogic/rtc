@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       					http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+
+	<bean id="mapServices" class="ar.com.finit.service.rest.utils.MapServices">
+		<property name="root" value="${rtc.rest.root.url}" />
+		<property name="pub" value="${rtc.rest.public}" />
+		<property name="priv" value="${rtc.rest.private}" />
+		<property name="admin" value="${rtc.rest.admin}" />
+		<property name="users" value="${rtc.rest.users}" />
+		<property name="roles" value="${rtc.rest.roles}" />
+		<property name="images" value="${rtc.rest.images}" />
+	</bean>
+	
+</beans>

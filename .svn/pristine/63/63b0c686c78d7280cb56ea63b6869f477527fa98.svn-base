@@ -1,0 +1,59 @@
+package ar.com.finit.service.model.converter;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import ar.com.finit.core.model.District;
+import ar.com.finit.core.model.impl.DistrictImpl;
+import ar.com.finit.dto.model.DistrictDTO;
+
+/**
+ * @author leo
+ */
+public class DistrictConverter {
+
+	public Set<DistrictDTO> toDTO(Set<District> disticts) {
+		Set<DistrictDTO> dtos = new HashSet<DistrictDTO>();
+		for (District distict : disticts) {
+			dtos.add(toDTO(distict));
+		}
+		return dtos;
+	}
+	
+	public List<DistrictDTO> toDTO(List<District> disticts) {
+		List<DistrictDTO> dtos = new ArrayList<DistrictDTO>();
+		for (District distict : disticts) {
+			dtos.add(toDTO(distict));
+		}
+		return dtos;
+	}
+
+	public DistrictDTO toDTO(District distict) {
+		if (distict == null) {
+			return null;
+		}
+		DistrictDTO dto = new DistrictDTO();
+		dto.setId(distict.getId());
+		dto.setName(distict.getName());
+		dto.setState(distict.getState());
+		return dto;
+	}
+
+	public Set<District> toEntity(Set<DistrictDTO> disticts) {
+		Set<District> entities = new HashSet<District>();
+		for (DistrictDTO distictDTO : disticts) {
+			entities.add(toEntity(distictDTO));
+		}
+		return entities;
+	}
+
+	public District toEntity(DistrictDTO distictDTO) {
+		DistrictImpl distict = new DistrictImpl();
+		distict.setId(distictDTO.getId());
+		distict.setName(distictDTO.getName());
+		distict.setState(distictDTO.getState());
+		return distict;
+	}
+}

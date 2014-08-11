@@ -1,0 +1,70 @@
+package ar.com.finit.dto.model;
+
+import java.util.Date;
+
+/**
+ * @author leo
+ */
+public class IrregularDTO {
+
+	private String id;
+
+	private boolean allDay;
+
+	private Date SinceDate;
+
+	private Date toDate;
+
+	private Date openHour;
+
+	private Date closeHour;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public boolean isAllDay() {
+		return allDay;
+	}
+
+	public void setAllDay(boolean allDay) {
+		this.allDay = allDay;
+	}
+
+	public Date getSinceDate() {
+		return SinceDate;
+	}
+
+	public void setSinceDate(Date sinceDate) {
+		SinceDate = sinceDate;
+	}
+
+	public Date getToDate() {
+		return toDate;
+	}
+
+	public void setToDate(Date toDate) {
+		this.toDate = toDate;
+	}
+
+	public Date getOpenHour() {
+		return openHour;
+	}
+
+	public void setOpenHour(Date openHour) {
+		this.openHour = openHour;
+	}
+
+	public Date getCloseHour() {
+		return closeHour;
+	}
+
+	public void setCloseHour(Date closeHour) {
+		this.closeHour = closeHour;
+	}
+
+}

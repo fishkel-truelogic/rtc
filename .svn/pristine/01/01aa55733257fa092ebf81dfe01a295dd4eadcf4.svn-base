@@ -1,0 +1,46 @@
+package ar.com.finit.service.rest.pub;
+
+import java.util.List;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Configurable;
+
+import ar.com.finit.core.model.dao.GroundDao;
+import ar.com.finit.dto.model.GroundDTO;
+import ar.com.finit.service.model.converter.GroundConverter;
+import ar.com.finit.service.rest.utils.EntityPath;
+
+/**
+ * @author leo
+ */
+
+@Configurable
+@Path(EntityPath.PUBLIC + EntityPath.GROUNDS)
+public class GroundPublicService {
+	
+	@Autowired
+	private GroundDao groundDao;
+	@Autowired
+	private GroundConverter groundConverter;
+
+	@GET
+	@Path("/{sport:[a-zA-Z %C3%A1 %C3%A9 %C3%AD %C3%B3 %C3%BA]*}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<GroundDTO> bySport(@PathParam("sport") String sport) {
+		return groundConverter.toDTO(groundDao.findBySport(sport));
+	}
+	
+
+	@GET
+	@Path("/")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<String> allDistinct() {
+		return groundDao.findAllDistinct();
+	}
+}

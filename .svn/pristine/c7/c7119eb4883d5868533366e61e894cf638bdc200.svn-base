@@ -1,0 +1,156 @@
+package ar.com.finit.core.model.impl;
+
+import java.util.Date;
+
+import ar.com.finit.core.model.Event;
+
+/**
+ * @author leo
+ */
+public class EventImpl implements Event {
+
+	private Integer id;
+	
+	private String userId;
+	
+	private String entity;
+	
+	private String entityName;
+	
+	private String subject;
+	
+	private Date startTime;
+	
+	private Date endTime;
+	
+	private int allDay;
+	
+	private int moreThanOneDay;
+	
+	private int recurring;
+	
+	private int color;
+	
+	private int editable;
+	
+	private String player;
+
+	@Override
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	@Override
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	@Override
+	public String getEntity() {
+		return entity;
+	}
+
+	public void setEntity(String entity) {
+		this.entity = entity;
+	}
+
+	@Override
+	public String getEntityName() {
+		return entityName;
+	}
+
+	public void setEntityName(String entityName) {
+		this.entityName = entityName;
+	}
+
+	@Override
+	public String getSubject() {
+		return subject;
+	}
+
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+
+	@Override
+	public Date getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(Date startTime) {
+		this.startTime = startTime;
+	}
+
+	@Override
+	public Date getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(Date endTime) {
+		this.endTime = endTime;
+	}
+
+	@Override
+	public int getAllDay() {
+		return allDay;
+	}
+
+	public void setAllDay(int allDay) {
+		this.allDay = allDay;
+	}
+
+	@Override
+	public int getMoreThanOneDay() {
+		return moreThanOneDay;
+	}
+
+	public void setMoreThanOneDay(int moreThanOneDay) {
+		this.moreThanOneDay = moreThanOneDay;
+	}
+
+	@Override
+	public int getRecurring() {
+		return recurring;
+	}
+
+	public void setRecurring(int recurring) {
+		this.recurring = recurring;
+	}
+
+	@Override
+	public int getColor() {
+		return color;
+	}
+
+	public void setColor(int color) {
+		this.color = color;
+	}
+
+	@Override
+	public int getEditable() {
+		return editable;
+	}
+
+	public void setEditable(int editable) {
+		this.editable = editable;
+	}
+
+	@Override
+	public String getPlayer() {
+		return player;
+	}
+
+	public void setPlayer(String player) {
+		this.player = player;
+	}
+	
+	
+}

@@ -1,0 +1,126 @@
+package ar.com.finit.core.model.impl;
+
+import java.util.Date;
+import java.util.Set;
+
+import ar.com.finit.core.model.Book;
+import ar.com.finit.core.model.Player;
+
+/**
+ * @author leo
+ */
+public class BookImpl implements Book {
+
+	private String id;
+
+	private Date start;
+
+	private Date finish;
+
+	private boolean signal;
+
+	private Date expiration;
+
+	private Player player;
+
+	private Set<Player> waitingPlayers;
+
+	private String fieldId;
+
+	private String userId;
+
+	private String stablishmentId;
+
+	@Override
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	@Override
+	public Date getStart() {
+		return start;
+	}
+
+	public void setStart(Date start) {
+		this.start = start;
+	}
+
+	@Override
+	public Date getFinish() {
+		return finish;
+	}
+
+	public void setFinish(Date finish) {
+		this.finish = finish;
+	}
+
+	@Override
+	public boolean isSignal() {
+		return signal;
+	}
+
+	public void setSignal(boolean signal) {
+		this.signal = signal;
+	}
+
+	@Override
+	public Date getExpiration() {
+		return expiration;
+	}
+
+	public void setExpiration(Date expiration) {
+		this.expiration = expiration;
+	}
+
+	@Override
+	public Player getPlayer() {
+		return player;
+	}
+
+	public void setPlayer(Player player) {
+		this.player = player;
+	}
+
+	@Override
+	public Set<Player> getWaitingPlayers() {
+		return waitingPlayers;
+	}
+
+	public void setWaitingPlayers(Set<Player> waitingPlayers) {
+		this.waitingPlayers = waitingPlayers;
+	}
+
+	@Override
+	public String getFieldId() {
+		return fieldId;
+	}
+
+	public void setFieldId(String fieldId) {
+		this.fieldId = fieldId;
+	}
+
+	@Override
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	@Override
+	public String getStablishmentId() {
+		return stablishmentId;
+	}
+
+	public void setStablishmentId(String stablishmentId) {
+		this.stablishmentId = stablishmentId;
+	}
+
+
+
+}

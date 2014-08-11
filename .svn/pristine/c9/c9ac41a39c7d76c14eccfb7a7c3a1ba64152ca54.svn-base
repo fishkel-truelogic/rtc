@@ -1,0 +1,181 @@
+(function($) {
+
+	$.uploadImage = function(albumId) {
+
+		_processImage = function(data) {
+			var image = JSON.parse(data);
+			
+			$(".active").removeClass("active");
+			
+			$("#my_carousel_2").append('<div class="item active" style="height: 475px; text-align: left; width: 100%;">'
+									+ '<div class="ts_border"> <img src="' + image.dir + '" style="width:' + image.width + 'px; margin-left:'
+									+ Math.floor((1100 - image.width) / 2).toString() + 'px"/></div></div>');
+			
+		};
+		
+		_handleError = function(jqXHR, textStatus, errorThrown) {
+			alert("Imagen muy grande");
+		};
+		
+		$("#upload_form").ajaxForm({
+			success :_processImage,
+			error : _handleError,
+			dataType : "text"
+		}).submit();
+		
+	};
+
+	$.uploadCover = function() {
+
+		_handleError = function(jqXHR, textStatus, errorThrown) {
+			alert("Imagen muy grande");
+		};
+		
+		_processImage = function(data) {
+			var image = JSON.parse(data);
+			$("#cover").html('<img src="' + image.dir + '" onclick="$.loadStablishmentImagesDialog(\'' + image.entity + '\')">');
+		};
+		
+		$("#upload_cover_form").ajaxForm({
+			success : _processImage,
+			error : _handleError,
+			dataType : "text"
+		}).submit();
+		
+	};
+
+	$.loadStablishmentImagesDialog = function(albumId) {
+
+		_processTemplate = function(response) {
+			var data = null;
+			$.template("stablishmentImages", response);
+			$("#imagesDialog").html($.tmpl("stablishmentImages", data, {}));
+
+			$("#imagesDialog").dialog({
+				modal : true,
+				resizable : false,
+				draggable : false,
+				height : '500',
+				width : '1100',
+				position : 'center'
+			});
+
+			$('.ui-widget-overlay').on("click", function() {
+				$("#imagesDialog").dialog("close");
+				$("#imagesDialog").html('');
+			});
+			
+		};
+
+		$.ajax({
+			url : '/owner-web/owner/image/dialog/' + albumId,
+			type : "GET",
+			success : _processTemplate
+		});
+
+	};
+
+	$.loadMapEditDialog = function(mapMarkerId) {
+		
+		_processTemplate = function(response) {
+			var data = null;
+			$.template("mapEdit", response);
+			$("#mapEditDialog").html($.tmpl("mapEdit", data, {}));
+			
+			$("#mapEditDialog").dialog({
+				modal : true,
+				resizable : false,
+				draggable : false,
+				height : '500',
+				width : '1100',
+				position : 'center'
+			});
+			
+			$('.ui-widget-overlay').on("click", function() {
+				$("#mapEditDialog").dialog("close");
+				window.location.replace("/owner-web/owner/stablishment");
+			});
+			
+		};
+		
+		$.ajax({
+			url : '/owner-web/owner/map/' + mapMarkerId,
+			type : "GET",
+			success : _processTemplate
+		});
+		
+	};
+	
+	$.saveStablishmentMap = function(marker, mapMarkerId) {
+	
+		$.ajax({
+			url : '/owner-web/owner/map/?lat=' + marker.position.lat() + '&lng=' + marker.position.lng() + '&mmId=' + mapMarkerId,
+			type : "POST",
+			error : function(){alert('ocurrio un error al colocar marcador');}
+		});
+		
+	};
+	
+	$.loadFieldUploadDialog = function() {
+
+		_processTemplate = function(response) {
+			var data = null;
+			$.template("newField", response);
+			$("#newFieldDialog").html($.tmpl("newField", data, {}));
+
+			$("#newFieldDialog").dialog({
+				modal : true,
+				resizable : false,
+				draggable : false,
+				height : '500',
+				width : '1100',
+				position : 'center'
+			});
+
+			$('.ui-widget-overlay').on("click", function() {
+				$("#newFieldDialog").dialog("close");
+				$("#newFieldDialog").html('');
+			});
+			
+		};
+
+		$.ajax({
+			url : '/owner-web/owner/fields/new',
+			type : "GET",
+			success : _processTemplate
+		});
+
+	};
+
+	$.loadTpServiceUploadDialog = function() {
+		
+		_processTemplate = function(response) {
+			var data = null;
+			$.template("newTpService", response);
+			$("#newTpServiceDialog").html($.tmpl("newTpService", data, {}));
+			
+			$("#newTpServiceDialog").dialog({
+				modal : true,
+				resizable : false,
+				draggable : false,
+				height : '265',
+				width : '1100',
+				position : 'center'
+			});
+			
+			$('.ui-widget-overlay').on("click", function() {
+				$("#newTpServiceDialog").dialog("close");
+				$("#newTpServiceDialog").html('');
+			});
+			
+		};
+		
+		$.ajax({
+			url : '/owner-web/owner/services/new',
+			type : "GET",
+			success : _processTemplate
+		});
+		
+	};
+
+})(jQuery);

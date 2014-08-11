@@ -1,0 +1,197 @@
+package ar.com.finit.core.model.impl;
+
+import java.util.Date;
+import java.util.List;
+import java.util.Set;
+
+import ar.com.finit.core.model.DayOfWeek;
+import ar.com.finit.core.model.District;
+import ar.com.finit.core.model.Field;
+import ar.com.finit.core.model.Image;
+import ar.com.finit.core.model.Irregular;
+import ar.com.finit.core.model.Sport;
+import ar.com.finit.core.model.Stablishment;
+import ar.com.finit.core.model.TpService;
+
+/**
+ * @author leo
+ */
+public class StablishmentImpl implements Stablishment {
+
+	private String id;
+
+	private String userId;
+
+	private District district;
+
+	private Set<Image> images;
+
+	private Set<Sport> sports;
+
+	private Set<Field> fields;
+
+	private Double lat;
+
+	private Double lng;
+
+	private Set<TpService> tpServices;
+
+	private Set<String> phones;
+
+	private String mail;
+
+	private String web;
+
+	private List<Irregular> irregulars;
+
+	private Set<DayOfWeek> daysOpen;
+
+	private Date openHour;
+
+	private Date closeHour;
+
+	@Override
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	@Override
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	@Override
+	public District getDistrict() {
+		return district;
+	}
+
+	public void setDistrict(District district) {
+		this.district = district;
+	}
+
+	@Override
+	public Set<Image> getImages() {
+		return images;
+	}
+
+	public void setImages(Set<Image> images) {
+		this.images = images;
+	}
+
+	@Override
+	public Set<Sport> getSports() {
+		return sports;
+	}
+
+	public void setSports(Set<Sport> sports) {
+		this.sports = sports;
+	}
+
+	@Override
+	public Set<Field> getFields() {
+		return fields;
+	}
+
+	public void setFields(Set<Field> fields) {
+		this.fields = fields;
+	}
+
+	@Override
+	public Double getLat() {
+		return lat;
+	}
+
+	public void setLat(Double lat) {
+		this.lat = lat;
+	}
+
+	@Override
+	public Double getLng() {
+		return lng;
+	}
+
+	public void setLng(Double lng) {
+		this.lng = lng;
+	}
+
+	@Override
+	public Set<TpService> getTpServices() {
+		return tpServices;
+	}
+
+	public void setTpServices(Set<TpService> tpServices) {
+		this.tpServices = tpServices;
+	}
+
+	@Override
+	public Set<String> getPhones() {
+		return phones;
+	}
+
+	public void setPhones(Set<String> phones) {
+		this.phones = phones;
+	}
+
+	@Override
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+	@Override
+	public String getWeb() {
+		return web;
+	}
+
+	public void setWeb(String web) {
+		this.web = web;
+	}
+
+	@Override
+	public List<Irregular> getIrregulars() {
+		return irregulars;
+	}
+
+	public void setIrregulars(List<Irregular> irregulars) {
+		this.irregulars = irregulars;
+	}
+
+	@Override
+	public Set<DayOfWeek> getDaysOpen() {
+		return daysOpen;
+	}
+
+	public void setDaysOpen(Set<DayOfWeek> daysOpen) {
+		this.daysOpen = daysOpen;
+	}
+
+	@Override
+	public Date getOpenHour() {
+		return openHour;
+	}
+
+	public void setOpenHour(Date openHour) {
+		this.openHour = openHour;
+	}
+
+	@Override
+	public Date getCloseHour() {
+		return closeHour;
+	}
+
+	public void setCloseHour(Date closeHour) {
+		this.closeHour = closeHour;
+	}
+
+}

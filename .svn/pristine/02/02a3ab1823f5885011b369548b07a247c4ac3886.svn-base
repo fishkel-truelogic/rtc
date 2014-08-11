@@ -1,0 +1,15 @@
+<html>
+<head>
+</head>
+<body>
+	hola ${username}:<br>
+	Bienvenido a Reservá tu cancha, para poder reservar canchas es necesario que tengamos tu dirección<br>
+	de correo electrónico correcta.<br>
+	
+	Para confirmarla, por favor dale click al link que se ecuentra a continuación y activaremos tu cuenta.<br><br>
+	
+	<a target="_blank" href="http://localhost:8081/rtc-web/confirmation.php?id=${id}&username=${username}">Confirmá y activá tu cuenta</a>
+	
+
+</body>
+</html>

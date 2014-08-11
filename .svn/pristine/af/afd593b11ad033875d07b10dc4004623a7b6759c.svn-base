@@ -1,0 +1,22 @@
+package ar.com.finit.core.model.impl;
+
+import ar.com.finit.core.model.Tariff;
+
+/**
+ * @author leo
+ */
+public class TariffImpl implements Tariff {
+
+	private String id;
+
+	@Override
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+	
+	
+}

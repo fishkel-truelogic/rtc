@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="ar.com.finit.core.model.impl.UserImpl" table="SR_USER">
+		<id name="id" type="java.lang.String">
+			<column name="ID" />
+			<generator class="ar.com.finit.core.generator.UUIDGenerator" />
+		</id>
+		<natural-id>
+			<property name="username" type="java.lang.String" >
+				<column name="USERNAME" />
+			</property>
+		</natural-id>
+		<property name="password" type="java.lang.String">
+			<column name="PASSWORD" />
+		</property>
+		<set name="roles" table="SR_USER_ROLE" cascade="merge" inverse="false" lazy="false" >
+			<key column="FK_USER_ID" />
+			<many-to-many column="FK_ROLE_ID" class="ar.com.finit.core.model.impl.RoleImpl" />
+		</set>
+	</class>
+</hibernate-mapping>

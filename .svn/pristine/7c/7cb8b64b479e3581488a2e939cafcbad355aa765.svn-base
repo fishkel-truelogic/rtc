@@ -1,0 +1,57 @@
+package ar.com.finit.core.model.impl;
+
+import java.util.List;
+
+import ar.com.finit.core.model.Book;
+import ar.com.finit.core.model.Player;
+
+/**
+ * @author leo
+ */
+public class PlayerImpl implements Player {
+
+	private String id;
+
+	private String mail;
+
+	private String name;
+
+	private List<Book> requestedBooks;
+
+	@Override
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	@Override
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+	@Override
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public List<Book> getRequestedBooks() {
+		return requestedBooks;
+	}
+
+	public void setRequestedBooks(List<Book> requestedBooks) {
+		this.requestedBooks = requestedBooks;
+	}
+
+}

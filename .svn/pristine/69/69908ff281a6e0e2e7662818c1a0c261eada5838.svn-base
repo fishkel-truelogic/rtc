@@ -1,0 +1,124 @@
+package ar.com.finit.owner.web.model;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
+import ar.com.finit.dto.model.EventDTO;
+
+/**
+ * @author leo
+ */
+public class CalendarModel {
+
+	private List<List<Object>> events;
+	private boolean issort;
+	private String start;
+	private String end;
+	private String error;
+	
+	public static final String MONTH = "month";
+	public static final String WEEK = "week";
+	public static final String DAY = "day";
+	
+
+	public CalendarModel(String showdate, String viewtype) {
+		this.setIssort(true);
+		this.setError(null);
+		this.setEvents(new ArrayList<List<Object>>());
+		Calendar calendar = Calendar.getInstance();
+		String[] date = showdate.split("/");
+		calendar.set(Integer.parseInt(date[2]), Integer.parseInt(date[1])  - 1, Integer.parseInt(date[0]));
+		calendar.set(Calendar.HOUR_OF_DAY, 0);
+		calendar.clear(Calendar.MINUTE);
+		calendar.clear(Calendar.SECOND);
+		calendar.clear(Calendar.MILLISECOND);
+		
+		if (viewtype.equals(MONTH)) {
+			calendar.set(Calendar.DAY_OF_MONTH, 1);
+			setStart(this.calendarToString(calendar));
+			calendar.add(Calendar.MONTH, 1);
+			setEnd(this.calendarToString(calendar));
+			calendar.getTime().toString();
+		} else if (viewtype.equals(WEEK)) {
+			calendar.add(Calendar.DAY_OF_WEEK, calendar.getFirstDayOfWeek() - calendar.get(Calendar.DAY_OF_WEEK));
+			setStart(this.calendarToString(calendar));
+			calendar.add(Calendar.DAY_OF_YEAR, 7);
+			setEnd(this.calendarToString(calendar));
+		} else if (viewtype.equals(DAY)) {
+			setStart(this.calendarToString(calendar));
+			calendar.set(Calendar.HOUR_OF_DAY, 23);
+			calendar.set(Calendar.MINUTE, 59);
+			setEnd(this.calendarToString(calendar));
+		}
+		
+	}
+
+	private String calendarToString(Calendar calendar) {
+		String pattern = "MM/dd/yyyy hh:mm";
+	    SimpleDateFormat format = new SimpleDateFormat(pattern);
+	    return format.format(calendar.getTime()).toString();
+	}
+
+	public List<List<Object>> getEvents() {
+		if (events == null) events = new ArrayList<List<Object>>();
+		return events;
+	}
+
+	public void setEvents(List<List<Object>> events) {
+		this.events = events;
+	}
+
+	public boolean isIssort() {
+		return issort;
+	}
+
+	public void setIssort(boolean issort) {
+		this.issort = issort;
+	}
+
+	public String getStart() {
+		return start;
+	}
+
+	public void setStart(String start) {
+		this.start = start;
+	}
+
+	public String getEnd() {
+		return end;
+	}
+
+	public void setEnd(String end) {
+		this.end = end;
+	}
+
+	public String getError() {
+		return error;
+	}
+
+	public void setError(String error) {
+		this.error = error;
+	}
+
+	public void addEvents(List<EventDTO> events) {
+		for (EventDTO event : events) {
+			List<Object> e = new ArrayList<Object>();
+			e.add(event.getId());
+			e.add(event.getEntityName() + " - " +event.getSubject());
+			e.add(event.getStartTime());
+			e.add(event.getEndTime());
+			e.add(event.getAllDay());
+			e.add(event.getMoreThanOneDay());
+			e.add(event.getRecurring());
+			e.add(event.getColor());
+			e.add(event.getEditable());
+			e.add("");
+			e.add(event.getPlayer());
+			this.getEvents().add(e);
+		}
+		
+	}
+
+}

@@ -1,0 +1,77 @@
+package ar.com.finit.service.model.converter;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import ar.com.finit.core.model.Field;
+import ar.com.finit.core.model.impl.FieldImpl;
+import ar.com.finit.dto.model.FieldDTO;
+
+/**
+ * @author leo
+ */
+public class FieldConverter {
+
+	@Autowired
+	private GroundConverter groundConverter;
+	@Autowired
+	private SportConverter sportConverter;
+	@Autowired
+	private AlbumConverter albumConverter;
+	
+	public List<FieldDTO> toDTO(Collection<Field> fields, boolean lazy) {
+		List<FieldDTO> fieldsDTO = new ArrayList<FieldDTO>();
+		for (Field field : fields) {
+			fieldsDTO.add(this.toDTO(field, lazy));
+		}
+		return fieldsDTO;
+	}
+	
+	public List<Field> toEntity(Collection<FieldDTO> fieldsDTO) {
+		List<Field> fields = new ArrayList<Field>();
+		for (FieldDTO field : fieldsDTO) {
+			fields.add(this.toEntity(field));
+		}
+		return fields;
+	}
+
+	public FieldDTO toDTO(Field field, boolean lazy) {
+		if (field == null) {
+			return null;
+		}
+		FieldDTO dto = new FieldDTO();
+		dto.setCeiling(field.isCeiling());
+		dto.setLights(field.isLights());
+		dto.setName(field.getName());
+		dto.setUserId(field.getUserId());
+		dto.setDescription(field.getDescription());
+		dto.setId(field.getId());
+		dto.setPrice(field.getPrice());
+		dto.setGround(field.getGround());
+		dto.setSports(sportConverter.toDTO(field.getSports()));
+		dto.setAlbum(albumConverter.toDTO(field.getAlbum(), lazy));
+		return dto;
+	}
+	
+	public Field toEntity(FieldDTO dto) {
+		if (dto == null) {
+			return null;
+		}
+		FieldImpl field = new FieldImpl();
+		field.setCeiling(dto.isCeiling());
+		field.setLights(dto.isLights());
+		field.setName(dto.getName());
+		field.setUserId(dto.getUserId());
+		field.setDescription(dto.getDescription());
+		field.setId(dto.getId());
+		field.setPrice(dto.getPrice());
+		field.setGround(dto.getGround());
+		field.setSports(sportConverter.toEntity(dto.getSports()));
+		field.setAlbum(albumConverter.toEntity(dto.getAlbum()));
+		return field;
+	}
+
+}

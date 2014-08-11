@@ -1,0 +1,44 @@
+package ar.com.finit.core.model.impl;
+
+import ar.com.finit.core.model.PlayerCapacity;
+import ar.com.finit.core.model.Sport;
+
+/**
+ * @author leo
+ */
+public class PlayerCapacityImpl implements PlayerCapacity {
+
+	private String id;
+
+	private String text;
+
+	private Sport sport;
+
+	@Override
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	@Override
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	@Override
+	public Sport getSport() {
+		return sport;
+	}
+
+	public void setSport(Sport sport) {
+		this.sport = sport;
+	}
+
+}
